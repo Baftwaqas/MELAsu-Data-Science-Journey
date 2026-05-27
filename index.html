@@ -3,1017 +3,835 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apna Sasta Bazaar — Pakistan's Most Affordable Marketplace</title>
+  <title>Apna Sasta Bazaar — Order Together. Pay Mandi Prices.</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --brand:        oklch(76% 0.18 62);
-      --brand-dark:   oklch(60% 0.18 62);
-      --brand-light:  oklch(95% 0.06 68);
-      --deal-red:     oklch(54% 0.23 22);
-      --green:        oklch(62% 0.16 155);
-      --ink:          oklch(14% 0.012 65);
-      --ink-muted:    oklch(46% 0.010 65);
-      --ink-faint:    oklch(64% 0.008 65);
-      --surface:      oklch(98.5% 0.007 70);
-      --surface-2:    oklch(95.5% 0.012 68);
-      --border:       oklch(89% 0.010 68);
-      --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
-      --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
+      --lime:    oklch(87% 0.28 128);
+      --lime-d:  oklch(68% 0.26 128);
+      --coral:   oklch(64% 0.27 25);
+      --amber:   oklch(84% 0.22 72);
+      --violet:  oklch(72% 0.24 290);
+      --sky:     oklch(78% 0.20 220);
+      --bg:      oklch(9%  0.018 65);
+      --bg2:     oklch(14% 0.018 65);
+      --bg3:     oklch(20% 0.015 65);
+      --txt:     oklch(96% 0.006 70);
+      --muted:   oklch(68% 0.010 68);
+      --faint:   oklch(44% 0.008 68);
+      --border:  oklch(25% 0.012 65);
+      --ease:    cubic-bezier(0.23, 1, 0.32, 1);
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Mulish', sans-serif;
-      background: var(--surface);
-      color: var(--ink);
-      -webkit-font-smoothing: antialiased;
-    }
-    h1,h2,h3,h4,h5,h6 { font-family: 'Baloo 2', sans-serif; }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+    h1,h2,h3,h4,h5{font-family:'Fredoka',sans-serif}
 
     /* ── Navbar ── */
-    .navbar {
-      position: sticky; top: 0; z-index: 50;
-      background: oklch(98.5% 0.007 70 / 0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1280px; margin: 0 auto;
-      padding: 0 1.5rem;
-      display: flex; align-items: center; gap: 1.25rem; height: 64px;
-    }
-    .logo {
-      display: flex; align-items: center; gap: 0.625rem;
-      text-decoration: none; flex-shrink: 0;
-    }
-    .logo-mark {
-      width: 36px; height: 36px;
-      background: var(--brand); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.2rem;
-    }
-    .logo-text { line-height: 1; }
-    .logo-top {
-      font-family: 'Baloo 2', sans-serif; font-weight: 800;
-      font-size: 1.05rem; color: var(--ink); letter-spacing: -0.02em;
-    }
-    .logo-sub {
-      font-family: 'Baloo 2', sans-serif; font-weight: 700;
-      font-size: 0.8rem; color: var(--brand);
-    }
-
-    /* ── Search ── */
-    .search-wrap {
-      flex: 1; max-width: 520px;
-      display: flex;
-      background: white;
-      border: 2px solid var(--border);
-      border-radius: 11px; overflow: hidden;
-      transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
-    }
-    .search-wrap:focus-within {
-      border-color: var(--brand);
-      box-shadow: 0 0 0 4px oklch(76% 0.18 62 / 0.14);
-    }
-    .search-cat {
-      border: none; outline: none;
-      padding: 0 0.875rem;
-      font-family: 'Mulish', sans-serif; font-size: 0.875rem;
-      background: var(--surface-2); color: var(--ink-muted);
-      border-right: 1px solid var(--border); cursor: pointer;
-    }
-    .search-input {
-      flex: 1; border: none; outline: none;
-      padding: 0.75rem 1rem;
-      font-family: 'Mulish', sans-serif; font-size: 0.95rem;
-      background: transparent; color: var(--ink);
-    }
-    .search-input::placeholder { color: var(--ink-faint); }
-    .search-btn {
-      background: var(--brand); border: none; cursor: pointer;
-      padding: 0 1.125rem; font-size: 1rem;
-      transition: background 150ms;
-    }
-    .search-btn:hover { background: var(--brand-dark); }
-    .search-btn:active { transform: scale(0.97); }
+    nav{position:sticky;top:0;z-index:100;background:oklch(9% 0.018 65 / 0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+    .ni{max-width:1280px;margin:0 auto;padding:0 1.5rem;height:62px;display:flex;align-items:center;gap:1.25rem}
 
     /* ── Buttons ── */
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      font-family: 'Baloo 2', sans-serif; font-weight: 700;
-      border: none; cursor: pointer; text-decoration: none;
-      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
-    }
-    .btn:active { transform: scale(0.97); }
-    .btn-amber {
-      background: var(--brand); color: var(--ink);
-      padding: 0.75rem 1.75rem; border-radius: 10px; font-size: 1rem;
-    }
-    .btn-amber:hover { box-shadow: 0 6px 24px oklch(76% 0.18 62 / 0.38); }
-    .btn-dark {
-      background: var(--ink); color: white;
-      padding: 0.75rem 1.75rem; border-radius: 10px; font-size: 1rem;
-    }
-    .btn-dark:hover { box-shadow: 0 6px 24px oklch(0% 0 0 / 0.25); }
-    .btn-outline {
-      background: transparent; color: var(--ink);
-      border: 1.5px solid var(--border);
-      padding: 0.625rem 1.25rem; border-radius: 10px; font-size: 0.875rem;
-    }
-    .btn-outline:hover { border-color: var(--brand); color: var(--brand-dark); }
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Fredoka',sans-serif;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:transform 150ms var(--ease),box-shadow 150ms var(--ease)}
+    .btn:active{transform:scale(0.96)!important}
+    .b-lime{background:var(--lime);color:var(--bg);padding:.75rem 1.875rem;border-radius:12px;font-size:1rem}
+    .b-lime:hover{box-shadow:0 0 36px oklch(87% 0.28 128 / 0.55)}
+    .b-coral{background:var(--coral);color:#fff;padding:.75rem 1.875rem;border-radius:12px;font-size:1rem}
+    .b-coral:hover{box-shadow:0 0 30px oklch(64% 0.27 25 / 0.5)}
+    .b-ghost{background:transparent;color:var(--lime);border:1.5px solid oklch(87% 0.28 128 / 0.38);padding:.55rem 1.25rem;border-radius:10px;font-size:.875rem}
+    .b-ghost:hover{border-color:var(--lime);background:oklch(87% 0.28 128 / 0.09)}
+    .b-dark{background:var(--bg2);color:var(--txt);border:1px solid var(--border);padding:.55rem 1.25rem;border-radius:10px;font-size:.875rem}
+
+    /* ── Glow orbs on hero ── */
+    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+
+    /* ── Floating produce ── */
+    @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-20px) rotate(4deg)}}
+    .floater{position:absolute;font-size:3rem;pointer-events:none;opacity:.7;filter:drop-shadow(0 0 14px var(--lime))}
 
     /* ── Marquee ── */
-    .marquee-rail { overflow: hidden; }
-    .marquee-track {
-      display: flex; gap: 2rem; width: max-content;
-      animation: marquee 32s linear infinite;
-    }
-    @keyframes marquee {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
-    .marquee-item {
-      display: flex; align-items: center; gap: 0.5rem;
-      white-space: nowrap; font-size: 0.825rem; font-weight: 600;
-    }
+    .mq-wrap{overflow:hidden}
+    .mq-t{display:flex;gap:0;width:max-content;animation:mq 36s linear infinite}
+    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-    /* ── Hero ── */
-    .hero-headline {
-      font-size: clamp(2.4rem, 5vw, 4.25rem);
-      font-weight: 800; line-height: 1.08; letter-spacing: -0.025em;
-    }
-    .hero-headline em {
-      font-style: normal; color: var(--brand);
-    }
-
-    /* ── Pill tag ── */
-    .pill {
-      display: inline-flex; align-items: center; gap: 0.375rem;
-      background: var(--brand-light);
-      border: 1px solid oklch(76% 0.18 62 / 0.28);
-      border-radius: 100px;
-      padding: 0.375rem 1rem;
-      font-size: 0.825rem; font-weight: 700; color: var(--brand-dark);
-    }
-
-    /* ── Trending chips ── */
-    .chip {
-      padding: 0.3rem 0.875rem;
-      background: var(--surface-2); border: 1.5px solid var(--border);
-      border-radius: 100px; font-size: 0.825rem; font-weight: 600;
-      color: var(--ink-muted); text-decoration: none;
-      transition: border-color 150ms var(--ease-out), color 150ms var(--ease-out);
-    }
-    .chip:hover { border-color: var(--brand); color: var(--brand-dark); }
-
-    /* ── Category cards ── */
-    .cat-card {
-      display: flex; flex-direction: column; align-items: center; gap: 0.625rem;
-      padding: 1.375rem 0.75rem; border-radius: 16px;
-      border: 1px solid var(--border); background: var(--surface-2);
-      text-decoration: none; color: var(--ink);
-      transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px oklch(0% 0 0 / 0.08); }
-    }
-    .cat-card:active { transform: scale(0.97); }
-    .cat-emoji { font-size: 2.25rem; }
-    .cat-name { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.925rem; text-align: center; }
-    .cat-count { font-size: 0.775rem; color: var(--ink-faint); }
-
-    /* ── Product cards ── */
-    .prod-card {
-      background: white; border: 1px solid var(--border); border-radius: 14px;
-      overflow: hidden;
-      transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
-    }
-    @media (hover: hover) and (pointer: fine) {
-      .prod-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px oklch(0% 0 0 / 0.1); }
-    }
-    .prod-thumb {
-      padding: 1.5rem; text-align: center; position: relative; font-size: 3.75rem;
-    }
-    .prod-body { padding: 1rem; }
-    .prod-cat {
-      font-size: 0.75rem; font-weight: 700; color: var(--ink-faint);
-      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem;
-    }
-    .prod-name {
-      font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.975rem;
-      line-height: 1.3; color: var(--ink); margin-bottom: 0.5rem;
-    }
-    .price-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem; }
-    .price-now { color: var(--deal-red); font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.2rem; }
-    .price-was { color: var(--ink-faint); text-decoration: line-through; font-size: 0.875rem; }
-    .stars { color: var(--brand); font-size: 0.9rem; }
-    .review-count { font-size: 0.775rem; color: var(--ink-faint); margin-left: 0.3rem; }
-
-    /* ── Badges ── */
-    .badge {
-      position: absolute; top: 0.625rem; left: 0.625rem;
-      font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.725rem;
-      padding: 0.2rem 0.55rem; border-radius: 6px;
-    }
-    .badge-sale { background: var(--deal-red); color: white; }
-    .badge-new  { background: var(--green); color: white; }
-
-    /* ── Deal section ── */
-    .deal-wrap {
-      background: var(--ink); border-radius: 24px; overflow: hidden;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-    }
-    .countdown-box {
-      background: oklch(22% 0.01 65);
-      color: white;
-      font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.75rem;
-      padding: 0.5rem 0.875rem; border-radius: 10px;
-      min-width: 3.25rem; text-align: center; line-height: 1;
-    }
-    .deal-item {
-      background: oklch(20% 0.012 65); border-radius: 12px;
-      padding: 1.125rem; position: relative;
-    }
-
-    /* ── Why section ── */
-    .why-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
-      background: var(--ink); border-radius: 24px; overflow: hidden;
-    }
-    .why-left  { background: var(--brand); padding: 3.5rem; }
-    .why-right { padding: 3.5rem; display: flex; flex-direction: column; gap: 2rem; }
-    .why-item  { display: flex; gap: 1.125rem; align-items: flex-start; }
-    .why-icon  {
-      width: 44px; height: 44px; flex-shrink: 0;
-      background: oklch(22% 0.012 65); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
-    }
-
-    /* ── Testimonials ── */
-    .testi-card {
-      background: white; border: 1px solid var(--border);
-      border-radius: 16px; padding: 1.625rem;
-    }
-    .testi-card.featured { background: var(--brand); border-color: transparent; }
-
-    /* ── App section ── */
-    .app-section { background: var(--brand); }
-    .phone-shell {
-      width: 220px; height: 440px;
-      background: var(--ink); border-radius: 34px; padding: 10px;
-      box-shadow: 0 40px 80px oklch(0% 0 0 / 0.28), 0 0 0 2px oklch(28% 0.01 65);
-      flex-shrink: 0;
-    }
-    .phone-screen {
-      width: 100%; height: 100%;
-      background: var(--surface); border-radius: 26px; overflow: hidden;
-    }
+    /* ── Progress bar ── */
+    .pt{height:10px;background:var(--bg3);border-radius:100px;overflow:hidden}
+    .pf{height:100%;border-radius:100px;transition:width 1.4s var(--ease)}
 
     /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0; transform: translateY(18px);
-      transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out);
-    }
-    .reveal.in { opacity: 1; transform: none; }
+    .sr{opacity:0;transform:translateY(22px);transition:opacity 480ms var(--ease),transform 480ms var(--ease)}
+    .sr.in{opacity:1;transform:none}
+    .sg>*{opacity:0;transform:translateY(14px)}
+    .sg.in>*:nth-child(1){animation:fup 380ms var(--ease) 0ms   forwards}
+    .sg.in>*:nth-child(2){animation:fup 380ms var(--ease) 65ms  forwards}
+    .sg.in>*:nth-child(3){animation:fup 380ms var(--ease) 130ms forwards}
+    .sg.in>*:nth-child(4){animation:fup 380ms var(--ease) 195ms forwards}
+    .sg.in>*:nth-child(5){animation:fup 380ms var(--ease) 260ms forwards}
+    .sg.in>*:nth-child(6){animation:fup 380ms var(--ease) 325ms forwards}
+    @keyframes fup{to{opacity:1;transform:none}}
 
-    .stagger > * {
-      opacity: 0; transform: translateY(14px);
-    }
-    .stagger.in > *:nth-child(1) { animation: fadeUp 380ms var(--ease-out) 0ms   forwards; }
-    .stagger.in > *:nth-child(2) { animation: fadeUp 380ms var(--ease-out) 55ms  forwards; }
-    .stagger.in > *:nth-child(3) { animation: fadeUp 380ms var(--ease-out) 110ms forwards; }
-    .stagger.in > *:nth-child(4) { animation: fadeUp 380ms var(--ease-out) 165ms forwards; }
-    .stagger.in > *:nth-child(5) { animation: fadeUp 380ms var(--ease-out) 220ms forwards; }
-    .stagger.in > *:nth-child(6) { animation: fadeUp 380ms var(--ease-out) 275ms forwards; }
-    .stagger.in > *:nth-child(7) { animation: fadeUp 380ms var(--ease-out) 330ms forwards; }
-    .stagger.in > *:nth-child(8) { animation: fadeUp 380ms var(--ease-out) 385ms forwards; }
-    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+    /* ── Card base ── */
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:20px}
+    .hover-lift{transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
+    @media(hover:hover)and(pointer:fine){.hover-lift:hover{transform:translateY(-5px);box-shadow:0 18px 40px oklch(0% 0 0 / 0.4)}}
+    .hover-lift:active{transform:scale(0.97)}
 
     /* ── Section label ── */
-    .section-label {
-      font-size: 0.775rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.1em;
-      color: var(--ink-faint); margin-bottom: 0.625rem;
-    }
-    .section-title {
-      font-size: clamp(1.65rem, 3vw, 2.4rem);
-      font-weight: 800; letter-spacing: -0.025em; color: var(--ink);
-    }
+    .label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
 
-    /* ── Footer ── */
-    footer { background: var(--ink); color: white; }
-    .footer-link {
-      color: oklch(58% 0.01 65); text-decoration: none; font-size: 0.875rem;
-      transition: color 140ms;
-    }
-    .footer-link:hover { color: var(--brand); }
-    .social-btn {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: oklch(22% 0.01 65);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 0.9rem; text-decoration: none;
-      transition: background 150ms var(--ease-out);
-    }
-    .social-btn:hover { background: var(--brand); }
+    /* ── Pill ── */
+    .pill{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;padding:.35rem .875rem;border-radius:100px}
 
     /* ── Responsive ── */
-    @media (max-width: 1024px) {
-      .hero-grid  { grid-template-columns: 1fr !important; }
-      .deal-wrap  { grid-template-columns: 1fr !important; }
-      .why-grid   { grid-template-columns: 1fr !important; }
-      .app-grid   { grid-template-columns: 1fr !important; }
-      .footer-grid { grid-template-columns: 1fr 1fr !important; }
-      .phone-shell { display: none; }
+    @media(max-width:1024px){
+      .hero-g,.cmp-g,.footer-g{grid-template-columns:1fr!important}
+      .floater{display:none}
     }
-    @media (max-width: 768px) {
-      .hide-mobile   { display: none !important; }
-      .cat-grid      { grid-template-columns: repeat(4, 1fr) !important; }
-      .prod-grid     { grid-template-columns: repeat(2, 1fr) !important; }
-      .testi-grid    { grid-template-columns: 1fr !important; }
-      .footer-grid   { grid-template-columns: 1fr !important; }
-      .why-left, .why-right { padding: 2rem !important; }
+    @media(max-width:768px){
+      .steps-g{grid-template-columns:1fr 1fr!important}
+      .ord-g{grid-template-columns:1fr!important}
+      .pr-g{grid-template-columns:repeat(2,1fr)!important}
     }
-    @media (max-width: 480px) {
-      .cat-grid  { grid-template-columns: repeat(2, 1fr) !important; }
-      .deal-items { grid-template-columns: repeat(2, 1fr) !important; }
+    @media(max-width:480px){
+      .steps-g{grid-template-columns:1fr!important}
     }
-
-    /* ── Reduced motion ── */
-    @media (prefers-reduced-motion: reduce) {
-      .reveal, .stagger > * { opacity: 1; transform: none; transition: none; animation: none; }
-      .marquee-track { animation: none; }
-      .btn, .cat-card, .prod-card { transition: none; }
+    @media(prefers-reduced-motion:reduce){
+      .sr,.sg>*{opacity:1;transform:none;transition:none;animation:none}
+      .mq-t,.orb,.floater{animation:none}
     }
   </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════
      NAVBAR
-════════════════════════════════════════════ -->
-<nav class="navbar">
-  <div class="nav-inner">
-    <a class="logo" href="#">
-      <div class="logo-mark">🛒</div>
-      <div class="logo-text">
-        <div class="logo-top">Apna Sasta</div>
-        <div class="logo-sub">Bazaar</div>
+══════════════════════════════════════ -->
+<nav>
+  <div class="ni">
+    <a href="#" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0">
+      <div style="width:38px;height:38px;background:var(--lime);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem">🧺</div>
+      <div style="line-height:1">
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt)">Apna Sasta Bazaar</div>
+        <div style="font-size:.72rem;color:var(--muted);font-weight:600">Community Bulk Buying</div>
       </div>
     </a>
 
-    <div class="search-wrap hide-mobile" style="flex:1;max-width:500px;">
-      <select class="search-cat">
-        <option>All</option>
-        <option>Electronics</option>
-        <option>Fashion</option>
-        <option>Groceries</option>
-        <option>Home</option>
-      </select>
-      <input class="search-input" type="text" placeholder="Search products, brands…" />
-      <button class="search-btn">🔍</button>
+    <div style="flex:1"></div>
+
+    <div style="display:flex;align-items:center;gap:1.5rem">
+      <a href="#how" style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">How it Works</a>
+      <a href="#orders" style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">Live Orders</a>
     </div>
 
-    <div style="flex:1;"></div>
-
-    <div class="hide-mobile" style="display:flex;gap:1.5rem;align-items:center;">
-      <a href="#deals"      style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Deals</a>
-      <a href="#categories" style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Categories</a>
-      <a href="#"           style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Sell</a>
-    </div>
-
-    <div style="display:flex;gap:0.75rem;align-items:center;margin-left:0.5rem;">
-      <button class="btn btn-outline" style="padding:0.5rem 1rem;">Login</button>
-      <button style="background:none;border:none;cursor:pointer;font-size:1.5rem;position:relative;line-height:1;transition:transform 160ms var(--ease-out);" onmousedown="this.style.transform='scale(0.88)'" onmouseup="this.style.transform='scale(1)'">
-        🛒
-        <span style="position:absolute;top:-5px;right:-6px;background:var(--deal-red);color:white;font-size:0.6rem;font-weight:800;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;">3</span>
-      </button>
+    <div style="display:flex;gap:.75rem;margin-left:.75rem">
+      <a href="#join" class="btn b-ghost">Join Society</a>
+      <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.9rem">Start Ordering ↗</a>
     </div>
   </div>
 </nav>
 
-<!-- ════════════════════════════════════════════
-     TRUST MARQUEE
-════════════════════════════════════════════ -->
-<div style="background:var(--ink);padding:0.5rem 0;overflow:hidden;" class="marquee-rail">
-  <div class="marquee-track">
-    <span class="marquee-item" style="color:white;">🚚 Free Delivery Over Rs.&nbsp;999</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">🔄 30-Day Easy Returns</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">💳 Cash on Delivery Available</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">✅ Verified Genuine Products</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">📦 Same-Day Dispatch in Karachi, Lahore &amp; Islamabad</span>
-    <span style="color:var(--brand);">•</span>
-    <!-- duplicate for seamless loop -->
-    <span class="marquee-item" style="color:white;">🚚 Free Delivery Over Rs.&nbsp;999</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">🔄 30-Day Easy Returns</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">💳 Cash on Delivery Available</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">✅ Verified Genuine Products</span>
-    <span style="color:var(--brand);">•</span>
-    <span class="marquee-item" style="color:white;">📦 Same-Day Dispatch in Karachi, Lahore &amp; Islamabad</span>
-    <span style="color:var(--brand);">•</span>
+<!-- ══════════════════════════════════════
+     SAVINGS TICKER
+══════════════════════════════════════ -->
+<div style="background:var(--lime);padding:.45rem 0;overflow:hidden" class="mq-wrap">
+  <div class="mq-t">
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Gulshan Society C — Rs.11,400 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ DHA Phase 6 — Rs.18,200 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Bahria Town Karachi — Rs.24,900 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Model Town Lahore — Rs.9,800 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ F-7 Islamabad — Rs.15,600 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <!-- duplicate -->
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Gulshan Society C — Rs.11,400 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ DHA Phase 6 — Rs.18,200 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Bahria Town Karachi — Rs.24,900 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Model Town Lahore — Rs.9,800 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ F-7 Islamabad — Rs.15,600 saved this week</span>
+    <span style="color:var(--bg2)">|</span>
   </div>
 </div>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════
      HERO
-════════════════════════════════════════════ -->
-<section style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem 3rem;">
-  <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+══════════════════════════════════════ -->
+<section style="position:relative;overflow:hidden;min-height:90vh;display:flex;align-items:center">
+  <!-- Glow orbs -->
+  <div class="orb" style="width:700px;height:700px;background:oklch(87% 0.28 128 / 0.13);top:-180px;left:-120px;animation:none"></div>
+  <div class="orb" style="width:580px;height:580px;background:oklch(64% 0.27 25 / 0.12);bottom:-120px;right:100px"></div>
+  <div class="orb" style="width:400px;height:400px;background:oklch(72% 0.24 290 / 0.10);top:40%;right:-80px"></div>
 
-    <!-- Left: copy -->
-    <div>
-      <div class="pill" style="margin-bottom:1.375rem;">🎉 Pakistan's Most Affordable Marketplace</div>
-      <h1 class="hero-headline">
-        Sasta Kharidein,<br><em>Khush Rahein.</em>
-      </h1>
-      <p style="color:var(--ink-muted);font-size:1.1rem;line-height:1.7;margin:1.25rem 0 2rem;max-width:44ch;">
-        Millions of products, thousands of verified sellers, the best prices across Pakistan — delivered straight to your door.
-      </p>
+  <!-- Floating produce -->
+  <div class="floater" style="top:12%;left:6%;animation:bob 5.5s ease-in-out infinite;animation-delay:0s;filter:drop-shadow(0 0 14px var(--lime))">🍅</div>
+  <div class="floater" style="top:18%;left:14%;animation:bob 4.8s ease-in-out infinite;animation-delay:.8s;filter:drop-shadow(0 0 14px oklch(84% 0.22 72))">🥚</div>
+  <div class="floater" style="bottom:20%;left:8%;animation:bob 6s ease-in-out infinite;animation-delay:1.5s;filter:drop-shadow(0 0 14px oklch(64% 0.27 25))">🍗</div>
+  <div class="floater" style="top:10%;right:8%;animation:bob 5s ease-in-out infinite;animation-delay:.4s;filter:drop-shadow(0 0 14px oklch(87% 0.28 128))">🥦</div>
+  <div class="floater" style="bottom:25%;right:6%;animation:bob 4.5s ease-in-out infinite;animation-delay:1.2s;filter:drop-shadow(0 0 14px oklch(84% 0.22 72))">🍞</div>
+  <div class="floater" style="top:50%;left:3%;animation:bob 5.8s ease-in-out infinite;animation-delay:2s;filter:drop-shadow(0 0 14px var(--lime))">🧅</div>
 
-      <div class="search-wrap" style="max-width:100%;margin-bottom:1.375rem;">
-        <input class="search-input" type="text" placeholder="Try 'pressure cooker', 'lawn suit', 'Samsung A55'…" style="padding:0.9375rem 1.125rem;" />
-        <button class="search-btn" style="padding:0 1.375rem;font-size:1.1rem;">🔍</button>
-      </div>
+  <div style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem;width:100%;position:relative;z-index:1">
+    <div class="hero-g" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center">
 
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
-        <span style="font-size:0.825rem;color:var(--ink-faint);font-weight:700;">Trending:</span>
-        <a class="chip" href="#">Samsung A55</a>
-        <a class="chip" href="#">Pressure Cooker</a>
-        <a class="chip" href="#">Eid Special</a>
-        <a class="chip" href="#">Baby Clothes</a>
-        <a class="chip" href="#">Rice Cooker</a>
-      </div>
-    </div>
-
-    <!-- Right: product mosaic -->
-    <div style="position:relative;">
-      <div style="background:var(--brand-light);border-radius:22px;padding:1.75rem;position:relative;overflow:hidden;">
-        <!-- Decorative blobs -->
-        <div style="position:absolute;top:-24px;right:-24px;width:150px;height:150px;background:oklch(76% 0.18 62 / 0.18);border-radius:50%;pointer-events:none;"></div>
-        <div style="position:absolute;bottom:-28px;left:-12px;width:110px;height:110px;background:oklch(76% 0.18 62 / 0.12);border-radius:50%;pointer-events:none;"></div>
-
-        <!-- Floating badge -->
-        <div style="position:absolute;top:1rem;right:1rem;z-index:2;background:white;border-radius:10px;padding:0.45rem 0.875rem;box-shadow:0 4px 16px oklch(0% 0 0 / 0.1);font-size:0.825rem;font-weight:700;color:var(--deal-red);display:flex;align-items:center;gap:0.375rem;">
-          🔥 Up to 70% Off
-        </div>
-
-        <!-- 2×2 category tiles -->
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;position:relative;z-index:1;">
-          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
-            <div style="font-size:2.75rem;margin-bottom:0.5rem;">📱</div>
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Smartphones</div>
-            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 12,999</div>
-          </div>
-          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
-            <div style="font-size:2.75rem;margin-bottom:0.5rem;">👗</div>
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Fashion</div>
-            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 299</div>
-          </div>
-          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
-            <div style="font-size:2.75rem;margin-bottom:0.5rem;">🏠</div>
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Home & Kitchen</div>
-            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 499</div>
-          </div>
-          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
-            <div style="font-size:2.75rem;margin-bottom:0.5rem;">🛒</div>
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Groceries</div>
-            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 50</div>
-          </div>
-        </div>
-
-        <!-- Mini stats bar -->
-        <div style="margin-top:1.125rem;padding-top:1.125rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;position:relative;z-index:1;">
-          <div style="text-align:center;">
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">2M+</div>
-            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">Products</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">50K+</div>
-            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">Sellers</div>
-          </div>
-          <div style="text-align:center;">
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">4.8★</div>
-            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">App Rating</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     CATEGORIES
-════════════════════════════════════════════ -->
-<section id="categories" style="max-width:1280px;margin:1rem auto 3.5rem;padding:0 1.5rem;">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5rem;">
-    <h2 class="section-title reveal">Shop by Category</h2>
-    <a href="#" class="footer-link" style="font-weight:700;font-size:0.875rem;">All categories →</a>
-  </div>
-
-  <div class="cat-grid stagger" style="display:grid;grid-template-columns:repeat(8,1fr);gap:0.875rem;">
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 255);">
-      <span class="cat-emoji">📱</span>
-      <span class="cat-name">Electronics</span>
-      <span class="cat-count">12,400+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 340);">
-      <span class="cat-emoji">👗</span>
-      <span class="cat-name">Fashion</span>
-      <span class="cat-count">48,000+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 40);">
-      <span class="cat-emoji">🏠</span>
-      <span class="cat-name">Home & Living</span>
-      <span class="cat-count">23,100+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(94% 0.05 155);">
-      <span class="cat-emoji">🥬</span>
-      <span class="cat-name">Groceries</span>
-      <span class="cat-count">5,800+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 320);">
-      <span class="cat-emoji">💄</span>
-      <span class="cat-name">Beauty</span>
-      <span class="cat-count">9,200+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(94% 0.04 200);">
-      <span class="cat-emoji">⚽</span>
-      <span class="cat-name">Sports</span>
-      <span class="cat-count">7,600+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 90);">
-      <span class="cat-emoji">📚</span>
-      <span class="cat-name">Books</span>
-      <span class="cat-count">3,400+</span>
-    </a>
-    <a class="cat-card" href="#" style="background:oklch(95% 0.04 22);">
-      <span class="cat-emoji">🧸</span>
-      <span class="cat-name">Kids & Baby</span>
-      <span class="cat-count">11,000+</span>
-    </a>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     DEAL OF THE DAY
-════════════════════════════════════════════ -->
-<section id="deals" style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
-  <div class="deal-wrap reveal">
-
-    <!-- Left: headline + timer -->
-    <div style="padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;">
-      <div class="pill" style="margin-bottom:1.25rem;background:oklch(76% 0.18 62 / 0.12);border-color:oklch(76% 0.18 62 / 0.25);color:var(--brand);">⚡ Deal of the Day</div>
-      <h2 style="font-size:clamp(1.75rem,3vw,2.75rem);font-weight:800;color:white;line-height:1.1;letter-spacing:-0.025em;margin-bottom:0.875rem;">
-        Up to 70% Off.<br>Today Only.
-      </h2>
-      <p style="color:oklch(65% 0.01 65);font-size:1rem;line-height:1.65;margin-bottom:2rem;max-width:36ch;">
-        Flash deals on top brands. New drops every 6 hours — don't blink.
-      </p>
-
-      <!-- Countdown -->
-      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
-        <div>
-          <div class="countdown-box" id="cd-h">--</div>
-          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">HRS</div>
-        </div>
-        <span style="color:white;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.75rem;padding-bottom:1.25rem;">:</span>
-        <div>
-          <div class="countdown-box" id="cd-m">--</div>
-          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">MIN</div>
-        </div>
-        <span style="color:white;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.75rem;padding-bottom:1.25rem;">:</span>
-        <div>
-          <div class="countdown-box" id="cd-s">--</div>
-          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">SEC</div>
-        </div>
-      </div>
-
-      <a href="#" class="btn btn-amber" style="align-self:flex-start;">See All Deals →</a>
-    </div>
-
-    <!-- Right: 4 deal cards -->
-    <div class="deal-items" style="padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;align-content:center;">
-      <div class="deal-item">
-        <span class="badge badge-sale">-65%</span>
-        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">🎧</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Wireless Earbuds</div>
-        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 4,999</div>
-        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 1,749</div>
-      </div>
-      <div class="deal-item">
-        <span class="badge badge-sale">-55%</span>
-        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">⌚</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Smart Watch</div>
-        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 8,500</div>
-        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 3,825</div>
-      </div>
-      <div class="deal-item">
-        <span class="badge badge-sale">-40%</span>
-        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">👟</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Running Shoes</div>
-        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 3,200</div>
-        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 1,920</div>
-      </div>
-      <div class="deal-item">
-        <span class="badge badge-sale">-70%</span>
-        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">🫖</div>
-        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Electric Kettle</div>
-        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 2,500</div>
-        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 750</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     BESTSELLERS
-════════════════════════════════════════════ -->
-<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
-  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5rem;">
-    <h2 class="section-title reveal">Bestsellers This Week</h2>
-    <a href="#" class="footer-link" style="font-weight:700;font-size:0.875rem;">View all →</a>
-  </div>
-
-  <div class="prod-grid stagger" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.125rem;">
-
-    <div class="prod-card">
-      <div class="prod-thumb" style="background:var(--surface-2);">
-        <span class="badge badge-sale">-45%</span>🍳
-      </div>
-      <div class="prod-body">
-        <p class="prod-cat">Kitchen</p>
-        <h3 class="prod-name">Non-Stick Cookware Set — 5 Pieces</h3>
-        <div class="price-row">
-          <span class="price-now">Rs. 2,750</span>
-          <span class="price-was">Rs. 5,000</span>
-        </div>
-        <div><span class="stars">★★★★★</span><span class="review-count">(2,341)</span></div>
-        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-thumb" style="background:oklch(95% 0.04 155);">
-        <span class="badge badge-new">NEW</span>📱
-      </div>
-      <div class="prod-body">
-        <p class="prod-cat">Electronics</p>
-        <h3 class="prod-name">Infinix Hot 40i — 8GB + 128GB</h3>
-        <div class="price-row">
-          <span class="price-now">Rs. 28,999</span>
-          <span class="price-was">Rs. 34,000</span>
-        </div>
-        <div><span class="stars">★★★★</span><span style="color:var(--ink-faint);font-size:0.9rem;">★</span><span class="review-count">(876)</span></div>
-        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-thumb" style="background:oklch(96% 0.04 320);">
-        <span class="badge badge-sale">-35%</span>👗
-      </div>
-      <div class="prod-body">
-        <p class="prod-cat">Women's Fashion</p>
-        <h3 class="prod-name">Lawn Printed Suit — 3-Piece Unstitched</h3>
-        <div class="price-row">
-          <span class="price-now">Rs. 1,299</span>
-          <span class="price-was">Rs. 1,999</span>
-        </div>
-        <div><span class="stars">★★★★★</span><span class="review-count">(5,128)</span></div>
-        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
-      </div>
-    </div>
-
-    <div class="prod-card">
-      <div class="prod-thumb" style="background:oklch(95% 0.04 40);">
-        <span class="badge badge-sale">-60%</span>🧴
-      </div>
-      <div class="prod-body">
-        <p class="prod-cat">Beauty & Care</p>
-        <h3 class="prod-name">Skin Care Essentials Bundle — 6 Products</h3>
-        <div class="price-row">
-          <span class="price-now">Rs. 1,599</span>
-          <span class="price-was">Rs. 3,999</span>
-        </div>
-        <div><span class="stars">★★★★</span><span style="color:var(--ink-faint);font-size:0.9rem;">★</span><span class="review-count">(1,942)</span></div>
-        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     WHY CHOOSE US  (not the hero-metric template)
-════════════════════════════════════════════ -->
-<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
-  <div class="why-grid reveal">
-
-    <!-- Left: bold statement on amber -->
-    <div class="why-left">
-      <p style="font-size:0.775rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink);opacity:0.55;margin-bottom:1rem;">Why Pakistan Trusts Us</p>
-      <h2 style="font-size:clamp(1.85rem,3vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1.375rem;">
-        Genuine products.<br>Real savings.<br>No compromise.
-      </h2>
-      <p style="font-size:1.05rem;line-height:1.7;color:var(--ink);opacity:0.75;max-width:38ch;">
-        Every seller is verified. Every price is checked. We guarantee you're getting the real deal — always.
-      </p>
-    </div>
-
-    <!-- Right: feature list on dark -->
-    <div class="why-right">
-      <div class="why-item">
-        <div class="why-icon">✅</div>
-        <div>
-          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Verified Sellers Only</h3>
-          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Every seller passes a 7-step verification. No counterfeits, ever.</p>
-        </div>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">💰</div>
-        <div>
-          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Best Price Guarantee</h3>
-          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Found it cheaper? We match within 24 hours, guaranteed.</p>
-        </div>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">🚚</div>
-        <div>
-          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Fast Delivery Everywhere</h3>
-          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Same-day in major cities. 2-3 days anywhere in Pakistan.</p>
-        </div>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">🔄</div>
-        <div>
-          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Hassle-Free Returns</h3>
-          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Not happy? Return in 30 days — no questions asked.</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     TESTIMONIALS
-════════════════════════════════════════════ -->
-<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
-  <h2 class="section-title reveal" style="margin-bottom:0.5rem;">What Our Customers Say</h2>
-  <p class="reveal" style="color:var(--ink-muted);font-size:1rem;margin-bottom:2rem;">Over 3.2 million happy customers across Pakistan.</p>
-
-  <div class="testi-grid stagger" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem;">
-
-    <div class="testi-card">
-      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
-      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
-        "Ordered a blender at 10am, had it by 6pm. Price was Rs. 800 less than the market. Will never shop anywhere else inshAllah!"
-      </p>
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div style="width:40px;height:40px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩</div>
-        <div>
-          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Ayesha K.</p>
-          <p style="font-size:0.775rem;color:var(--ink-faint);">Lahore</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card featured">
-      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
-      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
-        "Bought 3 lawn suits for Eid. Quality was amazing and total savings were almost Rs. 2,000. My friends couldn't believe the prices!"
-      </p>
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div style="width:40px;height:40px;background:oklch(70% 0.15 62);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👨</div>
-        <div>
-          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Tariq M.</p>
-          <p style="font-size:0.775rem;color:var(--ink);opacity:0.6;">Faisalabad</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="testi-card">
-      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
-      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
-        "Cash on delivery made me try it first. Now I shop weekly. The return process for one item was super easy, no drama at all."
-      </p>
-      <div style="display:flex;align-items:center;gap:0.75rem;">
-        <div style="width:40px;height:40px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩</div>
-        <div>
-          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Sana R.</p>
-          <p style="font-size:0.775rem;color:var(--ink-faint);">Karachi</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     APP DOWNLOAD
-════════════════════════════════════════════ -->
-<section class="app-section" style="margin-bottom:0;">
-  <div class="app-grid" style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
-
-    <div>
-      <div class="pill" style="margin-bottom:1.375rem;background:oklch(70% 0.15 62 / 0.25);border-color:oklch(60% 0.18 62 / 0.3);color:var(--ink);">📱 Download the App</div>
-      <h2 style="font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-0.025em;margin-bottom:1rem;">
-        Shop smarter<br>on the go.
-      </h2>
-      <p style="color:var(--ink);opacity:0.72;font-size:1.05rem;line-height:1.7;margin-bottom:2rem;max-width:44ch;">
-        App-only deals, real-time order tracking, and direct seller chat. Available on Android and iOS.
-      </p>
-
-      <div style="display:flex;gap:0.875rem;flex-wrap:wrap;margin-bottom:2.5rem;">
-        <a href="#" class="btn btn-dark" style="gap:0.875rem;padding:0.75rem 1.375rem;">
-          <span style="font-size:1.625rem;line-height:1;">▶</span>
-          <div style="text-align:left;">
-            <div style="font-size:0.7rem;opacity:0.65;font-family:'Mulish',sans-serif;font-weight:400;margin-bottom:0.1rem;">Get it on</div>
-            <div style="font-size:0.975rem;">Google Play</div>
-          </div>
-        </a>
-        <a href="#" class="btn btn-dark" style="gap:0.875rem;padding:0.75rem 1.375rem;">
-          <span style="font-size:1.625rem;line-height:1;">🍎</span>
-          <div style="text-align:left;">
-            <div style="font-size:0.7rem;opacity:0.65;font-family:'Mulish',sans-serif;font-weight:400;margin-bottom:0.1rem;">Download on the</div>
-            <div style="font-size:0.975rem;">App Store</div>
-          </div>
-        </a>
-      </div>
-
-      <div style="display:flex;gap:2.5rem;">
-        <div>
-          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">4.8 ★</div>
-          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">App Rating</div>
-        </div>
-        <div>
-          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">5M+</div>
-          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">Downloads</div>
-        </div>
-        <div>
-          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">3.2M</div>
-          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">Happy Customers</div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Phone mockup -->
-    <div style="display:flex;justify-content:center;">
-      <div class="phone-shell">
-        <div class="phone-screen">
-          <div style="background:var(--brand);padding:0.875rem;text-align:center;">
-            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:0.9rem;color:var(--ink);">Apna Sasta Bazaar</div>
-            <div style="font-size:0.65rem;color:var(--ink);opacity:0.6;margin-top:0.15rem;">Pakistan's Best Deals</div>
-          </div>
-          <div style="padding:0.625rem;">
-            <div style="background:var(--surface-2);border-radius:7px;padding:0.45rem 0.75rem;font-size:0.65rem;color:var(--ink-faint);margin-bottom:0.625rem;">🔍 Search products…</div>
-            <div style="background:var(--deal-red);border-radius:7px;padding:0.5rem;text-align:center;margin-bottom:0.625rem;">
-              <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.65rem;color:white;">⚡ Flash Sale — 70% Off!</div>
-            </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.375rem;">
-              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
-                <div style="font-size:1.375rem;">📱</div>
-                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.28,999</div>
-              </div>
-              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
-                <div style="font-size:1.375rem;">👗</div>
-                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.1,299</div>
-              </div>
-              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
-                <div style="font-size:1.375rem;">🍳</div>
-                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.2,750</div>
-              </div>
-              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
-                <div style="font-size:1.375rem;">🧴</div>
-                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.1,599</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     FOOTER
-════════════════════════════════════════════ -->
-<footer style="padding:4rem 0 2rem;">
-  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
-    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;">
-
+      <!-- Left -->
       <div>
-        <a class="logo" href="#" style="margin-bottom:1rem;display:inline-flex;">
-          <div class="logo-mark">🛒</div>
-          <div class="logo-text" style="margin-left:0.625rem;">
-            <div class="logo-top" style="color:white;">Apna Sasta</div>
-            <div class="logo-sub">Bazaar</div>
-          </div>
-        </a>
-        <p style="color:oklch(55% 0.01 65);line-height:1.7;font-size:0.875rem;max-width:30ch;margin:0.875rem 0 1.5rem;">
-          Pakistan's most trusted budget marketplace. Real deals, real savings, at your door.
+        <div class="pill" style="background:oklch(87% 0.28 128 / 0.14);border:1px solid oklch(87% 0.28 128 / 0.3);color:var(--lime);margin-bottom:1.5rem">
+          🏘️ Pakistan's first community grocery platform
+        </div>
+
+        <h1 style="font-size:clamp(2.8rem,5.5vw,5rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;margin-bottom:1.375rem">
+          Your society<br>
+          orders together.<br>
+          <span style="color:var(--lime)">Everyone pays</span><br>
+          <span style="color:var(--coral)">mandi price.</span>
+        </h1>
+
+        <p style="color:var(--muted);font-size:1.15rem;line-height:1.72;max-width:46ch;margin-bottom:2.25rem;font-weight:600">
+          Tomatoes at Rs.&nbsp;45/kg. Chicken at Rs.&nbsp;420/kg. Eggs at Rs.&nbsp;12/piece.
+          When your whole mohalla orders together, you get the price a superstore pays — not the price it charges.
         </p>
-        <div style="display:flex;gap:0.625rem;">
-          <a class="social-btn" href="#">📘</a>
-          <a class="social-btn" href="#">📸</a>
-          <a class="social-btn" href="#">🐦</a>
-          <a class="social-btn" href="#">▶</a>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem">
+          <a href="#join" class="btn b-lime" style="font-size:1.05rem;padding:.875rem 2.25rem">Register Your Society ↗</a>
+          <a href="#how"  class="btn b-ghost" style="font-size:1.05rem;padding:.875rem 1.75rem">See how it works</a>
+        </div>
+
+        <!-- Live counter -->
+        <div style="display:flex;gap:2.5rem;padding:1.25rem 1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:fit-content">
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--lime)" id="fam-count">1,284</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Families saving now</div>
+          </div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--amber)" id="soc-count">47</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Societies active</div>
+          </div>
+          <div style="width:1px;background:var(--border)"></div>
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. <span id="saved-count">3.2L</span></div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Saved this week</div>
+          </div>
         </div>
       </div>
 
-      <div>
-        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Shop</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
-          <li><a class="footer-link" href="#">All Categories</a></li>
-          <li><a class="footer-link" href="#">Today's Deals</a></li>
-          <li><a class="footer-link" href="#">Bestsellers</a></li>
-          <li><a class="footer-link" href="#">New Arrivals</a></li>
-          <li><a class="footer-link" href="#">Sell on ASB</a></li>
-        </ul>
+      <!-- Right: live order card demo -->
+      <div style="position:relative">
+        <!-- Main card: the "aha" moment — price drops as families join -->
+        <div class="card" style="padding:0;overflow:hidden;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.15),0 24px 48px oklch(0% 0 0 / 0.4)">
+          <!-- Card header -->
+          <div style="background:var(--lime);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--bg)">This Week's Group Order</div>
+              <div style="font-size:.8rem;font-weight:700;color:oklch(25% 0.015 65);margin-top:.15rem">Gulshan Society C — Block 12</div>
+            </div>
+            <div style="background:var(--bg);color:var(--lime);font-family:'Fredoka',sans-serif;font-weight:700;font-size:.8rem;padding:.3rem .75rem;border-radius:100px">🟢 OPEN</div>
+          </div>
+
+          <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
+
+            <!-- Tomatoes -->
+            <div style="padding:1rem;background:var(--bg3);border-radius:14px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.875rem">
+                <div style="display:flex;align-items:center;gap:.625rem">
+                  <span style="font-size:1.75rem">🍅</span>
+                  <div>
+                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Tomatoes</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Fresh desi — 1kg bag</div>
+                  </div>
+                </div>
+                <div style="text-align:right">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 120/kg</div>
+                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--lime)">Rs. 45/kg</div>
+                </div>
+              </div>
+              <div class="pt"><div class="pf" style="background:var(--lime)" data-w="68"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
+                <span style="color:var(--muted)">34 of 50 families joined</span>
+                <span style="color:var(--lime)">16 spots left!</span>
+              </div>
+            </div>
+
+            <!-- Chicken -->
+            <div style="padding:1rem;background:var(--bg3);border-radius:14px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.875rem">
+                <div style="display:flex;align-items:center;gap:.625rem">
+                  <span style="font-size:1.75rem">🍗</span>
+                  <div>
+                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Broiler Chicken</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Whole — per kg</div>
+                  </div>
+                </div>
+                <div style="text-align:right">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 620/kg</div>
+                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--coral)">Rs. 420/kg</div>
+                </div>
+              </div>
+              <div class="pt"><div class="pf" style="background:var(--coral)" data-w="86"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
+                <span style="color:var(--muted)">43 of 50 families joined</span>
+                <span style="color:var(--coral)">Almost there!</span>
+              </div>
+            </div>
+
+            <!-- Eggs -->
+            <div style="padding:1rem;background:var(--bg3);border-radius:14px">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.875rem">
+                <div style="display:flex;align-items:center;gap:.625rem">
+                  <span style="font-size:1.75rem">🥚</span>
+                  <div>
+                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Farm Eggs</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Tray of 30</div>
+                  </div>
+                </div>
+                <div style="text-align:right">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 540</div>
+                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--amber)">Rs. 360</div>
+                </div>
+              </div>
+              <div class="pt"><div class="pf" style="background:var(--amber)" data-w="52"></div></div>
+              <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
+                <span style="color:var(--muted)">26 of 50 families joined</span>
+                <span style="color:var(--amber)">Join to lock price</span>
+              </div>
+            </div>
+
+            <a href="#join" class="btn b-lime" style="width:100%;font-size:1rem;padding:.875rem">Join This Order →</a>
+
+          </div>
+        </div>
+
+        <!-- Floating savings badge -->
+        <div style="position:absolute;top:-18px;right:-18px;background:var(--coral);color:white;font-family:'Fredoka',sans-serif;font-weight:700;font-size:.875rem;padding:.625rem 1rem;border-radius:14px;box-shadow:0 8px 24px oklch(64% 0.27 25 / 0.45);z-index:2;white-space:nowrap">
+          💰 Save up to 65% vs shops
+        </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     THE SECRET — HOW BULK PRICE WORKS
+══════════════════════════════════════ -->
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <p class="label sr" style="margin-bottom:.625rem">The secret</p>
+      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700;letter-spacing:-.02em">When more families order,<br><span style="color:var(--lime)">the price drops for everyone.</span></h2>
+      <p class="sr" style="color:var(--muted);font-size:1.1rem;margin-top:1rem;max-width:52ch;margin-left:auto;margin-right:auto;line-height:1.7">Suppliers give wholesale rates when orders are big. We pool your neighborhood's demand — and pass every rupee of discount straight back to you.</p>
+    </div>
+
+    <!-- Price drop visual for tomatoes -->
+    <div class="sr" style="max-width:860px;margin:0 auto">
+      <div class="card" style="padding:2.5rem;overflow:hidden;position:relative">
+        <div class="orb" style="width:400px;height:400px;background:oklch(87% 0.28 128 / 0.07);top:-100px;right:-100px;filter:blur(60px)"></div>
+        <h3 style="font-size:1.5rem;font-weight:700;color:var(--muted);margin-bottom:2rem;position:relative;z-index:1">
+          🍅 Tomatoes — live price drop example
+        </h3>
+        <div style="position:relative;z-index:1">
+          <!-- Price ladder -->
+          <div id="price-demo" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem">
+            <!-- filled by JS -->
+          </div>
+          <p style="color:var(--faint);font-size:.8rem;font-weight:700;margin-top:1.5rem;text-align:center">Price per kg as families join your society's order</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     LIVE COMMUNITY ORDERS
+══════════════════════════════════════ -->
+<section id="orders" style="padding:5rem 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem">
       <div>
-        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Help</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
-          <li><a class="footer-link" href="#">Track Order</a></li>
-          <li><a class="footer-link" href="#">Returns & Refunds</a></li>
-          <li><a class="footer-link" href="#">FAQs</a></li>
-          <li><a class="footer-link" href="#">Contact Us</a></li>
-          <li><a class="footer-link" href="#">Buyer Protection</a></li>
-        </ul>
+        <p class="label sr" style="margin-bottom:.5rem">Forming right now</p>
+        <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">Join an active order<br><span style="color:var(--lime)">in your area</span></h2>
+      </div>
+      <a href="#" class="btn b-ghost sr" style="align-self:flex-end;white-space:nowrap">See all cities →</a>
+    </div>
+
+    <div class="ord-g sg" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+
+      <!-- Order card 1 -->
+      <div class="card hover-lift" style="padding:1.5rem;position:relative">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">Gulshan-e-Iqbal Block 7</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Karachi · Closes Friday 6pm</div>
+          </div>
+          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🟢 OPEN</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🍅 Tomatoes · Rs.45/kg</span>
+              <span style="color:var(--lime)">38/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--lime)" data-w="76"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🥦 Broccoli · Rs.80/kg</span>
+              <span style="color:var(--sky)">22/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--sky)" data-w="44"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🍞 Bread · Rs.55/loaf</span>
+              <span style="color:var(--amber)">45/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--amber)" data-w="90"></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:.8rem;color:var(--faint);font-weight:700">43 families joined</div>
+          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">Join Order</a>
+        </div>
       </div>
 
+      <!-- Order card 2 — featured -->
+      <div class="card hover-lift" style="padding:1.5rem;border-color:var(--lime);box-shadow:0 0 0 1px var(--lime),0 0 40px oklch(87% 0.28 128 / 0.15)">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">DHA Phase 5 Street 8</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Lahore · Closes Thursday 8pm</div>
+          </div>
+          <div style="background:var(--lime);color:var(--bg);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🔥 ALMOST FULL</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🍗 Chicken · Rs.420/kg</span>
+              <span style="color:var(--coral)">48/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--coral)" data-w="96"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🥚 Eggs · Rs.12/piece</span>
+              <span style="color:var(--amber)">46/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--amber)" data-w="92"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🧅 Onions · Rs.30/kg</span>
+              <span style="color:var(--lime)">47/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--lime)" data-w="94"></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:.8rem;color:var(--lime);font-weight:800">Only 2 spots left!</div>
+          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">Join Now →</a>
+        </div>
+      </div>
+
+      <!-- Order card 3 -->
+      <div class="card hover-lift" style="padding:1.5rem">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
+          <div>
+            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">Bahria Town Phase 7</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Karachi · Closes Saturday 12pm</div>
+          </div>
+          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🟢 OPEN</div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🥬 Patta Gobhi · Rs.40/kg</span>
+              <span style="color:var(--lime)">19/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--lime)" data-w="38"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🥔 Potatoes · Rs.35/kg</span>
+              <span style="color:var(--violet)">31/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--violet)" data-w="62"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
+              <span style="color:var(--muted)">🍗 Chicken · Rs.420/kg</span>
+              <span style="color:var(--coral)">27/50</span>
+            </div>
+            <div class="pt"><div class="pf" style="background:var(--coral)" data-w="54"></div></div>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:.8rem;color:var(--faint);font-weight:700">Needs 19 more families</div>
+          <a href="#join" class="btn b-ghost" style="padding:.55rem 1.25rem;font-size:.875rem">Join Order</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     THIS WEEK'S PRODUCTS + PRICES
+══════════════════════════════════════ -->
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem">
       <div>
-        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Company</h4>
-        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
-          <li><a class="footer-link" href="#">About Us</a></li>
-          <li><a class="footer-link" href="#">Careers</a></li>
-          <li><a class="footer-link" href="#">Press</a></li>
-          <li><a class="footer-link" href="#">Privacy Policy</a></li>
-          <li><a class="footer-link" href="#">Terms of Service</a></li>
-        </ul>
+        <p class="label sr" style="margin-bottom:.5rem">This week's list</p>
+        <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">What we're delivering<br><span style="color:var(--lime)">this week</span></h2>
       </div>
     </div>
 
-    <div style="border-top:1px solid oklch(24% 0.01 65);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
-      <p style="color:oklch(46% 0.01 65);font-size:0.825rem;">© 2024 Apna Sasta Bazaar. Made with ❤️ in Pakistan.</p>
-      <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
-        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💳 Visa</span>
-        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💳 Mastercard</span>
-        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">📱 EasyPaisa</span>
-        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">📱 JazzCash</span>
-        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💵 Cash on Delivery</span>
+    <div class="pr-g sg" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem">
+
+      <!-- Tomatoes -->
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(64% 0.27 25 / 0.12) inset">
+        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px oklch(64% 0.27 25))">🍅</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Tomatoes</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Desi · per kg</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 120</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. 45</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 63%</div>
       </div>
+
+      <!-- Chicken -->
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(72% 0.24 290 / 0.1) inset">
+        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--coral))">🍗</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Chicken</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Whole · per kg</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 620</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. 420</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 32%</div>
+      </div>
+
+      <!-- Eggs -->
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(84% 0.22 72 / 0.10) inset">
+        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--amber))">🥚</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Eggs</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Farm fresh · 30 pcs</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 540</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--amber)">Rs. 360</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 33%</div>
+      </div>
+
+      <!-- Bread -->
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(87% 0.28 128 / 0.08) inset">
+        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--lime))">🍞</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Bread</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Sliced loaf · each</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 80</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--lime)">Rs. 55</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 31%</div>
+      </div>
+
+      <!-- Onions / mixed veg -->
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(78% 0.20 220 / 0.10) inset">
+        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--sky))">🧅</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Onions</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Red · per kg</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 80</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--sky)">Rs. 30</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 63%</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="how" style="padding:5rem 0">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div style="text-align:center;margin-bottom:3.5rem">
+      <p class="label sr" style="margin-bottom:.625rem">Four steps</p>
+      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700;letter-spacing:-.02em">How it works</h2>
+    </div>
+
+    <div class="steps-g sg" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem">
+
+      <div class="card" style="padding:2rem;position:relative;overflow:hidden">
+        <div class="orb" style="width:200px;height:200px;background:oklch(87% 0.28 128 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--lime);line-height:1;margin-bottom:1rem;position:relative;z-index:1">01</div>
+        <div style="font-size:2.5rem;margin-bottom:1rem">🏘️</div>
+        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Register Your Society</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">One person from your society or apartment block signs up. Takes 2 minutes.</p>
+      </div>
+
+      <div class="card" style="padding:2rem;position:relative;overflow:hidden">
+        <div class="orb" style="width:200px;height:200px;background:oklch(84% 0.22 72 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--amber);line-height:1;margin-bottom:1rem;position:relative;z-index:1">02</div>
+        <div style="font-size:2.5rem;margin-bottom:1rem">📋</div>
+        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Neighbors Add Their List</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Each family selects what they need from this week's availability: veg, chicken, eggs, bread.</p>
+      </div>
+
+      <div class="card" style="padding:2rem;position:relative;overflow:hidden">
+        <div class="orb" style="width:200px;height:200px;background:oklch(64% 0.27 25 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--coral);line-height:1;margin-bottom:1rem;position:relative;z-index:1">03</div>
+        <div style="font-size:2.5rem;margin-bottom:1rem">⚡</div>
+        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Order Hits Minimum</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Once enough families join, the order is placed directly with suppliers at wholesale rates.</p>
+      </div>
+
+      <div class="card" style="padding:2rem;position:relative;overflow:hidden">
+        <div class="orb" style="width:200px;height:200px;background:oklch(72% 0.24 290 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--violet);line-height:1;margin-bottom:1rem;position:relative;z-index:1">04</div>
+        <div style="font-size:2.5rem;margin-bottom:1rem">🚚</div>
+        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Delivered to Your Gate</h3>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Fresh groceries arrive at your society gate. You collect. You saved Rs.&nbsp;thousands. Simple.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     TESTIMONIALS
+══════════════════════════════════════ -->
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5rem">
+      <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">Real families.<br><span style="color:var(--lime)">Real savings.</span></h2>
+    </div>
+
+    <div class="sg" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+
+      <div class="card" style="padding:1.75rem">
+        <div style="color:var(--lime);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
+        <p style="color:var(--txt);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
+          "Hum 45 gharon ne milke aloo pyaz order kiye. Mandi se seedha delivery, Rs.&nbsp;28/kg mein. Dukan par Rs.&nbsp;80 tha. Allah kasam ye toh kamaal hai!"
+        </p>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <div style="width:42px;height:42px;background:oklch(87% 0.28 128 / 0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👩</div>
+          <div>
+            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--txt)">Ammi Fatima</p>
+            <p style="font-size:.775rem;color:var(--muted);font-weight:600">Gulshan-e-Iqbal, Karachi</p>
+          </div>
+          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--lime)">Rs.&nbsp;2,400<br><span style="font-size:.72rem;color:var(--faint)">saved / month</span></div>
+        </div>
+      </div>
+
+      <div style="padding:1.75rem;background:var(--lime);border-radius:20px">
+        <div style="color:var(--bg);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
+        <p style="color:var(--bg);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:700">
+          "I run our society WhatsApp group. Now instead of just memes, we're saving Rs.&nbsp;15,000 a month as a community.
+          Chicken at Rs.&nbsp;420 vs Rs.&nbsp;620 in shops — this is the difference."
+        </p>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <div style="width:42px;height:42px;background:oklch(68% 0.26 128 / 0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👨</div>
+          <div>
+            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--bg)">Usman Bhai</p>
+            <p style="font-size:.775rem;color:oklch(30% 0.015 65);font-weight:700">DHA Phase 5, Lahore</p>
+          </div>
+          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--bg)">Rs.&nbsp;15K<br><span style="font-size:.72rem;opacity:.6">saved / month</span></div>
+        </div>
+      </div>
+
+      <div class="card" style="padding:1.75rem">
+        <div style="color:var(--lime);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
+        <p style="color:var(--txt);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
+          "Eggs Rs.&nbsp;12/piece bulk mein — shop par Rs.&nbsp;22 tak ja raha tha. Bread bhi sasta. Har hafte Rs.&nbsp;800-1000 bachte hain sirf grocery mein. Shukar hai."
+        </p>
+        <div style="display:flex;align-items:center;gap:.75rem">
+          <div style="width:42px;height:42px;background:oklch(84% 0.22 72 / 0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👩</div>
+          <div>
+            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--txt)">Hina Baji</p>
+            <p style="font-size:.775rem;color:var(--muted);font-weight:600">Bahria Town, Islamabad</p>
+          </div>
+          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--amber)">Rs.&nbsp;3,600<br><span style="font-size:.72rem;color:var(--faint)">saved / month</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     JOIN CTA
+══════════════════════════════════════ -->
+<section id="join" style="padding:6rem 0;position:relative;overflow:hidden">
+  <div class="orb" style="width:800px;height:800px;background:oklch(87% 0.28 128 / 0.11);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(100px)"></div>
+  <div class="orb" style="width:500px;height:500px;background:oklch(64% 0.27 25 / 0.09);bottom:-150px;right:-100px;filter:blur(80px)"></div>
+
+  <div style="max-width:760px;margin:0 auto;padding:0 1.5rem;text-align:center;position:relative;z-index:1">
+    <div class="pill sr" style="background:oklch(87% 0.28 128 / 0.14);border:1px solid oklch(87% 0.28 128 / 0.3);color:var(--lime);margin-bottom:1.5rem;display:inline-flex">
+      🏘️ Free to join. No fees. No subscription.
+    </div>
+    <h2 class="sr" style="font-size:clamp(2.25rem,5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:1.25rem">
+      Start your society's<br><span style="color:var(--lime)">first bulk order</span><br>this week.
+    </h2>
+    <p class="sr" style="color:var(--muted);font-size:1.1rem;line-height:1.72;margin-bottom:2.5rem;font-weight:600">
+      You need at least 20 families. Most societies are already at 30-50. Register, share the link in your WhatsApp group, and watch the savings add up.
+    </p>
+
+    <!-- Registration form -->
+    <div class="sr card" style="padding:2rem;text-align:left;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.12),0 24px 50px oklch(0% 0 0 / 0.4)">
+      <h3 style="font-size:1.35rem;font-weight:700;color:var(--txt);margin-bottom:1.5rem;text-align:center">Register Your Society</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+        <div>
+          <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Your Name</label>
+          <input type="text" placeholder="Ahmed Khan" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+        </div>
+        <div>
+          <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Phone</label>
+          <input type="tel" placeholder="0300-1234567" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+        </div>
+      </div>
+      <div style="margin-bottom:1rem">
+        <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Society / Area Name</label>
+        <input type="text" placeholder="e.g. Gulshan-e-Iqbal Block 12, Karachi" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+      </div>
+      <div style="margin-bottom:1.375rem">
+        <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Approx. families in your society</label>
+        <select style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;appearance:none;cursor:pointer;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'">
+          <option value="">Select number of families</option>
+          <option>20-30 families</option>
+          <option>30-50 families</option>
+          <option>50-100 families</option>
+          <option>100+ families</option>
+        </select>
+      </div>
+      <button class="btn b-lime" style="width:100%;font-size:1.05rem;padding:.9375rem">
+        Register My Society — It's Free →
+      </button>
+      <p style="text-align:center;font-size:.8rem;color:var(--faint);font-weight:700;margin-top:1rem">No fees. No subscription. We earn a small margin from suppliers — not from you.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     FOOTER
+══════════════════════════════════════ -->
+<footer style="background:var(--bg2);border-top:1px solid var(--border);padding:3.5rem 0 2rem">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
+    <div class="footer-g" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem">
+      <div>
+        <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1rem">
+          <div style="width:38px;height:38px;background:var(--lime);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem">🧺</div>
+          <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;color:var(--txt)">Apna Sasta Bazaar</div>
+        </div>
+        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;max-width:32ch;font-weight:600;margin-bottom:1.5rem">
+          Community bulk buying for fresh groceries. Fruits, vegetables, chicken, eggs, bread — at prices your neighborhood deserves.
+        </p>
+        <div style="display:flex;gap:.625rem">
+          <a href="#" style="width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background 140ms" onmouseover="this.style.background='var(--lime)'" onmouseout="this.style.background='var(--bg3)'">📘</a>
+          <a href="#" style="width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background 140ms" onmouseover="this.style.background='var(--lime)'" onmouseout="this.style.background='var(--bg3)'">📸</a>
+          <a href="#" style="width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background 140ms" onmouseover="this.style.background='var(--lime)'" onmouseout="this.style.background='var(--bg3)'">💬</a>
+        </div>
+      </div>
+      <div>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">Quick Links</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.625rem">
+          <li><a href="#orders" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Live Orders</a></li>
+          <li><a href="#how"    style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">How it Works</a></li>
+          <li><a href="#join"   style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Register Society</a></li>
+          <li><a href="#"       style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Become a Supplier</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">Cities</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.625rem">
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Karachi</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Lahore</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Islamabad</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Faisalabad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
+      <p style="color:var(--faint);font-size:.825rem;font-weight:700">© 2024 Apna Sasta Bazaar. Made with ❤️ in Pakistan.</p>
+      <p style="color:var(--faint);font-size:.825rem;font-weight:700">No subscription fees. We earn from suppliers, not from you.</p>
     </div>
   </div>
 </footer>
 
 <script>
-  // ── Countdown to midnight ──
-  function tick() {
-    const now  = new Date();
-    const end  = new Date(); end.setHours(23,59,59,999);
-    const diff = end - now;
-    const h = Math.floor(diff / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000)   / 1000);
-    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
-    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
-    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
+// ── Animate progress bars on entry ──
+const pbObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.pf[data-w]').forEach(bar => {
+        setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 200);
+      });
+      pbObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.pf[data-w]').forEach(b => { b.style.width = '0%'; pbObs.observe(b.closest('section') || b.parentElement.parentElement); });
+// Trigger on the hero card immediately
+setTimeout(() => {
+  document.querySelectorAll('.hero .pf[data-w], .card .pf[data-w]').forEach(b => {
+    b.style.width = b.dataset.w + '%';
+  });
+}, 600);
 
-  // ── Scroll reveal ──
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.08, rootMargin: '-32px' });
+// ── Scroll reveal ──
+const srObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '-24px' });
+document.querySelectorAll('.sr, .sg').forEach(el => srObs.observe(el));
 
-  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+// ── Price ladder (5 tiers) ──
+const ladder = [
+  { fam: '1-9',   price: 120, col: 'var(--faint)' },
+  { fam: '10-19', price: 90,  col: 'var(--coral)' },
+  { fam: '20-29', price: 70,  col: 'var(--amber)' },
+  { fam: '30-39', price: 55,  col: 'var(--sky)' },
+  { fam: '40-50', price: 45,  col: 'var(--lime)' },
+];
+const demo = document.getElementById('price-demo');
+if (demo) {
+  ladder.forEach((tier, i) => {
+    const col = document.createElement('div');
+    col.innerHTML = `
+      <div style="text-align:center;padding:1.25rem .75rem;background:var(--bg3);border-radius:14px;border:1px solid var(--border);transition:transform 200ms">
+        <div style="font-size:.78rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.625rem">${tier.fam} families</div>
+        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:${1.75 + i * 0.25}rem;color:${tier.col};line-height:1">Rs.${tier.price}</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--faint);margin-top:.3rem">per kg</div>
+        ${i === 4 ? '<div style="margin-top:.625rem;background:var(--lime);color:var(--bg);font-size:.72rem;font-weight:800;padding:.2rem .5rem;border-radius:100px;display:inline-block">YOU GET THIS</div>' : ''}
+      </div>`;
+    demo.appendChild(col);
+  });
+}
 
-  // ── Responsive category columns ──
-  function layout() {
-    const w = window.innerWidth;
-    const catGrid = document.querySelector('.cat-grid');
-    if (catGrid) catGrid.style.gridTemplateColumns =
-      w < 480  ? 'repeat(2,1fr)' :
-      w < 768  ? 'repeat(4,1fr)' :
-      w < 1024 ? 'repeat(4,1fr)' : 'repeat(8,1fr)';
-  }
-  layout(); window.addEventListener('resize', layout);
+// ── Live counter animation ──
+function animCount(el, target, suffix = '') {
+  let cur = 0; const dur = 2000; const step = target / (dur / 16);
+  const t = setInterval(() => {
+    cur = Math.min(cur + step, target);
+    el.textContent = Math.round(cur).toLocaleString('en-PK') + suffix;
+    if (cur >= target) clearInterval(t);
+  }, 16);
+}
+const heroObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      animCount(document.getElementById('fam-count'), 1284, '');
+      animCount(document.getElementById('soc-count'), 47, '');
+      heroObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.3 });
+const heroSection = document.querySelector('section');
+if (heroSection) heroObs.observe(heroSection);
 </script>
 </body>
 </html>

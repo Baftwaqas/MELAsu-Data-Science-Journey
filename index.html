@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apna Sasta Bazaar — Pakistan's Most Affordable Marketplace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Mulish:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --brand:        oklch(76% 0.18 62);
+      --brand-dark:   oklch(60% 0.18 62);
+      --brand-light:  oklch(95% 0.06 68);
+      --deal-red:     oklch(54% 0.23 22);
+      --green:        oklch(62% 0.16 155);
+      --ink:          oklch(14% 0.012 65);
+      --ink-muted:    oklch(46% 0.010 65);
+      --ink-faint:    oklch(64% 0.008 65);
+      --surface:      oklch(98.5% 0.007 70);
+      --surface-2:    oklch(95.5% 0.012 68);
+      --border:       oklch(89% 0.010 68);
+      --ease-out:     cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-in-out:  cubic-bezier(0.77, 0, 0.175, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Mulish', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      -webkit-font-smoothing: antialiased;
+    }
+    h1,h2,h3,h4,h5,h6 { font-family: 'Baloo 2', sans-serif; }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: sticky; top: 0; z-index: 50;
+      background: oklch(98.5% 0.007 70 / 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex; align-items: center; gap: 1.25rem; height: 64px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.625rem;
+      text-decoration: none; flex-shrink: 0;
+    }
+    .logo-mark {
+      width: 36px; height: 36px;
+      background: var(--brand); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem;
+    }
+    .logo-text { line-height: 1; }
+    .logo-top {
+      font-family: 'Baloo 2', sans-serif; font-weight: 800;
+      font-size: 1.05rem; color: var(--ink); letter-spacing: -0.02em;
+    }
+    .logo-sub {
+      font-family: 'Baloo 2', sans-serif; font-weight: 700;
+      font-size: 0.8rem; color: var(--brand);
+    }
+
+    /* ── Search ── */
+    .search-wrap {
+      flex: 1; max-width: 520px;
+      display: flex;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 11px; overflow: hidden;
+      transition: border-color 150ms var(--ease-out), box-shadow 150ms var(--ease-out);
+    }
+    .search-wrap:focus-within {
+      border-color: var(--brand);
+      box-shadow: 0 0 0 4px oklch(76% 0.18 62 / 0.14);
+    }
+    .search-cat {
+      border: none; outline: none;
+      padding: 0 0.875rem;
+      font-family: 'Mulish', sans-serif; font-size: 0.875rem;
+      background: var(--surface-2); color: var(--ink-muted);
+      border-right: 1px solid var(--border); cursor: pointer;
+    }
+    .search-input {
+      flex: 1; border: none; outline: none;
+      padding: 0.75rem 1rem;
+      font-family: 'Mulish', sans-serif; font-size: 0.95rem;
+      background: transparent; color: var(--ink);
+    }
+    .search-input::placeholder { color: var(--ink-faint); }
+    .search-btn {
+      background: var(--brand); border: none; cursor: pointer;
+      padding: 0 1.125rem; font-size: 1rem;
+      transition: background 150ms;
+    }
+    .search-btn:hover { background: var(--brand-dark); }
+    .search-btn:active { transform: scale(0.97); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      font-family: 'Baloo 2', sans-serif; font-weight: 700;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform 160ms var(--ease-out), box-shadow 160ms var(--ease-out);
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-amber {
+      background: var(--brand); color: var(--ink);
+      padding: 0.75rem 1.75rem; border-radius: 10px; font-size: 1rem;
+    }
+    .btn-amber:hover { box-shadow: 0 6px 24px oklch(76% 0.18 62 / 0.38); }
+    .btn-dark {
+      background: var(--ink); color: white;
+      padding: 0.75rem 1.75rem; border-radius: 10px; font-size: 1rem;
+    }
+    .btn-dark:hover { box-shadow: 0 6px 24px oklch(0% 0 0 / 0.25); }
+    .btn-outline {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--border);
+      padding: 0.625rem 1.25rem; border-radius: 10px; font-size: 0.875rem;
+    }
+    .btn-outline:hover { border-color: var(--brand); color: var(--brand-dark); }
+
+    /* ── Marquee ── */
+    .marquee-rail { overflow: hidden; }
+    .marquee-track {
+      display: flex; gap: 2rem; width: max-content;
+      animation: marquee 32s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+    .marquee-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      white-space: nowrap; font-size: 0.825rem; font-weight: 600;
+    }
+
+    /* ── Hero ── */
+    .hero-headline {
+      font-size: clamp(2.4rem, 5vw, 4.25rem);
+      font-weight: 800; line-height: 1.08; letter-spacing: -0.025em;
+    }
+    .hero-headline em {
+      font-style: normal; color: var(--brand);
+    }
+
+    /* ── Pill tag ── */
+    .pill {
+      display: inline-flex; align-items: center; gap: 0.375rem;
+      background: var(--brand-light);
+      border: 1px solid oklch(76% 0.18 62 / 0.28);
+      border-radius: 100px;
+      padding: 0.375rem 1rem;
+      font-size: 0.825rem; font-weight: 700; color: var(--brand-dark);
+    }
+
+    /* ── Trending chips ── */
+    .chip {
+      padding: 0.3rem 0.875rem;
+      background: var(--surface-2); border: 1.5px solid var(--border);
+      border-radius: 100px; font-size: 0.825rem; font-weight: 600;
+      color: var(--ink-muted); text-decoration: none;
+      transition: border-color 150ms var(--ease-out), color 150ms var(--ease-out);
+    }
+    .chip:hover { border-color: var(--brand); color: var(--brand-dark); }
+
+    /* ── Category cards ── */
+    .cat-card {
+      display: flex; flex-direction: column; align-items: center; gap: 0.625rem;
+      padding: 1.375rem 0.75rem; border-radius: 16px;
+      border: 1px solid var(--border); background: var(--surface-2);
+      text-decoration: none; color: var(--ink);
+      transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .cat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px oklch(0% 0 0 / 0.08); }
+    }
+    .cat-card:active { transform: scale(0.97); }
+    .cat-emoji { font-size: 2.25rem; }
+    .cat-name { font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.925rem; text-align: center; }
+    .cat-count { font-size: 0.775rem; color: var(--ink-faint); }
+
+    /* ── Product cards ── */
+    .prod-card {
+      background: white; border: 1px solid var(--border); border-radius: 14px;
+      overflow: hidden;
+      transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+    }
+    @media (hover: hover) and (pointer: fine) {
+      .prod-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px oklch(0% 0 0 / 0.1); }
+    }
+    .prod-thumb {
+      padding: 1.5rem; text-align: center; position: relative; font-size: 3.75rem;
+    }
+    .prod-body { padding: 1rem; }
+    .prod-cat {
+      font-size: 0.75rem; font-weight: 700; color: var(--ink-faint);
+      text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.3rem;
+    }
+    .prod-name {
+      font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.975rem;
+      line-height: 1.3; color: var(--ink); margin-bottom: 0.5rem;
+    }
+    .price-row { display: flex; align-items: baseline; gap: 0.5rem; margin-bottom: 0.5rem; }
+    .price-now { color: var(--deal-red); font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.2rem; }
+    .price-was { color: var(--ink-faint); text-decoration: line-through; font-size: 0.875rem; }
+    .stars { color: var(--brand); font-size: 0.9rem; }
+    .review-count { font-size: 0.775rem; color: var(--ink-faint); margin-left: 0.3rem; }
+
+    /* ── Badges ── */
+    .badge {
+      position: absolute; top: 0.625rem; left: 0.625rem;
+      font-family: 'Baloo 2', sans-serif; font-weight: 700; font-size: 0.725rem;
+      padding: 0.2rem 0.55rem; border-radius: 6px;
+    }
+    .badge-sale { background: var(--deal-red); color: white; }
+    .badge-new  { background: var(--green); color: white; }
+
+    /* ── Deal section ── */
+    .deal-wrap {
+      background: var(--ink); border-radius: 24px; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    }
+    .countdown-box {
+      background: oklch(22% 0.01 65);
+      color: white;
+      font-family: 'Baloo 2', sans-serif; font-weight: 800; font-size: 1.75rem;
+      padding: 0.5rem 0.875rem; border-radius: 10px;
+      min-width: 3.25rem; text-align: center; line-height: 1;
+    }
+    .deal-item {
+      background: oklch(20% 0.012 65); border-radius: 12px;
+      padding: 1.125rem; position: relative;
+    }
+
+    /* ── Why section ── */
+    .why-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+      background: var(--ink); border-radius: 24px; overflow: hidden;
+    }
+    .why-left  { background: var(--brand); padding: 3.5rem; }
+    .why-right { padding: 3.5rem; display: flex; flex-direction: column; gap: 2rem; }
+    .why-item  { display: flex; gap: 1.125rem; align-items: flex-start; }
+    .why-icon  {
+      width: 44px; height: 44px; flex-shrink: 0;
+      background: oklch(22% 0.012 65); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+    }
+
+    /* ── Testimonials ── */
+    .testi-card {
+      background: white; border: 1px solid var(--border);
+      border-radius: 16px; padding: 1.625rem;
+    }
+    .testi-card.featured { background: var(--brand); border-color: transparent; }
+
+    /* ── App section ── */
+    .app-section { background: var(--brand); }
+    .phone-shell {
+      width: 220px; height: 440px;
+      background: var(--ink); border-radius: 34px; padding: 10px;
+      box-shadow: 0 40px 80px oklch(0% 0 0 / 0.28), 0 0 0 2px oklch(28% 0.01 65);
+      flex-shrink: 0;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      background: var(--surface); border-radius: 26px; overflow: hidden;
+    }
+
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 480ms var(--ease-out), transform 480ms var(--ease-out);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+
+    .stagger > * {
+      opacity: 0; transform: translateY(14px);
+    }
+    .stagger.in > *:nth-child(1) { animation: fadeUp 380ms var(--ease-out) 0ms   forwards; }
+    .stagger.in > *:nth-child(2) { animation: fadeUp 380ms var(--ease-out) 55ms  forwards; }
+    .stagger.in > *:nth-child(3) { animation: fadeUp 380ms var(--ease-out) 110ms forwards; }
+    .stagger.in > *:nth-child(4) { animation: fadeUp 380ms var(--ease-out) 165ms forwards; }
+    .stagger.in > *:nth-child(5) { animation: fadeUp 380ms var(--ease-out) 220ms forwards; }
+    .stagger.in > *:nth-child(6) { animation: fadeUp 380ms var(--ease-out) 275ms forwards; }
+    .stagger.in > *:nth-child(7) { animation: fadeUp 380ms var(--ease-out) 330ms forwards; }
+    .stagger.in > *:nth-child(8) { animation: fadeUp 380ms var(--ease-out) 385ms forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: none; } }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 0.775rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--ink-faint); margin-bottom: 0.625rem;
+    }
+    .section-title {
+      font-size: clamp(1.65rem, 3vw, 2.4rem);
+      font-weight: 800; letter-spacing: -0.025em; color: var(--ink);
+    }
+
+    /* ── Footer ── */
+    footer { background: var(--ink); color: white; }
+    .footer-link {
+      color: oklch(58% 0.01 65); text-decoration: none; font-size: 0.875rem;
+      transition: color 140ms;
+    }
+    .footer-link:hover { color: var(--brand); }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: oklch(22% 0.01 65);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.9rem; text-decoration: none;
+      transition: background 150ms var(--ease-out);
+    }
+    .social-btn:hover { background: var(--brand); }
+
+    /* ── Responsive ── */
+    @media (max-width: 1024px) {
+      .hero-grid  { grid-template-columns: 1fr !important; }
+      .deal-wrap  { grid-template-columns: 1fr !important; }
+      .why-grid   { grid-template-columns: 1fr !important; }
+      .app-grid   { grid-template-columns: 1fr !important; }
+      .footer-grid { grid-template-columns: 1fr 1fr !important; }
+      .phone-shell { display: none; }
+    }
+    @media (max-width: 768px) {
+      .hide-mobile   { display: none !important; }
+      .cat-grid      { grid-template-columns: repeat(4, 1fr) !important; }
+      .prod-grid     { grid-template-columns: repeat(2, 1fr) !important; }
+      .testi-grid    { grid-template-columns: 1fr !important; }
+      .footer-grid   { grid-template-columns: 1fr !important; }
+      .why-left, .why-right { padding: 2rem !important; }
+    }
+    @media (max-width: 480px) {
+      .cat-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+      .deal-items { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .stagger > * { opacity: 1; transform: none; transition: none; animation: none; }
+      .marquee-track { animation: none; }
+      .btn, .cat-card, .prod-card { transition: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════
+     NAVBAR
+════════════════════════════════════════════ -->
+<nav class="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="#">
+      <div class="logo-mark">🛒</div>
+      <div class="logo-text">
+        <div class="logo-top">Apna Sasta</div>
+        <div class="logo-sub">Bazaar</div>
+      </div>
+    </a>
+
+    <div class="search-wrap hide-mobile" style="flex:1;max-width:500px;">
+      <select class="search-cat">
+        <option>All</option>
+        <option>Electronics</option>
+        <option>Fashion</option>
+        <option>Groceries</option>
+        <option>Home</option>
+      </select>
+      <input class="search-input" type="text" placeholder="Search products, brands…" />
+      <button class="search-btn">🔍</button>
+    </div>
+
+    <div style="flex:1;"></div>
+
+    <div class="hide-mobile" style="display:flex;gap:1.5rem;align-items:center;">
+      <a href="#deals"      style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Deals</a>
+      <a href="#categories" style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Categories</a>
+      <a href="#"           style="color:var(--ink-muted);font-weight:600;font-size:0.9rem;text-decoration:none;">Sell</a>
+    </div>
+
+    <div style="display:flex;gap:0.75rem;align-items:center;margin-left:0.5rem;">
+      <button class="btn btn-outline" style="padding:0.5rem 1rem;">Login</button>
+      <button style="background:none;border:none;cursor:pointer;font-size:1.5rem;position:relative;line-height:1;transition:transform 160ms var(--ease-out);" onmousedown="this.style.transform='scale(0.88)'" onmouseup="this.style.transform='scale(1)'">
+        🛒
+        <span style="position:absolute;top:-5px;right:-6px;background:var(--deal-red);color:white;font-size:0.6rem;font-weight:800;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',sans-serif;">3</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ════════════════════════════════════════════
+     TRUST MARQUEE
+════════════════════════════════════════════ -->
+<div style="background:var(--ink);padding:0.5rem 0;overflow:hidden;" class="marquee-rail">
+  <div class="marquee-track">
+    <span class="marquee-item" style="color:white;">🚚 Free Delivery Over Rs.&nbsp;999</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">🔄 30-Day Easy Returns</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">💳 Cash on Delivery Available</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">✅ Verified Genuine Products</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">📦 Same-Day Dispatch in Karachi, Lahore &amp; Islamabad</span>
+    <span style="color:var(--brand);">•</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item" style="color:white;">🚚 Free Delivery Over Rs.&nbsp;999</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">🔄 30-Day Easy Returns</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">💳 Cash on Delivery Available</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">✅ Verified Genuine Products</span>
+    <span style="color:var(--brand);">•</span>
+    <span class="marquee-item" style="color:white;">📦 Same-Day Dispatch in Karachi, Lahore &amp; Islamabad</span>
+    <span style="color:var(--brand);">•</span>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════ -->
+<section style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem 3rem;">
+  <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+    <!-- Left: copy -->
+    <div>
+      <div class="pill" style="margin-bottom:1.375rem;">🎉 Pakistan's Most Affordable Marketplace</div>
+      <h1 class="hero-headline">
+        Sasta Kharidein,<br><em>Khush Rahein.</em>
+      </h1>
+      <p style="color:var(--ink-muted);font-size:1.1rem;line-height:1.7;margin:1.25rem 0 2rem;max-width:44ch;">
+        Millions of products, thousands of verified sellers, the best prices across Pakistan — delivered straight to your door.
+      </p>
+
+      <div class="search-wrap" style="max-width:100%;margin-bottom:1.375rem;">
+        <input class="search-input" type="text" placeholder="Try 'pressure cooker', 'lawn suit', 'Samsung A55'…" style="padding:0.9375rem 1.125rem;" />
+        <button class="search-btn" style="padding:0 1.375rem;font-size:1.1rem;">🔍</button>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;">
+        <span style="font-size:0.825rem;color:var(--ink-faint);font-weight:700;">Trending:</span>
+        <a class="chip" href="#">Samsung A55</a>
+        <a class="chip" href="#">Pressure Cooker</a>
+        <a class="chip" href="#">Eid Special</a>
+        <a class="chip" href="#">Baby Clothes</a>
+        <a class="chip" href="#">Rice Cooker</a>
+      </div>
+    </div>
+
+    <!-- Right: product mosaic -->
+    <div style="position:relative;">
+      <div style="background:var(--brand-light);border-radius:22px;padding:1.75rem;position:relative;overflow:hidden;">
+        <!-- Decorative blobs -->
+        <div style="position:absolute;top:-24px;right:-24px;width:150px;height:150px;background:oklch(76% 0.18 62 / 0.18);border-radius:50%;pointer-events:none;"></div>
+        <div style="position:absolute;bottom:-28px;left:-12px;width:110px;height:110px;background:oklch(76% 0.18 62 / 0.12);border-radius:50%;pointer-events:none;"></div>
+
+        <!-- Floating badge -->
+        <div style="position:absolute;top:1rem;right:1rem;z-index:2;background:white;border-radius:10px;padding:0.45rem 0.875rem;box-shadow:0 4px 16px oklch(0% 0 0 / 0.1);font-size:0.825rem;font-weight:700;color:var(--deal-red);display:flex;align-items:center;gap:0.375rem;">
+          🔥 Up to 70% Off
+        </div>
+
+        <!-- 2×2 category tiles -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;position:relative;z-index:1;">
+          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
+            <div style="font-size:2.75rem;margin-bottom:0.5rem;">📱</div>
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Smartphones</div>
+            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 12,999</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
+            <div style="font-size:2.75rem;margin-bottom:0.5rem;">👗</div>
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Fashion</div>
+            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 299</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
+            <div style="font-size:2.75rem;margin-bottom:0.5rem;">🏠</div>
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Home & Kitchen</div>
+            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 499</div>
+          </div>
+          <div style="background:white;border-radius:12px;padding:1.125rem;text-align:center;box-shadow:0 2px 10px oklch(0% 0 0 / 0.06);">
+            <div style="font-size:2.75rem;margin-bottom:0.5rem;">🛒</div>
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.9rem;color:var(--ink);">Groceries</div>
+            <div style="font-size:0.775rem;color:var(--deal-red);font-weight:700;margin-top:0.2rem;">from Rs. 50</div>
+          </div>
+        </div>
+
+        <!-- Mini stats bar -->
+        <div style="margin-top:1.125rem;padding-top:1.125rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;position:relative;z-index:1;">
+          <div style="text-align:center;">
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">2M+</div>
+            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">Products</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">50K+</div>
+            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">Sellers</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.2rem;color:var(--ink);">4.8★</div>
+            <div style="font-size:0.75rem;color:var(--ink-muted);font-weight:600;">App Rating</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     CATEGORIES
+════════════════════════════════════════════ -->
+<section id="categories" style="max-width:1280px;margin:1rem auto 3.5rem;padding:0 1.5rem;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5rem;">
+    <h2 class="section-title reveal">Shop by Category</h2>
+    <a href="#" class="footer-link" style="font-weight:700;font-size:0.875rem;">All categories →</a>
+  </div>
+
+  <div class="cat-grid stagger" style="display:grid;grid-template-columns:repeat(8,1fr);gap:0.875rem;">
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 255);">
+      <span class="cat-emoji">📱</span>
+      <span class="cat-name">Electronics</span>
+      <span class="cat-count">12,400+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 340);">
+      <span class="cat-emoji">👗</span>
+      <span class="cat-name">Fashion</span>
+      <span class="cat-count">48,000+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 40);">
+      <span class="cat-emoji">🏠</span>
+      <span class="cat-name">Home & Living</span>
+      <span class="cat-count">23,100+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(94% 0.05 155);">
+      <span class="cat-emoji">🥬</span>
+      <span class="cat-name">Groceries</span>
+      <span class="cat-count">5,800+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 320);">
+      <span class="cat-emoji">💄</span>
+      <span class="cat-name">Beauty</span>
+      <span class="cat-count">9,200+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(94% 0.04 200);">
+      <span class="cat-emoji">⚽</span>
+      <span class="cat-name">Sports</span>
+      <span class="cat-count">7,600+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 90);">
+      <span class="cat-emoji">📚</span>
+      <span class="cat-name">Books</span>
+      <span class="cat-count">3,400+</span>
+    </a>
+    <a class="cat-card" href="#" style="background:oklch(95% 0.04 22);">
+      <span class="cat-emoji">🧸</span>
+      <span class="cat-name">Kids & Baby</span>
+      <span class="cat-count">11,000+</span>
+    </a>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     DEAL OF THE DAY
+════════════════════════════════════════════ -->
+<section id="deals" style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
+  <div class="deal-wrap reveal">
+
+    <!-- Left: headline + timer -->
+    <div style="padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;">
+      <div class="pill" style="margin-bottom:1.25rem;background:oklch(76% 0.18 62 / 0.12);border-color:oklch(76% 0.18 62 / 0.25);color:var(--brand);">⚡ Deal of the Day</div>
+      <h2 style="font-size:clamp(1.75rem,3vw,2.75rem);font-weight:800;color:white;line-height:1.1;letter-spacing:-0.025em;margin-bottom:0.875rem;">
+        Up to 70% Off.<br>Today Only.
+      </h2>
+      <p style="color:oklch(65% 0.01 65);font-size:1rem;line-height:1.65;margin-bottom:2rem;max-width:36ch;">
+        Flash deals on top brands. New drops every 6 hours — don't blink.
+      </p>
+
+      <!-- Countdown -->
+      <div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:2rem;">
+        <div>
+          <div class="countdown-box" id="cd-h">--</div>
+          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">HRS</div>
+        </div>
+        <span style="color:white;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.75rem;padding-bottom:1.25rem;">:</span>
+        <div>
+          <div class="countdown-box" id="cd-m">--</div>
+          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">MIN</div>
+        </div>
+        <span style="color:white;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.75rem;padding-bottom:1.25rem;">:</span>
+        <div>
+          <div class="countdown-box" id="cd-s">--</div>
+          <div style="text-align:center;font-size:0.7rem;color:oklch(55% 0.01 65);font-weight:700;margin-top:0.3rem;">SEC</div>
+        </div>
+      </div>
+
+      <a href="#" class="btn btn-amber" style="align-self:flex-start;">See All Deals →</a>
+    </div>
+
+    <!-- Right: 4 deal cards -->
+    <div class="deal-items" style="padding:2.5rem;display:grid;grid-template-columns:1fr 1fr;gap:0.875rem;align-content:center;">
+      <div class="deal-item">
+        <span class="badge badge-sale">-65%</span>
+        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">🎧</div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Wireless Earbuds</div>
+        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 4,999</div>
+        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 1,749</div>
+      </div>
+      <div class="deal-item">
+        <span class="badge badge-sale">-55%</span>
+        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">⌚</div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Smart Watch</div>
+        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 8,500</div>
+        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 3,825</div>
+      </div>
+      <div class="deal-item">
+        <span class="badge badge-sale">-40%</span>
+        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">👟</div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Running Shoes</div>
+        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 3,200</div>
+        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 1,920</div>
+      </div>
+      <div class="deal-item">
+        <span class="badge badge-sale">-70%</span>
+        <div style="font-size:2.5rem;text-align:center;margin:1.5rem 0 0.625rem;">🫖</div>
+        <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.875rem;color:white;margin-bottom:0.25rem;">Electric Kettle</div>
+        <div style="color:oklch(50% 0.01 65);text-decoration:line-through;font-size:0.8rem;">Rs. 2,500</div>
+        <div style="color:var(--brand);font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.1rem;">Rs. 750</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     BESTSELLERS
+════════════════════════════════════════════ -->
+<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
+  <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:1.5rem;">
+    <h2 class="section-title reveal">Bestsellers This Week</h2>
+    <a href="#" class="footer-link" style="font-weight:700;font-size:0.875rem;">View all →</a>
+  </div>
+
+  <div class="prod-grid stagger" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.125rem;">
+
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:var(--surface-2);">
+        <span class="badge badge-sale">-45%</span>🍳
+      </div>
+      <div class="prod-body">
+        <p class="prod-cat">Kitchen</p>
+        <h3 class="prod-name">Non-Stick Cookware Set — 5 Pieces</h3>
+        <div class="price-row">
+          <span class="price-now">Rs. 2,750</span>
+          <span class="price-was">Rs. 5,000</span>
+        </div>
+        <div><span class="stars">★★★★★</span><span class="review-count">(2,341)</span></div>
+        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:oklch(95% 0.04 155);">
+        <span class="badge badge-new">NEW</span>📱
+      </div>
+      <div class="prod-body">
+        <p class="prod-cat">Electronics</p>
+        <h3 class="prod-name">Infinix Hot 40i — 8GB + 128GB</h3>
+        <div class="price-row">
+          <span class="price-now">Rs. 28,999</span>
+          <span class="price-was">Rs. 34,000</span>
+        </div>
+        <div><span class="stars">★★★★</span><span style="color:var(--ink-faint);font-size:0.9rem;">★</span><span class="review-count">(876)</span></div>
+        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:oklch(96% 0.04 320);">
+        <span class="badge badge-sale">-35%</span>👗
+      </div>
+      <div class="prod-body">
+        <p class="prod-cat">Women's Fashion</p>
+        <h3 class="prod-name">Lawn Printed Suit — 3-Piece Unstitched</h3>
+        <div class="price-row">
+          <span class="price-now">Rs. 1,299</span>
+          <span class="price-was">Rs. 1,999</span>
+        </div>
+        <div><span class="stars">★★★★★</span><span class="review-count">(5,128)</span></div>
+        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="prod-card">
+      <div class="prod-thumb" style="background:oklch(95% 0.04 40);">
+        <span class="badge badge-sale">-60%</span>🧴
+      </div>
+      <div class="prod-body">
+        <p class="prod-cat">Beauty & Care</p>
+        <h3 class="prod-name">Skin Care Essentials Bundle — 6 Products</h3>
+        <div class="price-row">
+          <span class="price-now">Rs. 1,599</span>
+          <span class="price-was">Rs. 3,999</span>
+        </div>
+        <div><span class="stars">★★★★</span><span style="color:var(--ink-faint);font-size:0.9rem;">★</span><span class="review-count">(1,942)</span></div>
+        <button class="btn btn-amber" style="width:100%;margin-top:0.875rem;padding:0.625rem;font-size:0.9rem;">Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     WHY CHOOSE US  (not the hero-metric template)
+════════════════════════════════════════════ -->
+<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
+  <div class="why-grid reveal">
+
+    <!-- Left: bold statement on amber -->
+    <div class="why-left">
+      <p style="font-size:0.775rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink);opacity:0.55;margin-bottom:1rem;">Why Pakistan Trusts Us</p>
+      <h2 style="font-size:clamp(1.85rem,3vw,2.75rem);font-weight:800;line-height:1.1;letter-spacing:-0.025em;color:var(--ink);margin-bottom:1.375rem;">
+        Genuine products.<br>Real savings.<br>No compromise.
+      </h2>
+      <p style="font-size:1.05rem;line-height:1.7;color:var(--ink);opacity:0.75;max-width:38ch;">
+        Every seller is verified. Every price is checked. We guarantee you're getting the real deal — always.
+      </p>
+    </div>
+
+    <!-- Right: feature list on dark -->
+    <div class="why-right">
+      <div class="why-item">
+        <div class="why-icon">✅</div>
+        <div>
+          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Verified Sellers Only</h3>
+          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Every seller passes a 7-step verification. No counterfeits, ever.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div>
+          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Best Price Guarantee</h3>
+          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Found it cheaper? We match within 24 hours, guaranteed.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🚚</div>
+        <div>
+          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Fast Delivery Everywhere</h3>
+          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Same-day in major cities. 2-3 days anywhere in Pakistan.</p>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔄</div>
+        <div>
+          <h3 style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.05rem;color:white;margin-bottom:0.3rem;">Hassle-Free Returns</h3>
+          <p style="color:oklch(62% 0.01 65);font-size:0.9rem;line-height:1.6;">Not happy? Return in 30 days — no questions asked.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     TESTIMONIALS
+════════════════════════════════════════════ -->
+<section style="max-width:1280px;margin:0 auto 3.5rem;padding:0 1.5rem;">
+  <h2 class="section-title reveal" style="margin-bottom:0.5rem;">What Our Customers Say</h2>
+  <p class="reveal" style="color:var(--ink-muted);font-size:1rem;margin-bottom:2rem;">Over 3.2 million happy customers across Pakistan.</p>
+
+  <div class="testi-grid stagger" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.125rem;">
+
+    <div class="testi-card">
+      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
+      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
+        "Ordered a blender at 10am, had it by 6pm. Price was Rs. 800 less than the market. Will never shop anywhere else inshAllah!"
+      </p>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:40px;height:40px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩</div>
+        <div>
+          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Ayesha K.</p>
+          <p style="font-size:0.775rem;color:var(--ink-faint);">Lahore</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card featured">
+      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
+      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
+        "Bought 3 lawn suits for Eid. Quality was amazing and total savings were almost Rs. 2,000. My friends couldn't believe the prices!"
+      </p>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:40px;height:40px;background:oklch(70% 0.15 62);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👨</div>
+        <div>
+          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Tariq M.</p>
+          <p style="font-size:0.775rem;color:var(--ink);opacity:0.6;">Faisalabad</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="testi-card">
+      <div class="stars" style="margin-bottom:0.75rem;">★★★★★</div>
+      <p style="color:var(--ink);line-height:1.7;font-size:0.95rem;margin-bottom:1.25rem;">
+        "Cash on delivery made me try it first. Now I shop weekly. The return process for one item was super easy, no drama at all."
+      </p>
+      <div style="display:flex;align-items:center;gap:0.75rem;">
+        <div style="width:40px;height:40px;background:var(--brand-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">👩</div>
+        <div>
+          <p style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.925rem;color:var(--ink);">Sana R.</p>
+          <p style="font-size:0.775rem;color:var(--ink-faint);">Karachi</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     APP DOWNLOAD
+════════════════════════════════════════════ -->
+<section class="app-section" style="margin-bottom:0;">
+  <div class="app-grid" style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+
+    <div>
+      <div class="pill" style="margin-bottom:1.375rem;background:oklch(70% 0.15 62 / 0.25);border-color:oklch(60% 0.18 62 / 0.3);color:var(--ink);">📱 Download the App</div>
+      <h2 style="font-size:clamp(2rem,3.5vw,3rem);font-weight:800;color:var(--ink);line-height:1.1;letter-spacing:-0.025em;margin-bottom:1rem;">
+        Shop smarter<br>on the go.
+      </h2>
+      <p style="color:var(--ink);opacity:0.72;font-size:1.05rem;line-height:1.7;margin-bottom:2rem;max-width:44ch;">
+        App-only deals, real-time order tracking, and direct seller chat. Available on Android and iOS.
+      </p>
+
+      <div style="display:flex;gap:0.875rem;flex-wrap:wrap;margin-bottom:2.5rem;">
+        <a href="#" class="btn btn-dark" style="gap:0.875rem;padding:0.75rem 1.375rem;">
+          <span style="font-size:1.625rem;line-height:1;">▶</span>
+          <div style="text-align:left;">
+            <div style="font-size:0.7rem;opacity:0.65;font-family:'Mulish',sans-serif;font-weight:400;margin-bottom:0.1rem;">Get it on</div>
+            <div style="font-size:0.975rem;">Google Play</div>
+          </div>
+        </a>
+        <a href="#" class="btn btn-dark" style="gap:0.875rem;padding:0.75rem 1.375rem;">
+          <span style="font-size:1.625rem;line-height:1;">🍎</span>
+          <div style="text-align:left;">
+            <div style="font-size:0.7rem;opacity:0.65;font-family:'Mulish',sans-serif;font-weight:400;margin-bottom:0.1rem;">Download on the</div>
+            <div style="font-size:0.975rem;">App Store</div>
+          </div>
+        </a>
+      </div>
+
+      <div style="display:flex;gap:2.5rem;">
+        <div>
+          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">4.8 ★</div>
+          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">App Rating</div>
+        </div>
+        <div>
+          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">5M+</div>
+          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">Downloads</div>
+        </div>
+        <div>
+          <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.5rem;color:var(--ink);">3.2M</div>
+          <div style="font-size:0.825rem;color:var(--ink);opacity:0.6;font-weight:600;">Happy Customers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone mockup -->
+    <div style="display:flex;justify-content:center;">
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <div style="background:var(--brand);padding:0.875rem;text-align:center;">
+            <div style="font-family:'Baloo 2',sans-serif;font-weight:800;font-size:0.9rem;color:var(--ink);">Apna Sasta Bazaar</div>
+            <div style="font-size:0.65rem;color:var(--ink);opacity:0.6;margin-top:0.15rem;">Pakistan's Best Deals</div>
+          </div>
+          <div style="padding:0.625rem;">
+            <div style="background:var(--surface-2);border-radius:7px;padding:0.45rem 0.75rem;font-size:0.65rem;color:var(--ink-faint);margin-bottom:0.625rem;">🔍 Search products…</div>
+            <div style="background:var(--deal-red);border-radius:7px;padding:0.5rem;text-align:center;margin-bottom:0.625rem;">
+              <div style="font-family:'Baloo 2',sans-serif;font-weight:700;font-size:0.65rem;color:white;">⚡ Flash Sale — 70% Off!</div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.375rem;">
+              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:1.375rem;">📱</div>
+                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.28,999</div>
+              </div>
+              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:1.375rem;">👗</div>
+                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.1,299</div>
+              </div>
+              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:1.375rem;">🍳</div>
+                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.2,750</div>
+              </div>
+              <div style="background:white;border-radius:5px;padding:0.45rem;text-align:center;border:1px solid var(--border);">
+                <div style="font-size:1.375rem;">🧴</div>
+                <div style="font-size:0.55rem;font-weight:700;color:var(--deal-red);">Rs.1,599</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════ -->
+<footer style="padding:4rem 0 2rem;">
+  <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem;">
+    <div class="footer-grid" style="display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;">
+
+      <div>
+        <a class="logo" href="#" style="margin-bottom:1rem;display:inline-flex;">
+          <div class="logo-mark">🛒</div>
+          <div class="logo-text" style="margin-left:0.625rem;">
+            <div class="logo-top" style="color:white;">Apna Sasta</div>
+            <div class="logo-sub">Bazaar</div>
+          </div>
+        </a>
+        <p style="color:oklch(55% 0.01 65);line-height:1.7;font-size:0.875rem;max-width:30ch;margin:0.875rem 0 1.5rem;">
+          Pakistan's most trusted budget marketplace. Real deals, real savings, at your door.
+        </p>
+        <div style="display:flex;gap:0.625rem;">
+          <a class="social-btn" href="#">📘</a>
+          <a class="social-btn" href="#">📸</a>
+          <a class="social-btn" href="#">🐦</a>
+          <a class="social-btn" href="#">▶</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Shop</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
+          <li><a class="footer-link" href="#">All Categories</a></li>
+          <li><a class="footer-link" href="#">Today's Deals</a></li>
+          <li><a class="footer-link" href="#">Bestsellers</a></li>
+          <li><a class="footer-link" href="#">New Arrivals</a></li>
+          <li><a class="footer-link" href="#">Sell on ASB</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Help</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
+          <li><a class="footer-link" href="#">Track Order</a></li>
+          <li><a class="footer-link" href="#">Returns & Refunds</a></li>
+          <li><a class="footer-link" href="#">FAQs</a></li>
+          <li><a class="footer-link" href="#">Contact Us</a></li>
+          <li><a class="footer-link" href="#">Buyer Protection</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family:'Baloo 2',sans-serif;font-weight:700;color:white;font-size:1rem;margin-bottom:1rem;">Company</h4>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
+          <li><a class="footer-link" href="#">About Us</a></li>
+          <li><a class="footer-link" href="#">Careers</a></li>
+          <li><a class="footer-link" href="#">Press</a></li>
+          <li><a class="footer-link" href="#">Privacy Policy</a></li>
+          <li><a class="footer-link" href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid oklch(24% 0.01 65);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+      <p style="color:oklch(46% 0.01 65);font-size:0.825rem;">© 2024 Apna Sasta Bazaar. Made with ❤️ in Pakistan.</p>
+      <div style="display:flex;gap:1.25rem;flex-wrap:wrap;">
+        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💳 Visa</span>
+        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💳 Mastercard</span>
+        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">📱 EasyPaisa</span>
+        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">📱 JazzCash</span>
+        <span style="color:oklch(46% 0.01 65);font-size:0.825rem;">💵 Cash on Delivery</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Countdown to midnight ──
+  function tick() {
+    const now  = new Date();
+    const end  = new Date(); end.setHours(23,59,59,999);
+    const diff = end - now;
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000)   / 1000);
+    document.getElementById('cd-h').textContent = String(h).padStart(2,'0');
+    document.getElementById('cd-m').textContent = String(m).padStart(2,'0');
+    document.getElementById('cd-s').textContent = String(s).padStart(2,'0');
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ── Scroll reveal ──
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '-32px' });
+
+  document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+  // ── Responsive category columns ──
+  function layout() {
+    const w = window.innerWidth;
+    const catGrid = document.querySelector('.cat-grid');
+    if (catGrid) catGrid.style.gridTemplateColumns =
+      w < 480  ? 'repeat(2,1fr)' :
+      w < 768  ? 'repeat(4,1fr)' :
+      w < 1024 ? 'repeat(4,1fr)' : 'repeat(8,1fr)';
+  }
+  layout(); window.addEventListener('resize', layout);
+</script>
+</body>
+</html>

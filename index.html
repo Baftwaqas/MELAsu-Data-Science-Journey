@@ -1,105 +1,168 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ur" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Apna Sasta Bazaar — Order Together. Pay Mandi Prices.</title>
+  <title>اپنا سستا بازار — مل کر خریدو، منڈی کا بھاؤ پاؤ</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --lime:    oklch(87% 0.28 128);
-      --lime-d:  oklch(68% 0.26 128);
-      --coral:   oklch(64% 0.27 25);
-      --amber:   oklch(84% 0.22 72);
-      --violet:  oklch(72% 0.24 290);
-      --sky:     oklch(78% 0.20 220);
-      --bg:      oklch(9%  0.018 65);
-      --bg2:     oklch(14% 0.018 65);
-      --bg3:     oklch(20% 0.015 65);
-      --txt:     oklch(96% 0.006 70);
-      --muted:   oklch(68% 0.010 68);
-      --faint:   oklch(44% 0.008 68);
-      --border:  oklch(25% 0.012 65);
-      --ease:    cubic-bezier(0.23, 1, 0.32, 1);
+      --lime:   oklch(87% 0.28 128);
+      --lime-d: oklch(68% 0.26 128);
+      --coral:  oklch(64% 0.27 25);
+      --amber:  oklch(84% 0.22 72);
+      --violet: oklch(72% 0.24 290);
+      --sky:    oklch(78% 0.20 220);
+      --bg:     oklch(9%  0.018 65);
+      --bg2:    oklch(14% 0.018 65);
+      --bg3:    oklch(20% 0.015 65);
+      --txt:    oklch(96% 0.006 70);
+      --muted:  oklch(68% 0.010 68);
+      --faint:  oklch(44% 0.008 68);
+      --border: oklch(25% 0.012 65);
+      --ease:   cubic-bezier(0.23, 1, 0.32, 1);
     }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--txt);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-    h1,h2,h3,h4,h5{font-family:'Fredoka',sans-serif}
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Naskh Arabic', serif;
+      background: var(--bg);
+      color: var(--txt);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      direction: rtl;
+    }
+    h1, h2, h3, h4, h5 {
+      font-family: 'Noto Nastaliq Urdu', serif;
+      line-height: 1.6;
+    }
 
     /* ── Navbar ── */
-    nav{position:sticky;top:0;z-index:100;background:oklch(9% 0.018 65 / 0.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-    .ni{max-width:1280px;margin:0 auto;padding:0 1.5rem;height:62px;display:flex;align-items:center;gap:1.25rem}
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      /* solid bg instead of backdrop-filter — avoids compositing jank */
+      background: oklch(9% 0.018 65 / 0.96);
+      border-bottom: 1px solid var(--border);
+      transform: translateZ(0); /* own compositor layer */
+    }
+    .ni {
+      max-width: 1280px; margin: 0 auto;
+      padding: 0 1.5rem;
+      height: 62px; display: flex; align-items: center; gap: 1.25rem;
+    }
 
     /* ── Buttons ── */
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-family:'Fredoka',sans-serif;font-weight:600;border:none;cursor:pointer;text-decoration:none;transition:transform 150ms var(--ease),box-shadow 150ms var(--ease)}
-    .btn:active{transform:scale(0.96)!important}
-    .b-lime{background:var(--lime);color:var(--bg);padding:.75rem 1.875rem;border-radius:12px;font-size:1rem}
-    .b-lime:hover{box-shadow:0 0 36px oklch(87% 0.28 128 / 0.55)}
-    .b-coral{background:var(--coral);color:#fff;padding:.75rem 1.875rem;border-radius:12px;font-size:1rem}
-    .b-coral:hover{box-shadow:0 0 30px oklch(64% 0.27 25 / 0.5)}
-    .b-ghost{background:transparent;color:var(--lime);border:1.5px solid oklch(87% 0.28 128 / 0.38);padding:.55rem 1.25rem;border-radius:10px;font-size:.875rem}
-    .b-ghost:hover{border-color:var(--lime);background:oklch(87% 0.28 128 / 0.09)}
-    .b-dark{background:var(--bg2);color:var(--txt);border:1px solid var(--border);padding:.55rem 1.25rem;border-radius:10px;font-size:.875rem}
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+      font-family: 'Noto Naskh Arabic', serif; font-weight: 700;
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform 150ms var(--ease), box-shadow 150ms var(--ease);
+    }
+    .btn:active { transform: scale(0.96) !important; }
+    .b-lime  { background: var(--lime);  color: var(--bg); padding: .75rem 1.875rem; border-radius: 12px; font-size: 1rem; }
+    .b-lime:hover  { box-shadow: 0 0 32px oklch(87% 0.28 128 / 0.5); }
+    .b-coral { background: var(--coral); color: #fff; padding: .75rem 1.875rem; border-radius: 12px; font-size: 1rem; }
+    .b-coral:hover { box-shadow: 0 0 28px oklch(64% 0.27 25 / 0.5); }
+    .b-ghost {
+      background: transparent; color: var(--lime);
+      border: 1.5px solid oklch(87% 0.28 128 / 0.38);
+      padding: .55rem 1.25rem; border-radius: 10px; font-size: .875rem;
+    }
+    .b-ghost:hover { border-color: var(--lime); background: oklch(87% 0.28 128 / 0.09); }
 
-    /* ── Glow orbs on hero ── */
-    .orb{position:absolute;border-radius:50%;pointer-events:none;filter:blur(80px)}
+    /* ── Glow orbs — NO filter:blur, use radial-gradient directly ── */
+    .orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      /* No filter:blur — radial gradient fades on its own, zero GPU cost */
+    }
 
-    /* ── Floating produce ── */
-    @keyframes bob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-20px) rotate(4deg)}}
-    .floater{position:absolute;font-size:3rem;pointer-events:none;opacity:.7;filter:drop-shadow(0 0 14px var(--lime))}
+    /* ── Floaters — no drop-shadow filter ── */
+    @keyframes bob {
+      0%, 100% { transform: translateY(0) rotate(-4deg); }
+      50%       { transform: translateY(-18px) rotate(4deg); }
+    }
+    .floater {
+      position: absolute; font-size: 3rem; pointer-events: none;
+      opacity: .65;
+      /* will-change: transform so browser promotes to its own layer */
+      will-change: transform;
+    }
 
-    /* ── Marquee ── */
-    .mq-wrap{overflow:hidden}
-    .mq-t{display:flex;gap:0;width:max-content;animation:mq 36s linear infinite}
-    @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    /* ── Marquee — GPU-composited ── */
+    .mq-wrap { overflow: hidden; }
+    .mq-t {
+      display: flex; gap: 0; width: max-content;
+      animation: mq 38s linear infinite;
+      will-change: transform; /* own compositor layer */
+      transform: translateZ(0);
+    }
+    @keyframes mq {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
 
     /* ── Progress bar ── */
-    .pt{height:10px;background:var(--bg3);border-radius:100px;overflow:hidden}
-    .pf{height:100%;border-radius:100px;transition:width 1.4s var(--ease)}
+    .pt { height: 10px; background: var(--bg3); border-radius: 100px; overflow: hidden; }
+    .pf { height: 100%; border-radius: 100px; width: 0%; transition: width 1.4s var(--ease); }
 
     /* ── Scroll reveal ── */
-    .sr{opacity:0;transform:translateY(22px);transition:opacity 480ms var(--ease),transform 480ms var(--ease)}
-    .sr.in{opacity:1;transform:none}
-    .sg>*{opacity:0;transform:translateY(14px)}
-    .sg.in>*:nth-child(1){animation:fup 380ms var(--ease) 0ms   forwards}
-    .sg.in>*:nth-child(2){animation:fup 380ms var(--ease) 65ms  forwards}
-    .sg.in>*:nth-child(3){animation:fup 380ms var(--ease) 130ms forwards}
-    .sg.in>*:nth-child(4){animation:fup 380ms var(--ease) 195ms forwards}
-    .sg.in>*:nth-child(5){animation:fup 380ms var(--ease) 260ms forwards}
-    .sg.in>*:nth-child(6){animation:fup 380ms var(--ease) 325ms forwards}
-    @keyframes fup{to{opacity:1;transform:none}}
+    .sr  { opacity: 0; transform: translateY(20px); transition: opacity 480ms var(--ease), transform 480ms var(--ease); }
+    .sr.in { opacity: 1; transform: none; }
+    .sg > * { opacity: 0; transform: translateY(14px); }
+    .sg.in > *:nth-child(1) { animation: fup 380ms var(--ease) 0ms   forwards; }
+    .sg.in > *:nth-child(2) { animation: fup 380ms var(--ease) 65ms  forwards; }
+    .sg.in > *:nth-child(3) { animation: fup 380ms var(--ease) 130ms forwards; }
+    .sg.in > *:nth-child(4) { animation: fup 380ms var(--ease) 195ms forwards; }
+    .sg.in > *:nth-child(5) { animation: fup 380ms var(--ease) 260ms forwards; }
+    .sg.in > *:nth-child(6) { animation: fup 380ms var(--ease) 325ms forwards; }
+    @keyframes fup { to { opacity: 1; transform: none; } }
 
     /* ── Card base ── */
-    .card{background:var(--bg2);border:1px solid var(--border);border-radius:20px}
-    .hover-lift{transition:transform 200ms var(--ease),box-shadow 200ms var(--ease)}
-    @media(hover:hover)and(pointer:fine){.hover-lift:hover{transform:translateY(-5px);box-shadow:0 18px 40px oklch(0% 0 0 / 0.4)}}
-    .hover-lift:active{transform:scale(0.97)}
-
-    /* ── Section label ── */
-    .label{font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:var(--faint)}
+    .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 20px; }
+    .hover-lift { transition: transform 200ms var(--ease), box-shadow 200ms var(--ease); }
+    @media (hover: hover) and (pointer: fine) {
+      .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 18px 40px oklch(0% 0 0 / 0.4); }
+    }
+    .hover-lift:active { transform: scale(0.97); }
 
     /* ── Pill ── */
-    .pill{display:inline-flex;align-items:center;gap:.4rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;padding:.35rem .875rem;border-radius:100px}
+    .pill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: 'Noto Naskh Arabic', serif; font-weight: 700;
+      font-size: .875rem; padding: .35rem .875rem; border-radius: 100px;
+    }
+
+    /* ── Label ── */
+    .lbl {
+      font-size: .78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--faint);
+    }
+
+    /* ── Urdu body line-height ── */
+    p, li, span, div { line-height: 1.9; }
 
     /* ── Responsive ── */
-    @media(max-width:1024px){
-      .hero-g,.cmp-g,.footer-g{grid-template-columns:1fr!important}
-      .floater{display:none}
+    @media (max-width: 1024px) {
+      .hero-g, .footer-g { grid-template-columns: 1fr !important; }
+      .floater { display: none; }
     }
-    @media(max-width:768px){
-      .steps-g{grid-template-columns:1fr 1fr!important}
-      .ord-g{grid-template-columns:1fr!important}
-      .pr-g{grid-template-columns:repeat(2,1fr)!important}
+    @media (max-width: 768px) {
+      .steps-g { grid-template-columns: 1fr 1fr !important; }
+      .ord-g   { grid-template-columns: 1fr !important; }
+      .pr-g    { grid-template-columns: repeat(2, 1fr) !important; }
+      .testi-g { grid-template-columns: 1fr !important; }
     }
-    @media(max-width:480px){
-      .steps-g{grid-template-columns:1fr!important}
+    @media (max-width: 480px) {
+      .steps-g { grid-template-columns: 1fr !important; }
     }
-    @media(prefers-reduced-motion:reduce){
-      .sr,.sg>*{opacity:1;transform:none;transition:none;animation:none}
-      .mq-t,.orb,.floater{animation:none}
+    @media (prefers-reduced-motion: reduce) {
+      .sr, .sg > * { opacity: 1; transform: none; transition: none; animation: none; }
+      .mq-t { animation: none; }
+      .floater { animation: none; }
     }
   </style>
 </head>
@@ -112,22 +175,22 @@
   <div class="ni">
     <a href="#" style="display:flex;align-items:center;gap:.625rem;text-decoration:none;flex-shrink:0">
       <div style="width:38px;height:38px;background:var(--lime);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem">🧺</div>
-      <div style="line-height:1">
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt)">Apna Sasta Bazaar</div>
-        <div style="font-size:.72rem;color:var(--muted);font-weight:600">Community Bulk Buying</div>
+      <div style="line-height:1.4">
+        <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--txt)">اپنا سستا بازار</div>
+        <div style="font-size:.72rem;color:var(--muted);font-weight:600;font-family:'Noto Naskh Arabic',serif">کمیونٹی بلک خریداری</div>
       </div>
     </a>
 
     <div style="flex:1"></div>
 
     <div style="display:flex;align-items:center;gap:1.5rem">
-      <a href="#how" style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">How it Works</a>
-      <a href="#orders" style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">Live Orders</a>
+      <a href="#how"    style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">کیسے کام کرتا ہے</a>
+      <a href="#orders" style="color:var(--muted);font-weight:700;font-size:.9rem;text-decoration:none">لائیو آرڈرز</a>
     </div>
 
-    <div style="display:flex;gap:.75rem;margin-left:.75rem">
-      <a href="#join" class="btn b-ghost">Join Society</a>
-      <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.9rem">Start Ordering ↗</a>
+    <div style="display:flex;gap:.75rem;margin-inline-start:.75rem">
+      <a href="#join" class="btn b-ghost">سوسائٹی جوائن کریں</a>
+      <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.9rem">آرڈر شروع کریں ←</a>
     </div>
   </div>
 </nav>
@@ -137,103 +200,100 @@
 ══════════════════════════════════════ -->
 <div style="background:var(--lime);padding:.45rem 0;overflow:hidden" class="mq-wrap">
   <div class="mq-t">
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Gulshan Society C — Rs.11,400 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ DHA Phase 6 — Rs.18,200 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Bahria Town Karachi — Rs.24,900 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Model Town Lahore — Rs.9,800 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ F-7 Islamabad — Rs.15,600 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ گلشن سوسائٹی سی — اس ہفتے Rs.11,400 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ڈی ایچ اے فیز 6 — اس ہفتے Rs.18,200 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ بحریہ ٹاؤن کراچی — اس ہفتے Rs.24,900 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ماڈل ٹاؤن لاہور — اس ہفتے Rs.9,800 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ایف-7 اسلام آباد — اس ہفتے Rs.15,600 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
     <!-- duplicate -->
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Gulshan Society C — Rs.11,400 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ DHA Phase 6 — Rs.18,200 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Bahria Town Karachi — Rs.24,900 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ Model Town Lahore — Rs.9,800 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
-    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Fredoka',sans-serif;font-weight:600;font-size:.875rem;color:var(--bg)">🏘️ F-7 Islamabad — Rs.15,600 saved this week</span>
-    <span style="color:var(--bg2)">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ گلشن سوسائٹی سی — اس ہفتے Rs.11,400 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ڈی ایچ اے فیز 6 — اس ہفتے Rs.18,200 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ بحریہ ٹاؤن کراچی — اس ہفتے Rs.24,900 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ماڈل ٹاؤن لاہور — اس ہفتے Rs.9,800 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
+    <span style="display:flex;align-items:center;gap:.5rem;padding:0 2rem;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;color:var(--bg)">🏘️ ایف-7 اسلام آباد — اس ہفتے Rs.15,600 کی بچت</span>
+    <span style="color:var(--bg2);padding:0 .5rem">|</span>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════
      HERO
 ══════════════════════════════════════ -->
-<section style="position:relative;overflow:hidden;min-height:90vh;display:flex;align-items:center">
-  <!-- Glow orbs -->
-  <div class="orb" style="width:700px;height:700px;background:oklch(87% 0.28 128 / 0.13);top:-180px;left:-120px;animation:none"></div>
-  <div class="orb" style="width:580px;height:580px;background:oklch(64% 0.27 25 / 0.12);bottom:-120px;right:100px"></div>
-  <div class="orb" style="width:400px;height:400px;background:oklch(72% 0.24 290 / 0.10);top:40%;right:-80px"></div>
+<section style="position:relative;overflow:hidden;min-height:90vh;display:flex;align-items:center;contain:layout style">
+  <!-- Cheap radial-gradient orbs — zero filter cost -->
+  <div class="orb" style="width:700px;height:700px;background:radial-gradient(circle,oklch(87% 0.28 128 / 0.14) 0%,transparent 70%);top:-180px;inset-inline-end:-120px"></div>
+  <div class="orb" style="width:580px;height:580px;background:radial-gradient(circle,oklch(64% 0.27 25 / 0.11) 0%,transparent 70%);bottom:-100px;inset-inline-start:80px"></div>
+  <div class="orb" style="width:420px;height:420px;background:radial-gradient(circle,oklch(72% 0.24 290 / 0.09) 0%,transparent 70%);top:40%;inset-inline-start:-80px"></div>
 
-  <!-- Floating produce -->
-  <div class="floater" style="top:12%;left:6%;animation:bob 5.5s ease-in-out infinite;animation-delay:0s;filter:drop-shadow(0 0 14px var(--lime))">🍅</div>
-  <div class="floater" style="top:18%;left:14%;animation:bob 4.8s ease-in-out infinite;animation-delay:.8s;filter:drop-shadow(0 0 14px oklch(84% 0.22 72))">🥚</div>
-  <div class="floater" style="bottom:20%;left:8%;animation:bob 6s ease-in-out infinite;animation-delay:1.5s;filter:drop-shadow(0 0 14px oklch(64% 0.27 25))">🍗</div>
-  <div class="floater" style="top:10%;right:8%;animation:bob 5s ease-in-out infinite;animation-delay:.4s;filter:drop-shadow(0 0 14px oklch(87% 0.28 128))">🥦</div>
-  <div class="floater" style="bottom:25%;right:6%;animation:bob 4.5s ease-in-out infinite;animation-delay:1.2s;filter:drop-shadow(0 0 14px oklch(84% 0.22 72))">🍞</div>
-  <div class="floater" style="top:50%;left:3%;animation:bob 5.8s ease-in-out infinite;animation-delay:2s;filter:drop-shadow(0 0 14px var(--lime))">🧅</div>
+  <!-- Floating produce — transform-only animation -->
+  <div class="floater" style="top:12%;inset-inline-end:7%;animation:bob 5.5s ease-in-out infinite">🍅</div>
+  <div class="floater" style="top:20%;inset-inline-end:15%;animation:bob 4.8s ease-in-out infinite;animation-delay:.9s">🥚</div>
+  <div class="floater" style="bottom:22%;inset-inline-end:9%;animation:bob 6s ease-in-out infinite;animation-delay:1.6s">🍗</div>
+  <div class="floater" style="top:10%;inset-inline-start:8%;animation:bob 5s ease-in-out infinite;animation-delay:.4s">🥦</div>
+  <div class="floater" style="bottom:26%;inset-inline-start:6%;animation:bob 4.5s ease-in-out infinite;animation-delay:1.2s">🍞</div>
+  <div class="floater" style="top:50%;inset-inline-start:3%;animation:bob 5.8s ease-in-out infinite;animation-delay:2s">🧅</div>
 
   <div style="max-width:1280px;margin:0 auto;padding:4rem 1.5rem;width:100%;position:relative;z-index:1">
     <div class="hero-g" style="display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center">
 
-      <!-- Left -->
+      <!-- Right col (RTL = content side) -->
       <div>
         <div class="pill" style="background:oklch(87% 0.28 128 / 0.14);border:1px solid oklch(87% 0.28 128 / 0.3);color:var(--lime);margin-bottom:1.5rem">
-          🏘️ Pakistan's first community grocery platform
+          🏘️ پاکستان کا پہلا کمیونٹی گروسری پلیٹ فارم
         </div>
 
-        <h1 style="font-size:clamp(2.8rem,5.5vw,5rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;margin-bottom:1.375rem">
-          Your society<br>
-          orders together.<br>
-          <span style="color:var(--lime)">Everyone pays</span><br>
-          <span style="color:var(--coral)">mandi price.</span>
+        <h1 style="font-size:clamp(2.6rem,5.5vw,4.75rem);font-weight:700;color:var(--txt);margin-bottom:1.375rem">
+          سوسائٹی مل کر آرڈر کرے،<br>
+          <span style="color:var(--lime)">سب کو منڈی کا بھاؤ</span><br>
+          <span style="color:var(--coral)">ملے گا۔</span>
         </h1>
 
-        <p style="color:var(--muted);font-size:1.15rem;line-height:1.72;max-width:46ch;margin-bottom:2.25rem;font-weight:600">
-          Tomatoes at Rs.&nbsp;45/kg. Chicken at Rs.&nbsp;420/kg. Eggs at Rs.&nbsp;12/piece.
-          When your whole mohalla orders together, you get the price a superstore pays — not the price it charges.
+        <p style="color:var(--muted);font-size:1.1rem;max-width:46ch;margin-bottom:2.25rem;font-weight:600">
+          ٹماٹر Rs.45/کلو۔ مرغی Rs.420/کلو۔ انڈے Rs.12/عدد۔
+          جب پورا محلہ مل کر آرڈر دے تو سپراسٹور والی قیمت ملتی ہے، نہ کہ وہ قیمت جو وہ وصول کرتا ہے۔
         </p>
 
         <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem">
-          <a href="#join" class="btn b-lime" style="font-size:1.05rem;padding:.875rem 2.25rem">Register Your Society ↗</a>
-          <a href="#how"  class="btn b-ghost" style="font-size:1.05rem;padding:.875rem 1.75rem">See how it works</a>
+          <a href="#join" class="btn b-lime"  style="font-size:1.05rem;padding:.875rem 2.25rem">اپنی سوسائٹی رجسٹر کریں ←</a>
+          <a href="#how"  class="btn b-ghost" style="font-size:1.05rem;padding:.875rem 1.75rem">دیکھیں کیسے کام کرتا ہے</a>
         </div>
 
-        <!-- Live counter -->
+        <!-- Live stats -->
         <div style="display:flex;gap:2.5rem;padding:1.25rem 1.5rem;background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:fit-content">
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--lime)" id="fam-count">1,284</div>
-            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Families saving now</div>
+            <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--lime);line-height:1.2" id="fam-count">1,284</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">خاندان ابھی بچت کر رہے ہیں</div>
           </div>
           <div style="width:1px;background:var(--border)"></div>
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--amber)" id="soc-count">47</div>
-            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Societies active</div>
+            <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--amber);line-height:1.2" id="soc-count">47</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">سوسائٹیاں فعال ہیں</div>
           </div>
           <div style="width:1px;background:var(--border)"></div>
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. <span id="saved-count">3.2L</span></div>
-            <div style="font-size:.8rem;color:var(--muted);font-weight:700">Saved this week</div>
+            <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--coral);line-height:1.2">Rs. 3.2L</div>
+            <div style="font-size:.8rem;color:var(--muted);font-weight:700">اس ہفتے کی بچت</div>
           </div>
         </div>
       </div>
 
-      <!-- Right: live order card demo -->
+      <!-- Left col (RTL = demo card side) -->
       <div style="position:relative">
-        <!-- Main card: the "aha" moment — price drops as families join -->
-        <div class="card" style="padding:0;overflow:hidden;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.15),0 24px 48px oklch(0% 0 0 / 0.4)">
-          <!-- Card header -->
+        <div class="card" style="padding:0;overflow:hidden;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.12),0 24px 48px oklch(0% 0 0 / 0.4)">
           <div style="background:var(--lime);padding:1.25rem 1.5rem;display:flex;justify-content:space-between;align-items:center">
             <div>
-              <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--bg)">This Week's Group Order</div>
-              <div style="font-size:.8rem;font-weight:700;color:oklch(25% 0.015 65);margin-top:.15rem">Gulshan Society C — Block 12</div>
+              <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--bg)">اس ہفتے کا گروپ آرڈر</div>
+              <div style="font-size:.8rem;font-weight:700;color:oklch(25% 0.015 65);font-family:'Noto Naskh Arabic',serif">گلشن سوسائٹی سی — بلاک 12</div>
             </div>
-            <div style="background:var(--bg);color:var(--lime);font-family:'Fredoka',sans-serif;font-weight:700;font-size:.8rem;padding:.3rem .75rem;border-radius:100px">🟢 OPEN</div>
+            <div style="background:var(--bg);color:var(--lime);font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.8rem;padding:.3rem .75rem;border-radius:100px">🟢 کھلا ہے</div>
           </div>
 
           <div style="padding:1.5rem;display:flex;flex-direction:column;gap:1.25rem">
@@ -244,19 +304,19 @@
                 <div style="display:flex;align-items:center;gap:.625rem">
                   <span style="font-size:1.75rem">🍅</span>
                   <div>
-                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Tomatoes</div>
-                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Fresh desi — 1kg bag</div>
+                    <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1rem;color:var(--txt)">ٹماٹر</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">تازہ دیسی — 1 کلو</div>
                   </div>
                 </div>
-                <div style="text-align:right">
-                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 120/kg</div>
-                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--lime)">Rs. 45/kg</div>
+                <div style="text-align:left">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">بازار Rs.120/کلو</div>
+                  <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.375rem;color:var(--lime)">Rs.45/کلو</div>
                 </div>
               </div>
               <div class="pt"><div class="pf" style="background:var(--lime)" data-w="68"></div></div>
               <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
-                <span style="color:var(--muted)">34 of 50 families joined</span>
-                <span style="color:var(--lime)">16 spots left!</span>
+                <span style="color:var(--muted)">50 میں سے 34 خاندان شامل</span>
+                <span style="color:var(--lime)">صرف 16 جگہیں باقی!</span>
               </div>
             </div>
 
@@ -266,19 +326,19 @@
                 <div style="display:flex;align-items:center;gap:.625rem">
                   <span style="font-size:1.75rem">🍗</span>
                   <div>
-                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Broiler Chicken</div>
-                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Whole — per kg</div>
+                    <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1rem;color:var(--txt)">مرغی</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">پوری — فی کلو</div>
                   </div>
                 </div>
-                <div style="text-align:right">
-                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 620/kg</div>
-                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--coral)">Rs. 420/kg</div>
+                <div style="text-align:left">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">بازار Rs.620/کلو</div>
+                  <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.375rem;color:var(--coral)">Rs.420/کلو</div>
                 </div>
               </div>
               <div class="pt"><div class="pf" style="background:var(--coral)" data-w="86"></div></div>
               <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
-                <span style="color:var(--muted)">43 of 50 families joined</span>
-                <span style="color:var(--coral)">Almost there!</span>
+                <span style="color:var(--muted)">50 میں سے 43 خاندان شامل</span>
+                <span style="color:var(--coral)">تقریباً بھر گیا!</span>
               </div>
             </div>
 
@@ -288,199 +348,195 @@
                 <div style="display:flex;align-items:center;gap:.625rem">
                   <span style="font-size:1.75rem">🥚</span>
                   <div>
-                    <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt)">Farm Eggs</div>
-                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">Tray of 30</div>
+                    <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1rem;color:var(--txt)">انڈے</div>
+                    <div style="font-size:.75rem;color:var(--muted);font-weight:600">فارم تازہ — 30 عدد</div>
                   </div>
                 </div>
-                <div style="text-align:right">
-                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">Rs. 540</div>
-                  <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.375rem;color:var(--amber)">Rs. 360</div>
+                <div style="text-align:left">
+                  <div style="color:var(--faint);text-decoration:line-through;font-size:.8rem">بازار Rs.540</div>
+                  <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.375rem;color:var(--amber)">Rs.360</div>
                 </div>
               </div>
               <div class="pt"><div class="pf" style="background:var(--amber)" data-w="52"></div></div>
               <div style="display:flex;justify-content:space-between;margin-top:.5rem;font-size:.78rem;font-weight:700">
-                <span style="color:var(--muted)">26 of 50 families joined</span>
-                <span style="color:var(--amber)">Join to lock price</span>
+                <span style="color:var(--muted)">50 میں سے 26 خاندان شامل</span>
+                <span style="color:var(--amber)">قیمت لاک کرنے کے لیے شامل ہوں</span>
               </div>
             </div>
 
-            <a href="#join" class="btn b-lime" style="width:100%;font-size:1rem;padding:.875rem">Join This Order →</a>
-
+            <a href="#join" class="btn b-lime" style="width:100%;font-size:1rem;padding:.875rem">اس آرڈر میں شامل ہوں ←</a>
           </div>
         </div>
 
-        <!-- Floating savings badge -->
-        <div style="position:absolute;top:-18px;right:-18px;background:var(--coral);color:white;font-family:'Fredoka',sans-serif;font-weight:700;font-size:.875rem;padding:.625rem 1rem;border-radius:14px;box-shadow:0 8px 24px oklch(64% 0.27 25 / 0.45);z-index:2;white-space:nowrap">
-          💰 Save up to 65% vs shops
+        <!-- Floating badge -->
+        <div style="position:absolute;top:-18px;inset-inline-start:-18px;background:var(--coral);color:white;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.875rem;padding:.625rem 1rem;border-radius:14px;box-shadow:0 8px 24px oklch(64% 0.27 25 / 0.45);z-index:2;white-space:nowrap">
+          💰 دکان سے 65% تک بچت
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     THE SECRET — HOW BULK PRICE WORKS
+     THE SECRET
 ══════════════════════════════════════ -->
-<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);contain:layout style">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
     <div style="text-align:center;margin-bottom:3.5rem">
-      <p class="label sr" style="margin-bottom:.625rem">The secret</p>
-      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700;letter-spacing:-.02em">When more families order,<br><span style="color:var(--lime)">the price drops for everyone.</span></h2>
-      <p class="sr" style="color:var(--muted);font-size:1.1rem;margin-top:1rem;max-width:52ch;margin-left:auto;margin-right:auto;line-height:1.7">Suppliers give wholesale rates when orders are big. We pool your neighborhood's demand — and pass every rupee of discount straight back to you.</p>
+      <p class="lbl sr" style="margin-bottom:.625rem">راز</p>
+      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700">
+        جتنے زیادہ خاندان، قیمت اتنی کم<br>
+        <span style="color:var(--lime)">سب کی بچت ہوتی ہے۔</span>
+      </h2>
+      <p class="sr" style="color:var(--muted);font-size:1.1rem;margin-top:1rem;max-width:52ch;margin-inline:auto;font-weight:600">
+        سپلائرز بڑے آرڈر پر تھوک کے بھاؤ دیتے ہیں۔ ہم آپ کے محلے کی مانگ اکٹھی کرتے ہیں اور ہر روپیہ بچت سیدھا آپ کو واپس کرتے ہیں۔
+      </p>
     </div>
 
-    <!-- Price drop visual for tomatoes -->
     <div class="sr" style="max-width:860px;margin:0 auto">
-      <div class="card" style="padding:2.5rem;overflow:hidden;position:relative">
-        <div class="orb" style="width:400px;height:400px;background:oklch(87% 0.28 128 / 0.07);top:-100px;right:-100px;filter:blur(60px)"></div>
+      <div class="card" style="padding:2.5rem;position:relative;overflow:hidden">
+        <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,oklch(87% 0.28 128 / 0.07) 0%,transparent 70%);top:-100px;inset-inline-start:-100px"></div>
         <h3 style="font-size:1.5rem;font-weight:700;color:var(--muted);margin-bottom:2rem;position:relative;z-index:1">
-          🍅 Tomatoes — live price drop example
+          🍅 ٹماٹر — قیمت گرنے کی مثال
         </h3>
-        <div style="position:relative;z-index:1">
-          <!-- Price ladder -->
-          <div id="price-demo" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem">
-            <!-- filled by JS -->
-          </div>
-          <p style="color:var(--faint);font-size:.8rem;font-weight:700;margin-top:1.5rem;text-align:center">Price per kg as families join your society's order</p>
-        </div>
+        <div id="price-demo" style="display:grid;grid-template-columns:repeat(5,1fr);gap:.75rem;position:relative;z-index:1"></div>
+        <p style="color:var(--faint);font-size:.8rem;font-weight:700;margin-top:1.5rem;text-align:center">
+          سوسائٹی آرڈر میں خاندانوں کی تعداد بڑھنے سے قیمت فی کلو میں کمی
+        </p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     LIVE COMMUNITY ORDERS
+     LIVE ORDERS
 ══════════════════════════════════════ -->
-<section id="orders" style="padding:5rem 0">
+<section id="orders" style="padding:5rem 0;contain:layout style">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
     <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem">
       <div>
-        <p class="label sr" style="margin-bottom:.5rem">Forming right now</p>
-        <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">Join an active order<br><span style="color:var(--lime)">in your area</span></h2>
+        <p class="lbl sr" style="margin-bottom:.5rem">ابھی بن رہا ہے</p>
+        <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700">
+          اپنے علاقے میں فعال آرڈر میں<br>
+          <span style="color:var(--lime)">ابھی شامل ہوں</span>
+        </h2>
       </div>
-      <a href="#" class="btn b-ghost sr" style="align-self:flex-end;white-space:nowrap">See all cities →</a>
+      <a href="#" class="btn b-ghost sr" style="align-self:flex-end;white-space:nowrap">تمام شہر دیکھیں ←</a>
     </div>
 
     <div class="ord-g sg" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
 
-      <!-- Order card 1 -->
-      <div class="card hover-lift" style="padding:1.5rem;position:relative">
+      <!-- Card 1 -->
+      <div class="card hover-lift" style="padding:1.5rem">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">Gulshan-e-Iqbal Block 7</div>
-            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Karachi · Closes Friday 6pm</div>
+            <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--txt)">گلشن اقبال بلاک 7</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;font-family:'Noto Naskh Arabic',serif;margin-top:.2rem">کراچی · جمعہ شام 6 بجے بند</div>
           </div>
-          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🟢 OPEN</div>
+          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap;font-family:'Noto Naskh Arabic',serif">🟢 کھلا ہے</div>
         </div>
-
         <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🍅 Tomatoes · Rs.45/kg</span>
+              <span style="color:var(--muted)">🍅 ٹماٹر · Rs.45/کلو</span>
               <span style="color:var(--lime)">38/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--lime)" data-w="76"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🥦 Broccoli · Rs.80/kg</span>
+              <span style="color:var(--muted)">🥦 بروکلی · Rs.80/کلو</span>
               <span style="color:var(--sky)">22/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--sky)" data-w="44"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🍞 Bread · Rs.55/loaf</span>
+              <span style="color:var(--muted)">🍞 ڈبل روٹی · Rs.55</span>
               <span style="color:var(--amber)">45/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--amber)" data-w="90"></div></div>
           </div>
         </div>
-
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:.8rem;color:var(--faint);font-weight:700">43 families joined</div>
-          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">Join Order</a>
+          <div style="font-size:.8rem;color:var(--faint);font-weight:700">43 خاندان شامل ہیں</div>
+          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">شامل ہوں</a>
         </div>
       </div>
 
-      <!-- Order card 2 — featured -->
+      <!-- Card 2 — featured -->
       <div class="card hover-lift" style="padding:1.5rem;border-color:var(--lime);box-shadow:0 0 0 1px var(--lime),0 0 40px oklch(87% 0.28 128 / 0.15)">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">DHA Phase 5 Street 8</div>
-            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Lahore · Closes Thursday 8pm</div>
+            <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--txt)">ڈی ایچ اے فیز 5 گلی 8</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;font-family:'Noto Naskh Arabic',serif;margin-top:.2rem">لاہور · جمعرات رات 8 بجے بند</div>
           </div>
-          <div style="background:var(--lime);color:var(--bg);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🔥 ALMOST FULL</div>
+          <div style="background:var(--lime);color:var(--bg);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap;font-family:'Noto Naskh Arabic',serif">🔥 تقریباً بھر گیا</div>
         </div>
-
         <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🍗 Chicken · Rs.420/kg</span>
+              <span style="color:var(--muted)">🍗 مرغی · Rs.420/کلو</span>
               <span style="color:var(--coral)">48/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--coral)" data-w="96"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🥚 Eggs · Rs.12/piece</span>
+              <span style="color:var(--muted)">🥚 انڈے · Rs.12/عدد</span>
               <span style="color:var(--amber)">46/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--amber)" data-w="92"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🧅 Onions · Rs.30/kg</span>
+              <span style="color:var(--muted)">🧅 پیاز · Rs.30/کلو</span>
               <span style="color:var(--lime)">47/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--lime)" data-w="94"></div></div>
           </div>
         </div>
-
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:.8rem;color:var(--lime);font-weight:800">Only 2 spots left!</div>
-          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">Join Now →</a>
+          <div style="font-size:.8rem;color:var(--lime);font-weight:800">صرف 2 جگہیں باقی!</div>
+          <a href="#join" class="btn b-lime" style="padding:.55rem 1.25rem;font-size:.875rem">ابھی شامل ہوں ←</a>
         </div>
       </div>
 
-      <!-- Order card 3 -->
+      <!-- Card 3 -->
       <div class="card hover-lift" style="padding:1.5rem">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.25rem">
           <div>
-            <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--txt)">Bahria Town Phase 7</div>
-            <div style="font-size:.775rem;color:var(--muted);font-weight:600;margin-top:.2rem">Karachi · Closes Saturday 12pm</div>
+            <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--txt)">بحریہ ٹاؤن فیز 7</div>
+            <div style="font-size:.775rem;color:var(--muted);font-weight:600;font-family:'Noto Naskh Arabic',serif;margin-top:.2rem">کراچی · ہفتہ دوپہر 12 بجے بند</div>
           </div>
-          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap">🟢 OPEN</div>
+          <div style="background:oklch(87% 0.28 128 / 0.15);color:var(--lime);font-size:.75rem;font-weight:800;padding:.25rem .625rem;border-radius:100px;white-space:nowrap;font-family:'Noto Naskh Arabic',serif">🟢 کھلا ہے</div>
         </div>
-
         <div style="display:flex;flex-direction:column;gap:.875rem;margin-bottom:1.375rem">
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🥬 Patta Gobhi · Rs.40/kg</span>
+              <span style="color:var(--muted)">🥬 پتہ گوبھی · Rs.40/کلو</span>
               <span style="color:var(--lime)">19/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--lime)" data-w="38"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🥔 Potatoes · Rs.35/kg</span>
+              <span style="color:var(--muted)">🥔 آلو · Rs.35/کلو</span>
               <span style="color:var(--violet)">31/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--violet)" data-w="62"></div></div>
           </div>
           <div>
             <div style="display:flex;justify-content:space-between;font-size:.85rem;font-weight:700;margin-bottom:.4rem">
-              <span style="color:var(--muted)">🍗 Chicken · Rs.420/kg</span>
+              <span style="color:var(--muted)">🍗 مرغی · Rs.420/کلو</span>
               <span style="color:var(--coral)">27/50</span>
             </div>
             <div class="pt"><div class="pf" style="background:var(--coral)" data-w="54"></div></div>
           </div>
         </div>
-
         <div style="display:flex;justify-content:space-between;align-items:center">
-          <div style="font-size:.8rem;color:var(--faint);font-weight:700">Needs 19 more families</div>
-          <a href="#join" class="btn b-ghost" style="padding:.55rem 1.25rem;font-size:.875rem">Join Order</a>
+          <div style="font-size:.8rem;color:var(--faint);font-weight:700">19 مزید خاندانوں کی ضرورت</div>
+          <a href="#join" class="btn b-ghost" style="padding:.55rem 1.25rem;font-size:.875rem">شامل ہوں</a>
         </div>
       </div>
 
@@ -489,67 +545,63 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     THIS WEEK'S PRODUCTS + PRICES
+     PRODUCTS THIS WEEK
 ══════════════════════════════════════ -->
-<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);contain:layout style">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
-    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:2.5rem">
-      <div>
-        <p class="label sr" style="margin-bottom:.5rem">This week's list</p>
-        <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">What we're delivering<br><span style="color:var(--lime)">this week</span></h2>
-      </div>
+    <div style="margin-bottom:2.5rem">
+      <p class="lbl sr" style="margin-bottom:.5rem">اس ہفتے کی فہرست</p>
+      <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700">
+        اس ہفتے کیا ڈیلیور ہو رہا ہے<br>
+        <span style="color:var(--lime)">اور کتنی بچت؟</span>
+      </h2>
     </div>
 
     <div class="pr-g sg" style="display:grid;grid-template-columns:repeat(5,1fr);gap:1rem">
 
-      <!-- Tomatoes -->
-      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(64% 0.27 25 / 0.12) inset">
-        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px oklch(64% 0.27 25))">🍅</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Tomatoes</div>
-        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Desi · per kg</div>
-        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 120</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. 45</div>
-        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 63%</div>
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center">
+        <div style="font-size:3.25rem;margin-bottom:.75rem">🍅</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">ٹماٹر</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">دیسی · فی کلو</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">بازار Rs.120</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs.45</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">63% بچت</div>
       </div>
 
-      <!-- Chicken -->
-      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(72% 0.24 290 / 0.1) inset">
-        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--coral))">🍗</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Chicken</div>
-        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Whole · per kg</div>
-        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 620</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs. 420</div>
-        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 32%</div>
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center">
+        <div style="font-size:3.25rem;margin-bottom:.75rem">🍗</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">مرغی</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">پوری · فی کلو</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">بازار Rs.620</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--coral)">Rs.420</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">32% بچت</div>
       </div>
 
-      <!-- Eggs -->
-      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(84% 0.22 72 / 0.10) inset">
-        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--amber))">🥚</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Eggs</div>
-        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Farm fresh · 30 pcs</div>
-        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 540</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--amber)">Rs. 360</div>
-        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 33%</div>
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center">
+        <div style="font-size:3.25rem;margin-bottom:.75rem">🥚</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">انڈے</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">فارم تازہ · 30 عدد</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">بازار Rs.540</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--amber)">Rs.360</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">33% بچت</div>
       </div>
 
-      <!-- Bread -->
-      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(87% 0.28 128 / 0.08) inset">
-        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--lime))">🍞</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Bread</div>
-        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Sliced loaf · each</div>
-        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 80</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--lime)">Rs. 55</div>
-        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 31%</div>
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center">
+        <div style="font-size:3.25rem;margin-bottom:.75rem">🍞</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">ڈبل روٹی</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">سلائسڈ · ایک</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">بازار Rs.80</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--lime)">Rs.55</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">31% بچت</div>
       </div>
 
-      <!-- Onions / mixed veg -->
-      <div class="card hover-lift" style="padding:1.375rem;text-align:center;box-shadow:0 0 30px oklch(78% 0.20 220 / 0.10) inset">
-        <div style="font-size:3.25rem;margin-bottom:.75rem;filter:drop-shadow(0 0 12px var(--sky))">🧅</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">Onions</div>
-        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">Red · per kg</div>
-        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">Market Rs. 80</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.75rem;color:var(--sky)">Rs. 30</div>
-        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">Save 63%</div>
+      <div class="card hover-lift" style="padding:1.375rem;text-align:center">
+        <div style="font-size:3.25rem;margin-bottom:.75rem">🧅</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.05rem;color:var(--txt);margin-bottom:.3rem">پیاز</div>
+        <div style="font-size:.78rem;color:var(--muted);font-weight:700;margin-bottom:.875rem">لال · فی کلو</div>
+        <div style="color:var(--faint);text-decoration:line-through;font-size:.82rem;margin-bottom:.2rem">بازار Rs.80</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.75rem;color:var(--sky)">Rs.30</div>
+        <div style="font-size:.75rem;color:var(--lime);font-weight:800;margin-top:.3rem">63% بچت</div>
       </div>
 
     </div>
@@ -559,45 +611,45 @@
 <!-- ══════════════════════════════════════
      HOW IT WORKS
 ══════════════════════════════════════ -->
-<section id="how" style="padding:5rem 0">
+<section id="how" style="padding:5rem 0;contain:layout style">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
     <div style="text-align:center;margin-bottom:3.5rem">
-      <p class="label sr" style="margin-bottom:.625rem">Four steps</p>
-      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700;letter-spacing:-.02em">How it works</h2>
+      <p class="lbl sr" style="margin-bottom:.625rem">چار آسان مراحل</p>
+      <h2 class="sr" style="font-size:clamp(2rem,4vw,3.25rem);font-weight:700">یہ کیسے کام کرتا ہے</h2>
     </div>
 
     <div class="steps-g sg" style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem">
 
       <div class="card" style="padding:2rem;position:relative;overflow:hidden">
-        <div class="orb" style="width:200px;height:200px;background:oklch(87% 0.28 128 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--lime);line-height:1;margin-bottom:1rem;position:relative;z-index:1">01</div>
+        <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,oklch(87% 0.28 128 / 0.09) 0%,transparent 70%);top:-50px;inset-inline-start:-50px"></div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:4rem;color:var(--lime);line-height:1;margin-bottom:1rem;position:relative;z-index:1">01</div>
         <div style="font-size:2.5rem;margin-bottom:1rem">🏘️</div>
-        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Register Your Society</h3>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">One person from your society or apartment block signs up. Takes 2 minutes.</p>
+        <h3 style="font-size:1.2rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">سوسائٹی رجسٹر کریں</h3>
+        <p style="color:var(--muted);font-size:.9rem;font-weight:600">آپ کی سوسائٹی سے ایک شخص سائن اپ کرے۔ صرف 2 منٹ لگتے ہیں۔</p>
       </div>
 
       <div class="card" style="padding:2rem;position:relative;overflow:hidden">
-        <div class="orb" style="width:200px;height:200px;background:oklch(84% 0.22 72 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--amber);line-height:1;margin-bottom:1rem;position:relative;z-index:1">02</div>
+        <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,oklch(84% 0.22 72 / 0.09) 0%,transparent 70%);top:-50px;inset-inline-start:-50px"></div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:4rem;color:var(--amber);line-height:1;margin-bottom:1rem;position:relative;z-index:1">02</div>
         <div style="font-size:2.5rem;margin-bottom:1rem">📋</div>
-        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Neighbors Add Their List</h3>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Each family selects what they need from this week's availability: veg, chicken, eggs, bread.</p>
+        <h3 style="font-size:1.2rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">پڑوسی اپنی فہرست دیں</h3>
+        <p style="color:var(--muted);font-size:.9rem;font-weight:600">ہر خاندان اس ہفتے کی دستیابی میں سے اپنی ضرورت کی اشیاء منتخب کرتا ہے۔</p>
       </div>
 
       <div class="card" style="padding:2rem;position:relative;overflow:hidden">
-        <div class="orb" style="width:200px;height:200px;background:oklch(64% 0.27 25 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--coral);line-height:1;margin-bottom:1rem;position:relative;z-index:1">03</div>
+        <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,oklch(64% 0.27 25 / 0.09) 0%,transparent 70%);top:-50px;inset-inline-start:-50px"></div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:4rem;color:var(--coral);line-height:1;margin-bottom:1rem;position:relative;z-index:1">03</div>
         <div style="font-size:2.5rem;margin-bottom:1rem">⚡</div>
-        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Order Hits Minimum</h3>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Once enough families join, the order is placed directly with suppliers at wholesale rates.</p>
+        <h3 style="font-size:1.2rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">آرڈر کم از کم تعداد تک پہنچے</h3>
+        <p style="color:var(--muted);font-size:.9rem;font-weight:600">جب کافی خاندان شامل ہوں تو آرڈر سیدھا تھوک کے بھاؤ پر سپلائرز کو جاتا ہے۔</p>
       </div>
 
       <div class="card" style="padding:2rem;position:relative;overflow:hidden">
-        <div class="orb" style="width:200px;height:200px;background:oklch(72% 0.24 290 / 0.08);top:-50px;right:-50px;filter:blur(40px)"></div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:4rem;color:var(--violet);line-height:1;margin-bottom:1rem;position:relative;z-index:1">04</div>
+        <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,oklch(72% 0.24 290 / 0.09) 0%,transparent 70%);top:-50px;inset-inline-start:-50px"></div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:4rem;color:var(--violet);line-height:1;margin-bottom:1rem;position:relative;z-index:1">04</div>
         <div style="font-size:2.5rem;margin-bottom:1rem">🚚</div>
-        <h3 style="font-size:1.25rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">Delivered to Your Gate</h3>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.65;font-weight:600">Fresh groceries arrive at your society gate. You collect. You saved Rs.&nbsp;thousands. Simple.</p>
+        <h3 style="font-size:1.2rem;font-weight:700;color:var(--txt);margin-bottom:.625rem">آپ کے گیٹ پر ڈیلیوری</h3>
+        <p style="color:var(--muted);font-size:.9rem;font-weight:600">تازہ گروسری سوسائٹی گیٹ پر پہنچ جاتی ہے۔ آپ لیں۔ ہزاروں روپے بچائیں۔ بس۔</p>
       </div>
 
     </div>
@@ -607,59 +659,59 @@
 <!-- ══════════════════════════════════════
      TESTIMONIALS
 ══════════════════════════════════════ -->
-<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+<section style="background:var(--bg2);padding:5rem 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);contain:layout style">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
-    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5rem">
-      <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em">Real families.<br><span style="color:var(--lime)">Real savings.</span></h2>
-    </div>
+    <h2 class="sr" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;margin-bottom:2.5rem">
+      اصل خاندان۔<br><span style="color:var(--lime)">اصل بچت۔</span>
+    </h2>
 
-    <div class="sg" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
+    <div class="testi-g sg" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem">
 
       <div class="card" style="padding:1.75rem">
         <div style="color:var(--lime);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
-        <p style="color:var(--txt);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
-          "Hum 45 gharon ne milke aloo pyaz order kiye. Mandi se seedha delivery, Rs.&nbsp;28/kg mein. Dukan par Rs.&nbsp;80 tha. Allah kasam ye toh kamaal hai!"
+        <p style="color:var(--txt);font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
+          "ہم 45 گھروں نے مل کے آلو پیاز آرڈر کیے۔ منڈی سے سیدھی ڈیلیوری، Rs.28/کلو میں۔ دکان پر Rs.80 تھا۔ اللہ قسم یہ تو کمال ہے!"
         </p>
         <div style="display:flex;align-items:center;gap:.75rem">
           <div style="width:42px;height:42px;background:oklch(87% 0.28 128 / 0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👩</div>
           <div>
-            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--txt)">Ammi Fatima</p>
-            <p style="font-size:.775rem;color:var(--muted);font-weight:600">Gulshan-e-Iqbal, Karachi</p>
+            <p style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.975rem;color:var(--txt)">امی فاطمہ</p>
+            <p style="font-size:.775rem;color:var(--muted);font-weight:600">گلشن اقبال، کراچی</p>
           </div>
-          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--lime)">Rs.&nbsp;2,400<br><span style="font-size:.72rem;color:var(--faint)">saved / month</span></div>
+          <div style="margin-inline-start:auto;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.1rem;color:var(--lime);text-align:left">Rs.2,400<br><span style="font-size:.72rem;color:var(--faint)">بچت/مہینہ</span></div>
         </div>
       </div>
 
       <div style="padding:1.75rem;background:var(--lime);border-radius:20px">
         <div style="color:var(--bg);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
-        <p style="color:var(--bg);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:700">
-          "I run our society WhatsApp group. Now instead of just memes, we're saving Rs.&nbsp;15,000 a month as a community.
-          Chicken at Rs.&nbsp;420 vs Rs.&nbsp;620 in shops — this is the difference."
+        <p style="color:var(--bg);font-size:.975rem;margin-bottom:1.375rem;font-weight:700">
+          "ہمارے سوسائٹی واٹس ایپ گروپ کو اب ایک کام کا کام مل گیا۔ مل کر Rs.15,000 ماہانہ بچا رہے ہیں۔ مرغی Rs.420 بمقابلہ دکان پر Rs.620 — یہ فرق ہے۔"
         </p>
         <div style="display:flex;align-items:center;gap:.75rem">
           <div style="width:42px;height:42px;background:oklch(68% 0.26 128 / 0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👨</div>
           <div>
-            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--bg)">Usman Bhai</p>
-            <p style="font-size:.775rem;color:oklch(30% 0.015 65);font-weight:700">DHA Phase 5, Lahore</p>
+            <p style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.975rem;color:var(--bg)">عثمان بھائی</p>
+            <p style="font-size:.775rem;color:oklch(30% 0.015 65);font-weight:700">ڈی ایچ اے فیز 5، لاہور</p>
           </div>
-          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--bg)">Rs.&nbsp;15K<br><span style="font-size:.72rem;opacity:.6">saved / month</span></div>
+          <div style="margin-inline-start:auto;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.1rem;color:var(--bg);text-align:left">Rs.15K<br><span style="font-size:.72rem;opacity:.6">بچت/مہینہ</span></div>
         </div>
       </div>
 
       <div class="card" style="padding:1.75rem">
         <div style="color:var(--lime);font-size:1.1rem;margin-bottom:.75rem">★★★★★</div>
-        <p style="color:var(--txt);line-height:1.72;font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
-          "Eggs Rs.&nbsp;12/piece bulk mein — shop par Rs.&nbsp;22 tak ja raha tha. Bread bhi sasta. Har hafte Rs.&nbsp;800-1000 bachte hain sirf grocery mein. Shukar hai."
+        <p style="color:var(--txt);font-size:.975rem;margin-bottom:1.375rem;font-weight:600">
+          "انڈے Rs.12/عدد بلک میں، دکان پر Rs.22 تک جا رہا تھا۔ ڈبل روٹی بھی سستی۔ ہر ہفتے Rs.800-1000 بچتے ہیں صرف گروسری میں۔ شکر ہے۔"
         </p>
         <div style="display:flex;align-items:center;gap:.75rem">
           <div style="width:42px;height:42px;background:oklch(84% 0.22 72 / 0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0">👩</div>
           <div>
-            <p style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:.975rem;color:var(--txt)">Hina Baji</p>
-            <p style="font-size:.775rem;color:var(--muted);font-weight:600">Bahria Town, Islamabad</p>
+            <p style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:.975rem;color:var(--txt)">ہینا باجی</p>
+            <p style="font-size:.775rem;color:var(--muted);font-weight:600">بحریہ ٹاؤن، اسلام آباد</p>
           </div>
-          <div style="margin-left:auto;font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.1rem;color:var(--amber)">Rs.&nbsp;3,600<br><span style="font-size:.72rem;color:var(--faint)">saved / month</span></div>
+          <div style="margin-inline-start:auto;font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1.1rem;color:var(--amber);text-align:left">Rs.3,600<br><span style="font-size:.72rem;color:var(--faint)">بچت/مہینہ</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -667,52 +719,59 @@
 <!-- ══════════════════════════════════════
      JOIN CTA
 ══════════════════════════════════════ -->
-<section id="join" style="padding:6rem 0;position:relative;overflow:hidden">
-  <div class="orb" style="width:800px;height:800px;background:oklch(87% 0.28 128 / 0.11);top:50%;left:50%;transform:translate(-50%,-50%);filter:blur(100px)"></div>
-  <div class="orb" style="width:500px;height:500px;background:oklch(64% 0.27 25 / 0.09);bottom:-150px;right:-100px;filter:blur(80px)"></div>
+<section id="join" style="padding:6rem 0;position:relative;overflow:hidden;contain:layout style">
+  <div class="orb" style="width:800px;height:800px;background:radial-gradient(circle,oklch(87% 0.28 128 / 0.10) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="orb" style="width:500px;height:500px;background:radial-gradient(circle,oklch(64% 0.27 25 / 0.08) 0%,transparent 70%);bottom:-150px;inset-inline-end:-100px"></div>
 
   <div style="max-width:760px;margin:0 auto;padding:0 1.5rem;text-align:center;position:relative;z-index:1">
     <div class="pill sr" style="background:oklch(87% 0.28 128 / 0.14);border:1px solid oklch(87% 0.28 128 / 0.3);color:var(--lime);margin-bottom:1.5rem;display:inline-flex">
-      🏘️ Free to join. No fees. No subscription.
+      🏘️ مفت شامل ہوں۔ کوئی فیس نہیں۔ کوئی سبسکرپشن نہیں۔
     </div>
-    <h2 class="sr" style="font-size:clamp(2.25rem,5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:1.25rem">
-      Start your society's<br><span style="color:var(--lime)">first bulk order</span><br>this week.
+    <h2 class="sr" style="font-size:clamp(2.25rem,5vw,4rem);font-weight:700;line-height:1.5;margin-bottom:1.25rem">
+      اس ہفتے اپنی سوسائٹی کا<br>
+      <span style="color:var(--lime)">پہلا بلک آرڈر</span><br>
+      شروع کریں۔
     </h2>
-    <p class="sr" style="color:var(--muted);font-size:1.1rem;line-height:1.72;margin-bottom:2.5rem;font-weight:600">
-      You need at least 20 families. Most societies are already at 30-50. Register, share the link in your WhatsApp group, and watch the savings add up.
+    <p class="sr" style="color:var(--muted);font-size:1.1rem;margin-bottom:2.5rem;font-weight:600">
+      کم از کم 20 خاندانوں کی ضرورت ہے۔ زیادہ تر سوسائٹیاں پہلے سے 30-50 ہیں۔ رجسٹر کریں، واٹس ایپ گروپ میں لنک شیئر کریں، اور بچت دیکھیں۔
     </p>
 
-    <!-- Registration form -->
-    <div class="sr card" style="padding:2rem;text-align:left;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.12),0 24px 50px oklch(0% 0 0 / 0.4)">
-      <h3 style="font-size:1.35rem;font-weight:700;color:var(--txt);margin-bottom:1.5rem;text-align:center">Register Your Society</h3>
+    <div class="sr card" style="padding:2rem;text-align:right;box-shadow:0 0 60px oklch(87% 0.28 128 / 0.12),0 24px 50px oklch(0% 0 0 / 0.4)">
+      <h3 style="font-size:1.35rem;font-weight:700;color:var(--txt);margin-bottom:1.5rem;text-align:center">اپنی سوسائٹی رجسٹر کریں</h3>
+
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
         <div>
-          <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Your Name</label>
-          <input type="text" placeholder="Ahmed Khan" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+          <label style="font-size:.82rem;font-weight:800;color:var(--muted);display:block;margin-bottom:.4rem">آپ کا نام</label>
+          <input type="text" placeholder="احمد خان" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Noto Naskh Arabic',serif;font-size:.95rem;outline:none;transition:border-color 150ms;text-align:right;direction:rtl" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
         </div>
         <div>
-          <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Phone</label>
-          <input type="tel" placeholder="0300-1234567" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+          <label style="font-size:.82rem;font-weight:800;color:var(--muted);display:block;margin-bottom:.4rem">فون نمبر</label>
+          <input type="tel" placeholder="0300-1234567" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Noto Naskh Arabic',serif;font-size:.95rem;outline:none;transition:border-color 150ms;direction:ltr;text-align:left" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
         </div>
       </div>
+
       <div style="margin-bottom:1rem">
-        <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Society / Area Name</label>
-        <input type="text" placeholder="e.g. Gulshan-e-Iqbal Block 12, Karachi" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
+        <label style="font-size:.82rem;font-weight:800;color:var(--muted);display:block;margin-bottom:.4rem">سوسائٹی / علاقے کا نام</label>
+        <input type="text" placeholder="مثلاً: گلشن اقبال بلاک 12، کراچی" style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Noto Naskh Arabic',serif;font-size:.95rem;outline:none;transition:border-color 150ms;text-align:right;direction:rtl" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'" />
       </div>
+
       <div style="margin-bottom:1.375rem">
-        <label style="font-size:.82rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.4rem">Approx. families in your society</label>
-        <select style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Nunito',sans-serif;font-size:.95rem;outline:none;appearance:none;cursor:pointer;transition:border-color 150ms" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'">
-          <option value="">Select number of families</option>
-          <option>20-30 families</option>
-          <option>30-50 families</option>
-          <option>50-100 families</option>
-          <option>100+ families</option>
+        <label style="font-size:.82rem;font-weight:800;color:var(--muted);display:block;margin-bottom:.4rem">سوسائٹی میں تقریباً کتنے خاندان ہیں؟</label>
+        <select style="width:100%;background:var(--bg3);border:1.5px solid var(--border);border-radius:10px;padding:.75rem 1rem;color:var(--txt);font-family:'Noto Naskh Arabic',serif;font-size:.95rem;outline:none;cursor:pointer;transition:border-color 150ms;direction:rtl;text-align:right" onfocus="this.style.borderColor='var(--lime)'" onblur="this.style.borderColor='var(--border)'">
+          <option value="">تعداد منتخب کریں</option>
+          <option>20-30 خاندان</option>
+          <option>30-50 خاندان</option>
+          <option>50-100 خاندان</option>
+          <option>100 سے زیادہ خاندان</option>
         </select>
       </div>
+
       <button class="btn b-lime" style="width:100%;font-size:1.05rem;padding:.9375rem">
-        Register My Society — It's Free →
+        اپنی سوسائٹی رجسٹر کریں — مفت ہے ←
       </button>
-      <p style="text-align:center;font-size:.8rem;color:var(--faint);font-weight:700;margin-top:1rem">No fees. No subscription. We earn a small margin from suppliers — not from you.</p>
+      <p style="text-align:center;font-size:.8rem;color:var(--faint);font-weight:700;margin-top:1rem">
+        کوئی فیس نہیں۔ کوئی سبسکرپشن نہیں۔ ہم سپلائرز سے معمولی منافع کماتے ہیں — آپ سے نہیں۔
+      </p>
     </div>
   </div>
 </section>
@@ -723,13 +782,14 @@
 <footer style="background:var(--bg2);border-top:1px solid var(--border);padding:3.5rem 0 2rem">
   <div style="max-width:1280px;margin:0 auto;padding:0 1.5rem">
     <div class="footer-g" style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2.5rem">
+
       <div>
         <div style="display:flex;align-items:center;gap:.625rem;margin-bottom:1rem">
           <div style="width:38px;height:38px;background:var(--lime);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem">🧺</div>
-          <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1.15rem;color:var(--txt)">Apna Sasta Bazaar</div>
+          <div style="font-family:'Noto Nastaliq Urdu',serif;font-weight:700;font-size:1.1rem;color:var(--txt)">اپنا سستا بازار</div>
         </div>
-        <p style="color:var(--muted);font-size:.9rem;line-height:1.7;max-width:32ch;font-weight:600;margin-bottom:1.5rem">
-          Community bulk buying for fresh groceries. Fruits, vegetables, chicken, eggs, bread — at prices your neighborhood deserves.
+        <p style="color:var(--muted);font-size:.9rem;max-width:32ch;font-weight:600;margin-bottom:1.5rem">
+          کمیونٹی بلک خریداری — تازہ گروسری، پھل، سبزی، مرغی، انڈے، روٹی، وہ قیمت جس کے آپ کا محلہ حقدار ہے۔
         </p>
         <div style="display:flex;gap:.625rem">
           <a href="#" style="width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background 140ms" onmouseover="this.style.background='var(--lime)'" onmouseout="this.style.background='var(--bg3)'">📘</a>
@@ -737,101 +797,127 @@
           <a href="#" style="width:36px;height:36px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.9rem;text-decoration:none;transition:background 140ms" onmouseover="this.style.background='var(--lime)'" onmouseout="this.style.background='var(--bg3)'">💬</a>
         </div>
       </div>
+
       <div>
-        <h4 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">Quick Links</h4>
+        <h4 style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">فوری لنکس</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:.625rem">
-          <li><a href="#orders" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Live Orders</a></li>
-          <li><a href="#how"    style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">How it Works</a></li>
-          <li><a href="#join"   style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Register Society</a></li>
-          <li><a href="#"       style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Become a Supplier</a></li>
+          <li><a href="#orders" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">لائیو آرڈرز</a></li>
+          <li><a href="#how"    style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">یہ کیسے کام کرتا ہے</a></li>
+          <li><a href="#join"   style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">سوسائٹی رجسٹر کریں</a></li>
+          <li><a href="#"       style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">سپلائر بنیں</a></li>
         </ul>
       </div>
+
       <div>
-        <h4 style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">Cities</h4>
+        <h4 style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:1rem;color:var(--txt);margin-bottom:1rem">شہر</h4>
         <ul style="list-style:none;display:flex;flex-direction:column;gap:.625rem">
-          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Karachi</a></li>
-          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Lahore</a></li>
-          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Islamabad</a></li>
-          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">Faisalabad</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">کراچی</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">لاہور</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">اسلام آباد</a></li>
+          <li><a href="#" style="color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:700;transition:color 140ms" onmouseover="this.style.color='var(--lime)'" onmouseout="this.style.color='var(--muted)'">فیصل آباد</a></li>
         </ul>
       </div>
+
     </div>
     <div style="border-top:1px solid var(--border);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem">
-      <p style="color:var(--faint);font-size:.825rem;font-weight:700">© 2024 Apna Sasta Bazaar. Made with ❤️ in Pakistan.</p>
-      <p style="color:var(--faint);font-size:.825rem;font-weight:700">No subscription fees. We earn from suppliers, not from you.</p>
+      <p style="color:var(--faint);font-size:.825rem;font-weight:700">© 2024 اپنا سستا بازار۔ پاکستان میں ❤️ کے ساتھ بنایا گیا۔</p>
+      <p style="color:var(--faint);font-size:.825rem;font-weight:700">کوئی سبسکرپشن فیس نہیں۔ ہم سپلائرز سے کماتے ہیں، آپ سے نہیں۔</p>
     </div>
   </div>
 </footer>
 
 <script>
-// ── Animate progress bars on entry ──
-const pbObs = new IntersectionObserver(entries => {
+// ── Unified IntersectionObserver — one instance for everything ──
+const io = new IntersectionObserver((entries) => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.querySelectorAll('.pf[data-w]').forEach(bar => {
-        setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, 200);
-      });
-      pbObs.unobserve(e.target);
+    if (!e.isIntersecting) return;
+
+    const t = e.target;
+
+    // scroll reveal
+    if (t.classList.contains('sr') || t.classList.contains('sg')) {
+      t.classList.add('in');
     }
-  });
-}, { threshold: 0.2 });
-document.querySelectorAll('.pf[data-w]').forEach(b => { b.style.width = '0%'; pbObs.observe(b.closest('section') || b.parentElement.parentElement); });
-// Trigger on the hero card immediately
-setTimeout(() => {
-  document.querySelectorAll('.hero .pf[data-w], .card .pf[data-w]').forEach(b => {
-    b.style.width = b.dataset.w + '%';
-  });
-}, 600);
 
-// ── Scroll reveal ──
-const srObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); srObs.unobserve(e.target); } });
-}, { threshold: 0.08, rootMargin: '-24px' });
-document.querySelectorAll('.sr, .sg').forEach(el => srObs.observe(el));
+    // progress bars — animate widths
+    t.querySelectorAll('.pf[data-w]').forEach(bar => {
+      requestAnimationFrame(() => { bar.style.width = bar.dataset.w + '%'; });
+    });
 
-// ── Price ladder (5 tiers) ──
-const ladder = [
-  { fam: '1-9',   price: 120, col: 'var(--faint)' },
-  { fam: '10-19', price: 90,  col: 'var(--coral)' },
-  { fam: '20-29', price: 70,  col: 'var(--amber)' },
-  { fam: '30-39', price: 55,  col: 'var(--sky)' },
-  { fam: '40-50', price: 45,  col: 'var(--lime)' },
+    io.unobserve(t);
+  });
+}, { threshold: 0.08, rootMargin: '-20px' });
+
+// Observe all targets at once
+document.querySelectorAll('.sr, .sg').forEach(el => io.observe(el));
+
+// Observe sections for progress bars
+document.querySelectorAll('section, .card').forEach(el => {
+  if (el.querySelector('.pf[data-w]')) io.observe(el);
+});
+
+// Hero card bars: fire after short delay once visible
+const heroPbObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    setTimeout(() => {
+      e.target.querySelectorAll('.pf[data-w]').forEach(b => { b.style.width = b.dataset.w + '%'; });
+    }, 500);
+    heroPbObs.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+const heroCard = document.querySelector('.hero-g .card');
+if (heroCard) heroPbObs.observe(heroCard);
+
+// ── Price ladder ──
+const tiers = [
+  { fam: '1-9 خاندان',   price: 120, col: 'var(--faint)' },
+  { fam: '10-19 خاندان', price: 90,  col: 'var(--coral)' },
+  { fam: '20-29 خاندان', price: 70,  col: 'var(--amber)' },
+  { fam: '30-39 خاندان', price: 55,  col: 'var(--sky)'   },
+  { fam: '40-50 خاندان', price: 45,  col: 'var(--lime)'  },
 ];
 const demo = document.getElementById('price-demo');
 if (demo) {
-  ladder.forEach((tier, i) => {
+  tiers.forEach((tier, i) => {
     const col = document.createElement('div');
     col.innerHTML = `
-      <div style="text-align:center;padding:1.25rem .75rem;background:var(--bg3);border-radius:14px;border:1px solid var(--border);transition:transform 200ms">
-        <div style="font-size:.78rem;font-weight:800;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.625rem">${tier.fam} families</div>
-        <div style="font-family:'Fredoka',sans-serif;font-weight:700;font-size:${1.75 + i * 0.25}rem;color:${tier.col};line-height:1">Rs.${tier.price}</div>
-        <div style="font-size:.72rem;font-weight:700;color:var(--faint);margin-top:.3rem">per kg</div>
-        ${i === 4 ? '<div style="margin-top:.625rem;background:var(--lime);color:var(--bg);font-size:.72rem;font-weight:800;padding:.2rem .5rem;border-radius:100px;display:inline-block">YOU GET THIS</div>' : ''}
+      <div style="text-align:center;padding:1.25rem .75rem;background:var(--bg3);border-radius:14px;border:1px solid var(--border)">
+        <div style="font-size:.78rem;font-weight:700;color:var(--faint);margin-bottom:.625rem;font-family:'Noto Naskh Arabic',serif">${tier.fam}</div>
+        <div style="font-family:'Noto Naskh Arabic',serif;font-weight:700;font-size:${1.6 + i * 0.22}rem;color:${tier.col};line-height:1.2">Rs.${tier.price}</div>
+        <div style="font-size:.72rem;font-weight:700;color:var(--faint);margin-top:.3rem;font-family:'Noto Naskh Arabic',serif">فی کلو</div>
+        ${i === 4 ? '<div style="margin-top:.625rem;background:var(--lime);color:var(--bg);font-size:.72rem;font-weight:800;padding:.2rem .5rem;border-radius:100px;display:inline-block;font-family:\'Noto Naskh Arabic\',serif">آپ کو یہ ملتا ہے</div>' : ''}
       </div>`;
     demo.appendChild(col);
   });
 }
 
-// ── Live counter animation ──
-function animCount(el, target, suffix = '') {
-  let cur = 0; const dur = 2000; const step = target / (dur / 16);
-  const t = setInterval(() => {
-    cur = Math.min(cur + step, target);
-    el.textContent = Math.round(cur).toLocaleString('en-PK') + suffix;
-    if (cur >= target) clearInterval(t);
-  }, 16);
-}
-const heroObs = new IntersectionObserver(entries => {
+// ── Counter animation — passive, runs once on first scroll ──
+let counted = false;
+const counterObs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if (e.isIntersecting) {
-      animCount(document.getElementById('fam-count'), 1284, '');
-      animCount(document.getElementById('soc-count'), 47, '');
-      heroObs.unobserve(e.target);
-    }
+    if (!e.isIntersecting || counted) return;
+    counted = true;
+    const el = document.getElementById('fam-count');
+    const el2 = document.getElementById('soc-count');
+    if (!el || !el2) return;
+    let s = 0; const target = 1284; const dur = 1800;
+    const tick = setInterval(() => {
+      s = Math.min(s + target / (dur / 16), target);
+      el.textContent = Math.round(s).toLocaleString('en-PK');
+      if (s >= target) clearInterval(tick);
+    }, 16);
+    let s2 = 0;
+    const tick2 = setInterval(() => {
+      s2 = Math.min(s2 + 47 / (dur / 16), 47);
+      el2.textContent = Math.round(s2);
+      if (s2 >= 47) clearInterval(tick2);
+    }, 16);
+    counterObs.disconnect();
   });
 }, { threshold: 0.3 });
-const heroSection = document.querySelector('section');
-if (heroSection) heroObs.observe(heroSection);
+const heroSec = document.querySelector('section');
+if (heroSec) counterObs.observe(heroSec);
 </script>
 </body>
 </html>

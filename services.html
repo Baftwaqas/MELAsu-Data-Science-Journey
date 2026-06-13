@@ -1,0 +1,1810 @@
+<!DOCTYPE html>
+<html lang="ur" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اپنا کاریگر — گھریلو خدمات پاکستان</title>
+  <meta name="description" content="پاکستان کا سب سے قابل اعتماد گھریلو خدمات پلیٹ فارم۔ ایئر کنڈیشنر، پلمبنگ، الیکٹریکل اور مزید خدمات۔">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;600;700&family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===========================
+       DESIGN TOKENS
+    =========================== */
+    :root {
+      /* Sky blue — primary accent */
+      --sky:        oklch(72% 0.19 220);
+      --sky-dim:    oklch(55% 0.15 220);
+      --sky-glow:   oklch(82% 0.22 220);
+      --sky-deep:   oklch(40% 0.15 220);
+
+      /* Amber — secondary */
+      --amber:      oklch(78% 0.22 75);
+      --amber-dim:  oklch(60% 0.18 75);
+      --amber-glow: oklch(88% 0.24 75);
+
+      /* Teal — tertiary */
+      --teal:       oklch(70% 0.19 185);
+      --teal-dim:   oklch(52% 0.15 185);
+
+      /* Coral */
+      --coral:      oklch(68% 0.22 28);
+      --coral-dim:  oklch(50% 0.17 28);
+
+      /* Violet */
+      --violet:     oklch(68% 0.22 285);
+      --violet-dim: oklch(50% 0.17 285);
+
+      /* Green */
+      --green:      oklch(72% 0.19 145);
+      --green-dim:  oklch(55% 0.15 145);
+
+      /* Backgrounds */
+      --bg:         oklch(8%  0.015 220);
+      --surface:    oklch(12% 0.02  220);
+      --surface-2:  oklch(16% 0.025 220);
+      --surface-3:  oklch(20% 0.028 220);
+
+      /* Borders */
+      --border:        oklch(22% 0.03  220);
+      --border-subtle: oklch(17% 0.025 220);
+      --border-bright: oklch(30% 0.04  220);
+
+      /* Text */
+      --text:       oklch(94% 0.01  220);
+      --text-dim:   oklch(72% 0.02  220);
+      --text-muted: oklch(52% 0.015 220);
+
+      /* Layout */
+      --section-gap: clamp(4rem, 10vw, 8rem);
+
+      /* Easing */
+      --ease-out:    cubic-bezier(0.23, 1, 0.32, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===========================
+       RESET & BASE
+    =========================== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', serif;
+      line-height: 1.9;
+      direction: rtl;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img   { display: block; max-width: 100%; }
+    a     { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+
+    /* ===========================
+       UTILITIES
+    =========================== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1rem, 4vw, 2.5rem);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.10s; }
+    .reveal-delay-2 { transition-delay: 0.20s; }
+    .reveal-delay-3 { transition-delay: 0.30s; }
+    .reveal-delay-4 { transition-delay: 0.40s; }
+    .reveal-delay-5 { transition-delay: 0.50s; }
+    .reveal-delay-6 { transition-delay: 0.60s; }
+
+    /* Tags */
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      padding: 0.25em 0.85em;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      border: 1px solid currentColor;
+    }
+    .tag--sky    { color: var(--sky);    border-color: oklch(72% 0.19 220 / 0.3); background: oklch(72% 0.19 220 / 0.08); }
+    .tag--amber  { color: var(--amber);  border-color: oklch(78% 0.22  75 / 0.3); background: oklch(78% 0.22  75 / 0.08); }
+    .tag--teal   { color: var(--teal);   border-color: oklch(70% 0.19 185 / 0.3); background: oklch(70% 0.19 185 / 0.08); }
+    .tag--green  { color: var(--green);  border-color: oklch(72% 0.19 145 / 0.3); background: oklch(72% 0.19 145 / 0.08); }
+    .tag--violet { color: var(--violet); border-color: oklch(68% 0.22 285 / 0.3); background: oklch(68% 0.22 285 / 0.08); }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4em;
+      padding: 0.55em 1.3em;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: transform 0.15s var(--ease-spring), box-shadow 0.15s;
+    }
+    .btn:active { transform: scale(0.97); }
+
+    .btn--ghost {
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+    }
+    .btn--ghost:hover {
+      border-color: var(--border-bright);
+      color: var(--text);
+      background: var(--surface);
+    }
+
+    .btn--sky {
+      background: var(--sky);
+      color: oklch(8% 0.015 220);
+      box-shadow: 0 4px 20px oklch(72% 0.19 220 / 0.3);
+    }
+    .btn--sky:hover {
+      box-shadow: 0 6px 28px oklch(72% 0.19 220 / 0.45);
+      transform: translateY(-1px);
+    }
+
+    .btn--amber {
+      background: var(--amber);
+      color: oklch(8% 0.01 75);
+      box-shadow: 0 4px 20px oklch(78% 0.22 75 / 0.3);
+    }
+    .btn--amber:hover {
+      box-shadow: 0 6px 28px oklch(78% 0.22 75 / 0.45);
+      transform: translateY(-1px);
+    }
+
+    /* ===========================
+       NAVBAR
+    =========================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: oklch(8% 0.015 220 / 0.88);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .navbar__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .navbar__logo-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .navbar__logo-text {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .navbar__logo-text span { color: var(--sky); }
+
+    .navbar__nav {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      list-style: none;
+    }
+    .navbar__nav a {
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      color: var(--text-dim);
+      transition: color 0.2s, background 0.2s;
+    }
+    .navbar__nav a:hover { color: var(--text); background: var(--surface); }
+
+    .navbar__cta { display: flex; align-items: center; gap: 0.6rem; }
+
+    /* ===========================
+       TICKER
+    =========================== */
+    .ticker {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-subtle);
+      overflow: hidden;
+      padding: 0.55rem 0;
+    }
+    .ticker__track {
+      display: flex;
+      gap: 3rem;
+      width: max-content;
+      animation: ticker 42s linear infinite;
+    }
+    .ticker__item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      white-space: nowrap;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+    }
+    .ticker__item strong { color: var(--sky); }
+    .ticker__dot { color: var(--border-bright); }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(3rem, 8vw, 6rem) 0 clamp(4rem, 10vw, 8rem);
+    }
+
+    /* Radial orbs — no filter:blur */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 25% 35%, oklch(72% 0.19 220 / 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 40% at 75% 65%, oklch(70% 0.19 185 / 0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 30% at 85% 20%, oklch(68% 0.22 285 / 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__tag { margin-bottom: 1.25rem; }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.4;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+    }
+    .hero__title .accent       { color: var(--sky); }
+    .hero__title .accent-amber { color: var(--amber); }
+
+    .hero__sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.05rem);
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+      max-width: 44ch;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero__stats { display: flex; gap: 2rem; flex-wrap: wrap; }
+
+    .hero__stat-val {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      display: block;
+    }
+    .hero__stat-label { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* ---- booking card visual ---- */
+    .hero__visual {
+      position: relative;
+      height: 500px;
+    }
+
+    .hero__booking-card {
+      position: relative;
+      z-index: 2;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 1.75rem;
+      box-shadow: 0 24px 60px oklch(0% 0 0 / 0.4);
+    }
+
+    .booking-card__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+    .booking-card__title { font-size: 1rem; font-weight: 700; }
+    .booking-card__live {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--green);
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      animation: live-pulse 2s ease-in-out infinite;
+    }
+    @keyframes live-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.45; transform: scale(0.8); }
+    }
+
+    /* service chips */
+    .booking-card__chips {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .service-chip {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 0.7rem 0.4rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      font-size: 0.72rem;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+    }
+    .service-chip.active {
+      border-color: var(--sky);
+      background: oklch(72% 0.19 220 / 0.1);
+      color: var(--sky);
+    }
+    .service-chip__icon { font-size: 1.4rem; }
+
+    /* slots */
+    .booking-card__slots { margin-bottom: 1.25rem; }
+    .slots-label { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+    .slots-grid  { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+
+    .slot {
+      padding: 0.35rem 0.75rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      font-size: 0.75rem;
+      background: var(--surface-2);
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, color 0.2s;
+      direction: ltr;
+    }
+    .slot.active {
+      border-color: var(--amber);
+      background: oklch(78% 0.22 75 / 0.1);
+      color: var(--amber);
+    }
+    .slot.unavailable { opacity: 0.32; cursor: not-allowed; }
+
+    /* assigned tech */
+    .booking-card__tech {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem;
+      background: var(--surface-2);
+      border-radius: 12px;
+      margin-bottom: 1.25rem;
+    }
+    .tech-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky), var(--teal));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .tech-name { font-size: 0.9rem; font-weight: 600; }
+    .tech-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .stars-amber { color: var(--amber); }
+
+    /* card footer */
+    .booking-card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-price-label { font-size: 0.78rem; color: var(--text-muted); }
+    .card-price-value { font-size: 1.3rem; font-weight: 700; color: var(--sky); display: block; }
+
+    /* Floating icons */
+    .float-icon {
+      position: absolute;
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      box-shadow: 0 8px 24px oklch(0% 0 0 / 0.28);
+      will-change: transform;
+    }
+    .float-icon:nth-child(1) { top: 4%;  right: 4%;  animation: float-a 5.5s ease-in-out infinite; }
+    .float-icon:nth-child(2) { bottom: 10%; right: 10%; animation: float-b 6.5s ease-in-out infinite; }
+    .float-icon:nth-child(3) { top: 42%; left:  4%;  animation: float-c 5.0s ease-in-out infinite; }
+
+    @keyframes float-a {
+      0%, 100% { transform: translateY(0)    rotate(-3deg); }
+      50%       { transform: translateY(-14px) rotate(2deg);  }
+    }
+    @keyframes float-b {
+      0%, 100% { transform: translateY(0)    rotate(4deg);  }
+      50%       { transform: translateY(-18px) rotate(-2deg); }
+    }
+    @keyframes float-c {
+      0%, 100% { transform: translateY(0)    rotate(-2deg); }
+      50%       { transform: translateY(-10px) rotate(3deg);  }
+    }
+
+    /* ===========================
+       SECTION HEADER
+    =========================== */
+    .section-header {
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+    .section-header__tag   { margin-bottom: 0.85rem; }
+    .section-header__title {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 0.85rem;
+    }
+    .section-header__sub {
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+      color: var(--text-dim);
+      max-width: 55ch;
+      margin: 0 auto;
+    }
+
+    /* ===========================
+       SERVICES GRID
+    =========================== */
+    section.services { padding: var(--section-gap) 0; }
+
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .service-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease-out), border-color 0.3s, box-shadow 0.3s;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 55% at 50% 0%, var(--card-glow, transparent), transparent 65%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .service-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--card-accent, var(--sky));
+      box-shadow: 0 12px 40px oklch(0% 0 0 / 0.22);
+    }
+    .service-card:hover::before { opacity: 1; }
+
+    .service-card--ac    { --card-accent: var(--sky);    --card-glow: oklch(72% 0.19 220 / 0.09); }
+    .service-card--plumb { --card-accent: var(--teal);   --card-glow: oklch(70% 0.19 185 / 0.09); }
+    .service-card--elec  { --card-accent: var(--amber);  --card-glow: oklch(78% 0.22  75 / 0.09); }
+    .service-card--carp  { --card-accent: var(--coral);  --card-glow: oklch(68% 0.22  28 / 0.09); }
+    .service-card--paint { --card-accent: var(--violet); --card-glow: oklch(68% 0.22 285 / 0.09); }
+    .service-card--clean { --card-accent: var(--green);  --card-glow: oklch(72% 0.19 145 / 0.09); }
+
+    .service-card__icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: oklch(from var(--card-accent) l c h / 0.12);
+      border: 1px solid oklch(from var(--card-accent) l c h / 0.22);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 1.1rem;
+    }
+    .service-card__name  { font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .service-card__desc  { font-size: 0.82rem; color: var(--text-muted); line-height: 1.85; margin-bottom: 1rem; }
+    .service-card__meta  { display: flex; align-items: center; justify-content: space-between; font-size: 0.78rem; }
+    .service-card__price { color: var(--card-accent); font-weight: 700; }
+    .service-card__eta   { color: var(--text-muted); }
+
+    /* ===========================
+       HOW IT WORKS
+    =========================== */
+    section.how {
+      padding: var(--section-gap) 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .how__steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+    .how__steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      right: 12.5%;
+      left: 12.5%;
+      height: 1px;
+      background: linear-gradient(to left, transparent, var(--border), var(--sky-dim), var(--border), transparent);
+    }
+
+    .how__step { text-align: center; }
+
+    .how__step-num {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--sky);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--sky);
+      margin: 0 auto 1.25rem;
+      position: relative;
+      z-index: 1;
+    }
+    .how__step-icon  { font-size: 1.6rem; margin-bottom: 0.75rem; }
+    .how__step-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .how__step-desc  { font-size: 0.8rem; color: var(--text-muted); line-height: 1.9; }
+
+    /* ===========================
+       TOP PROFESSIONALS
+    =========================== */
+    section.pros { padding: var(--section-gap) 0; }
+
+    .pros__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .pro-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition: transform 0.3s var(--ease-out), border-color 0.3s;
+    }
+    .pro-card:hover { transform: translateY(-4px); border-color: var(--border-bright); }
+
+    .pro-card__header {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .pro-avatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+    .pro-avatar--1 { background: linear-gradient(135deg, var(--sky), var(--teal)); }
+    .pro-avatar--2 { background: linear-gradient(135deg, var(--amber), var(--coral)); }
+    .pro-avatar--3 { background: linear-gradient(135deg, var(--violet), var(--sky-dim)); }
+
+    .pro-specialty { font-size: 0.78rem; color: var(--sky); margin-bottom: 0.15rem; }
+    .pro-name      { font-size: 1rem; font-weight: 700; }
+    .pro-rating    { display: flex; align-items: center; gap: 0.3rem; font-size: 0.78rem; color: var(--text-muted); }
+
+    .pro-card__stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+      margin-bottom: 1.1rem;
+    }
+    .pro-stat {
+      background: var(--surface-2);
+      border-radius: 10px;
+      padding: 0.6rem 0.5rem;
+      text-align: center;
+    }
+    .pro-stat__val   { font-size: 0.95rem; font-weight: 700; display: block; }
+    .pro-stat__label { font-size: 0.68rem; color: var(--text-muted); }
+
+    .pro-card__tags { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+    .pro-tag {
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      background: var(--surface-2);
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+    }
+
+    /* ===========================
+       PRICING TABLE
+    =========================== */
+    section.pricing {
+      padding: var(--section-gap) 0;
+      background: var(--surface);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .pricing__table { border: 1px solid var(--border); border-radius: 18px; overflow: hidden; }
+
+    .pricing__row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr 1.4fr;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .pricing__row:last-child  { border-bottom: none; }
+    .pricing__row:hover       { background: var(--surface-2); }
+
+    .pricing__header {
+      background: var(--surface-2);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+    .pricing__header:hover { background: var(--surface-2); }
+
+    .pricing__service-name {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .pricing__service-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: oklch(72% 0.19 220 / 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .pricing__rate     { font-size: 0.9rem; font-weight: 700; }
+    .pricing__duration { font-size: 0.82rem; color: var(--text-dim); }
+    .pricing__warranty { font-size: 0.78rem; color: var(--green); }
+
+    /* ===========================
+       TESTIMONIALS
+    =========================== */
+    section.testimonials { padding: var(--section-gap) 0; }
+
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .testimonial-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition: transform 0.3s var(--ease-out);
+    }
+    .testimonial-card:hover { transform: translateY(-4px); }
+
+    .testimonial-card__quote {
+      font-size: 0.88rem;
+      line-height: 2;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .testimonial-card__quote::before {
+      content: '"';
+      font-size: 3.5rem;
+      color: var(--sky);
+      opacity: 0.22;
+      position: absolute;
+      top: -1rem;
+      right: -0.2rem;
+      line-height: 1;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-card__author { display: flex; align-items: center; gap: 0.75rem; }
+
+    .author-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sky-dim), var(--teal-dim));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .author-name { font-size: 0.9rem; font-weight: 700; }
+    .author-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+    .testimonial-card__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.75rem;
+      color: var(--green);
+      background: oklch(72% 0.19 145 / 0.1);
+      border: 1px solid oklch(72% 0.19 145 / 0.2);
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      margin-top: 0.75rem;
+    }
+
+    /* ===========================
+       CTA / BOOKING FORM
+    =========================== */
+    section.cta {
+      padding: var(--section-gap) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    section.cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, oklch(72% 0.19 220 / 0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cta__inner {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta__title {
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+      line-height: 1.4;
+    }
+    .cta__sub {
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      font-size: clamp(0.9rem, 1.6vw, 1rem);
+    }
+
+    .booking-form {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      text-align: right;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .form-group     { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-group--full { grid-column: 1 / -1; }
+    .form-label     { font-size: 0.8rem; color: var(--text-muted); }
+
+    .form-input {
+      padding: 0.65rem 1rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.88rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      direction: rtl;
+    }
+    .form-input:focus {
+      outline: none;
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px oklch(72% 0.19 220 / 0.12);
+    }
+    .form-input::placeholder { color: var(--text-muted); }
+    select.form-input { cursor: pointer; }
+
+    .trust-badges {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+    .trust-badge__icon { color: var(--sky); }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border-subtle);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer__grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer__brand-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.9;
+      margin: 0.85rem 0 1.5rem;
+      max-width: 30ch;
+    }
+
+    .footer__social { display: flex; gap: 0.5rem; }
+
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--sky); color: var(--sky); }
+
+    .footer__col-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer__links a { font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+    .footer__links a:hover { color: var(--text); }
+
+    .footer__bottom {
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1024px) {
+      .services__grid       { grid-template-columns: repeat(2, 1fr); }
+      .how__steps           { grid-template-columns: repeat(2, 1fr); }
+      .how__steps::before   { display: none; }
+      .pros__grid           { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid   { grid-template-columns: repeat(2, 1fr); }
+      .footer__grid         { grid-template-columns: repeat(2, 1fr); }
+      .pricing__row         { grid-template-columns: 2fr 1fr 1fr; }
+      .pricing__row > :nth-child(4),
+      .pricing__row > :nth-child(5) { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      .hero__inner          { grid-template-columns: 1fr; }
+      .hero__visual         { height: 400px; }
+      .services__grid       { grid-template-columns: repeat(2, 1fr); }
+      .testimonials__grid   { grid-template-columns: 1fr; }
+      .pros__grid           { grid-template-columns: 1fr; }
+      .form-grid            { grid-template-columns: 1fr; }
+      .navbar__nav          { display: none; }
+      .pricing__row         { grid-template-columns: 1.5fr 1fr; }
+      .pricing__row > :nth-child(3),
+      .pricing__row > :nth-child(4),
+      .pricing__row > :nth-child(5) { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      .services__grid       { grid-template-columns: 1fr; }
+      .hero__stats          { gap: 1.25rem; }
+      .hero__actions        { flex-direction: column; }
+      .how__steps           { grid-template-columns: 1fr; }
+      .footer__grid         { grid-template-columns: 1fr; }
+      .booking-card__chips  { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    /* ===========================
+       REDUCED MOTION
+    =========================== */
+    @media (prefers-reduced-motion: reduce) {
+      .ticker__track,
+      .float-icon,
+      .live-dot      { animation: none; }
+      .reveal        { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ========================================================
+     NAVBAR
+======================================================== -->
+<nav class="navbar">
+  <div class="container navbar__inner">
+    <a href="#" class="navbar__logo">
+      <div class="navbar__logo-icon">🔧</div>
+      <span class="navbar__logo-text">اپنا <span>کاریگر</span></span>
+    </a>
+    <ul class="navbar__nav">
+      <li><a href="#services">خدمات</a></li>
+      <li><a href="#how">طریقہ کار</a></li>
+      <li><a href="#pros">کاریگر</a></li>
+      <li><a href="#pricing">قیمتیں</a></li>
+      <li><a href="#testimonials">آراء</a></li>
+    </ul>
+    <div class="navbar__cta">
+      <a href="#" class="btn btn--ghost">لاگ ان</a>
+      <a href="#booking" class="btn btn--sky">ابھی بک کریں</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========================================================
+     TICKER
+======================================================== -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker__track">
+    <span class="ticker__item">❄️ <strong>کراچی میں ۳۵۴</strong> اے سی سروس آج مکمل</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">⚡ <strong>لاہور میں ۱۲۸</strong> الیکٹریکل خدمات آج</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🔧 <strong>اسلام آباد میں ۸۹</strong> پلمبنگ کام مکمل</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">⭐ آج کی اوسط ریٹنگ: <strong>۴.۹/۵</strong> — ۲۳۷ جائزے</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🎨 <strong>فیصل آباد میں</strong> پینٹنگ ٹیم دستیاب</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🏠 <strong>۱۵,۰۰۰+</strong> تکمیل شدہ خدمات</span>
+    <span class="ticker__dot">·</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker__item">❄️ <strong>کراچی میں ۳۵۴</strong> اے سی سروس آج مکمل</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">⚡ <strong>لاہور میں ۱۲۸</strong> الیکٹریکل خدمات آج</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🔧 <strong>اسلام آباد میں ۸۹</strong> پلمبنگ کام مکمل</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">⭐ آج کی اوسط ریٹنگ: <strong>۴.۹/۵</strong> — ۲۳۷ جائزے</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🎨 <strong>فیصل آباد میں</strong> پینٹنگ ٹیم دستیاب</span>
+    <span class="ticker__dot">·</span>
+    <span class="ticker__item">🏠 <strong>۱۵,۰۰۰+</strong> تکمیل شدہ خدمات</span>
+    <span class="ticker__dot">·</span>
+  </div>
+</div>
+
+<!-- ========================================================
+     HERO
+======================================================== -->
+<section class="hero">
+  <div class="container hero__inner">
+
+    <!-- Left: Copy -->
+    <div class="hero__content">
+      <div class="hero__tag reveal">
+        <span class="tag tag--sky">🚀 پاکستان کا نمبر ۱ سروس پلیٹ فارم</span>
+      </div>
+
+      <h1 class="hero__title reveal reveal-delay-1">
+        گھر کی ہر <span class="accent">خدمت</span>،<br>
+        ایک کلک <span class="accent-amber">میں</span>
+      </h1>
+
+      <p class="hero__sub reveal reveal-delay-2">
+        تصدیق شدہ اور تجربہ کار کاریگروں سے ایئر کنڈیشنر، پلمبنگ، الیکٹریکل اور دیگر گھریلو خدمات گھر بیٹھے بک کریں۔ ۳۰ منٹ میں کاریگر آپ کے دروازے پر۔
+      </p>
+
+      <div class="hero__actions reveal reveal-delay-3">
+        <a href="#booking" class="btn btn--sky">ابھی بک کریں ←</a>
+        <a href="#services" class="btn btn--ghost">تمام خدمات دیکھیں</a>
+      </div>
+
+      <div class="hero__stats reveal reveal-delay-4">
+        <div>
+          <span class="hero__stat-val" data-count="15000">۰</span>
+          <span class="hero__stat-label">تکمیل شدہ خدمات</span>
+        </div>
+        <div>
+          <span class="hero__stat-val" data-count="8500">۰</span>
+          <span class="hero__stat-label">مطمئن گھرانے</span>
+        </div>
+        <div>
+          <span class="hero__stat-val" data-count="500">۰</span>
+          <span class="hero__stat-label">تصدیق شدہ کاریگر</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Interactive Booking Card -->
+    <div class="hero__visual reveal reveal-delay-2">
+      <!-- Floating ambient icons -->
+      <div class="float-icon">❄️</div>
+      <div class="float-icon">⚡</div>
+      <div class="float-icon">🔧</div>
+
+      <!-- Booking Card -->
+      <div class="hero__booking-card">
+        <div class="booking-card__header">
+          <span class="booking-card__title">فوری بکنگ</span>
+          <span class="booking-card__live">
+            <span class="live-dot"></span>
+            ۴۷ کاریگر آن لائن
+          </span>
+        </div>
+
+        <!-- Service Chips -->
+        <div class="booking-card__chips">
+          <div class="service-chip active" data-svc="ac" data-label="اے سی سروس" data-price="Rs. ۱,۵۰۰" data-tech="استاد محمد اکرم">
+            <span class="service-chip__icon">❄️</span>
+            <span>اے سی</span>
+          </div>
+          <div class="service-chip" data-svc="plumb" data-label="پلمبنگ" data-price="Rs. ۸۰۰" data-tech="حاجی فضل الرحمن">
+            <span class="service-chip__icon">🔧</span>
+            <span>پلمبنگ</span>
+          </div>
+          <div class="service-chip" data-svc="elec" data-label="الیکٹریکل" data-price="Rs. ۱,۰۰۰" data-tech="ارشد علی الیکٹریشن">
+            <span class="service-chip__icon">⚡</span>
+            <span>الیکٹریکل</span>
+          </div>
+          <div class="service-chip" data-svc="carp" data-label="کارپنٹری" data-price="Rs. ۱,۲۰۰" data-tech="استاد شفیع کاریگر">
+            <span class="service-chip__icon">🪚</span>
+            <span>کارپنٹری</span>
+          </div>
+          <div class="service-chip" data-svc="paint" data-label="پینٹنگ" data-price="Rs. ۵,۰۰۰" data-tech="رنگساز ٹیم">
+            <span class="service-chip__icon">🎨</span>
+            <span>پینٹنگ</span>
+          </div>
+          <div class="service-chip" data-svc="clean" data-label="صفائی" data-price="Rs. ۲,۵۰۰" data-tech="کلیننگ پرو">
+            <span class="service-chip__icon">🧹</span>
+            <span>صفائی</span>
+          </div>
+        </div>
+
+        <!-- Time Slots -->
+        <div class="booking-card__slots">
+          <p class="slots-label">آج کے دستیاب وقت</p>
+          <div class="slots-grid">
+            <span class="slot unavailable">9:00 AM</span>
+            <span class="slot unavailable">10:00 AM</span>
+            <span class="slot active">11:00 AM</span>
+            <span class="slot">12:00 PM</span>
+            <span class="slot">2:00 PM</span>
+            <span class="slot">4:00 PM</span>
+          </div>
+        </div>
+
+        <!-- Assigned Technician -->
+        <div class="booking-card__tech">
+          <div class="tech-avatar">👨‍🔧</div>
+          <div>
+            <p class="tech-name" id="card-tech-name">استاد محمد اکرم</p>
+            <p class="tech-meta">
+              <span class="stars-amber">★★★★★</span>
+              <span>۴.۹ · ۲۳۴ سروس</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="booking-card__footer">
+          <div>
+            <span class="card-price-label" id="card-price-label">اے سی سروس چارج</span>
+            <span class="card-price-value" id="card-price-value">Rs. ۱,۵۰۰</span>
+          </div>
+          <a href="#booking" class="btn btn--sky">بک کریں</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========================================================
+     SERVICES GRID
+======================================================== -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__tag reveal">
+        <span class="tag tag--sky">🛠️ ہماری خدمات</span>
+      </div>
+      <h2 class="section-header__title reveal reveal-delay-1">ہر گھریلو مسئلے کا حل</h2>
+      <p class="section-header__sub reveal reveal-delay-2">
+        اے سی سے لے کر پلمبنگ تک، تمام خدمات ایک ہی پلیٹ فارم پر۔ تصدیق شدہ کاریگر، واضح قیمتیں، گارنٹی کے ساتھ۔
+      </p>
+    </div>
+
+    <div class="services__grid">
+
+      <div class="service-card service-card--ac reveal">
+        <div class="service-card__icon">❄️</div>
+        <h3 class="service-card__name">ایئر کنڈیشنر</h3>
+        <p class="service-card__desc">انسٹالیشن، سروس، گیس ری فلنگ، کمپریسر ٹھیک کرنا، ریموٹ مرمت اور مکمل اے سی اوور ہالنگ</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۱,۵۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۳۰-۶۰ منٹ</span>
+        </div>
+      </div>
+
+      <div class="service-card service-card--plumb reveal reveal-delay-1">
+        <div class="service-card__icon">🔧</div>
+        <h3 class="service-card__name">پلمبنگ</h3>
+        <p class="service-card__desc">پانی کی پائپ لائن مرمت، بیت الخلا کی مرمت، گیزر انسٹالیشن، ٹونٹی بدلنا اور پانی کا رساؤ بند کرنا</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۸۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۴۵-۹۰ منٹ</span>
+        </div>
+      </div>
+
+      <div class="service-card service-card--elec reveal reveal-delay-2">
+        <div class="service-card__icon">⚡</div>
+        <h3 class="service-card__name">الیکٹریکل</h3>
+        <p class="service-card__desc">تاروں کا کام، سوئچ بورڈ مرمت، پنکھا انسٹالیشن، میٹر مسائل اور جنریٹر سروس</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۱,۰۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۳۰-۶۰ منٹ</span>
+        </div>
+      </div>
+
+      <div class="service-card service-card--carp reveal reveal-delay-3">
+        <div class="service-card__icon">🪚</div>
+        <h3 class="service-card__name">کارپنٹری</h3>
+        <p class="service-card__desc">دروازے اور کھڑکیاں ٹھیک کرنا، فرنیچر مرمت، نئی الماری بنانا اور لکڑی کا ہر کام</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۱,۲۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۱-۳ گھنٹے</span>
+        </div>
+      </div>
+
+      <div class="service-card service-card--paint reveal reveal-delay-4">
+        <div class="service-card__icon">🎨</div>
+        <h3 class="service-card__name">پینٹنگ</h3>
+        <p class="service-card__desc">دیواروں کی پینٹنگ، واٹرپروفنگ، بیرونی پینٹ، اندرونی ڈیزائن اور چھت کی سفیدی</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۵,۰۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۱ دن سے</span>
+        </div>
+      </div>
+
+      <div class="service-card service-card--clean reveal reveal-delay-5">
+        <div class="service-card__icon">🧹</div>
+        <h3 class="service-card__name">صفائی ستھرائی</h3>
+        <p class="service-card__desc">گہری صفائی، صوفہ کلیننگ، قالین صاف کرنا، کچن ہود صفائی اور شفٹنگ کے بعد صفائی</p>
+        <div class="service-card__meta">
+          <span class="service-card__price">Rs. ۲,۵۰۰ سے شروع</span>
+          <span class="service-card__eta">⏱ ۲-۴ گھنٹے</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     HOW IT WORKS
+======================================================== -->
+<section class="how" id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__tag reveal">
+        <span class="tag tag--teal">📋 طریقہ کار</span>
+      </div>
+      <h2 class="section-header__title reveal reveal-delay-1">بہت آسان، صرف ۴ قدم</h2>
+      <p class="section-header__sub reveal reveal-delay-2">
+        چند منٹوں میں اپنی مطلوبہ خدمت بک کریں اور ہمارا تصدیق شدہ کاریگر آپ کے گھر پہنچ جائے گا
+      </p>
+    </div>
+
+    <div class="how__steps">
+      <div class="how__step reveal">
+        <div class="how__step-num">۱</div>
+        <div class="how__step-icon">🛠️</div>
+        <h3 class="how__step-title">خدمت منتخب کریں</h3>
+        <p class="how__step-desc">اپنی ضرورت کے مطابق خدمت چنیں — اے سی، پلمبنگ، الیکٹریکل یا کوئی بھی دوسری</p>
+      </div>
+      <div class="how__step reveal reveal-delay-1">
+        <div class="how__step-num">۲</div>
+        <div class="how__step-icon">📅</div>
+        <h3 class="how__step-title">وقت بک کریں</h3>
+        <p class="how__step-desc">اپنی سہولت کے مطابق تاریخ اور وقت منتخب کریں۔ آج ہی یا مستقبل میں کسی بھی دن</p>
+      </div>
+      <div class="how__step reveal reveal-delay-2">
+        <div class="how__step-num">۳</div>
+        <div class="how__step-icon">👨‍🔧</div>
+        <h3 class="how__step-title">کاریگر آئے گا</h3>
+        <p class="how__step-desc">تصدیق شدہ اور تجربہ کار کاریگر مقررہ وقت پر آپ کے گھر پہنچے گا — تاخیر کی صورت میں فوری اطلاع</p>
+      </div>
+      <div class="how__step reveal reveal-delay-3">
+        <div class="how__step-num">۴</div>
+        <div class="how__step-icon">✅</div>
+        <h3 class="how__step-title">کام مکمل، ادائیگی</h3>
+        <p class="how__step-desc">کام مکمل ہونے پر آسان آن لائن یا نقد ادائیگی کریں اور اپنا جائزہ دیں</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     TOP PROFESSIONALS
+======================================================== -->
+<section class="pros" id="pros">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__tag reveal">
+        <span class="tag tag--amber">⭐ ہمارے کاریگر</span>
+      </div>
+      <h2 class="section-header__title reveal reveal-delay-1">پاکستان کے بہترین تکنیک کار</h2>
+      <p class="section-header__sub reveal reveal-delay-2">
+        تمام کاریگر باقاعدہ تصدیق شدہ، تجربہ کار اور پولیس ویریفائیڈ ہیں
+      </p>
+    </div>
+
+    <div class="pros__grid">
+
+      <div class="pro-card reveal">
+        <div class="pro-card__header">
+          <div class="pro-avatar pro-avatar--1">👨‍🔧</div>
+          <div>
+            <p class="pro-specialty">ایئر کنڈیشنر ماہر</p>
+            <p class="pro-name">استاد محمد اکرم</p>
+            <p class="pro-rating">
+              <span class="stars-amber">★★★★★</span> ۴.۹ (۲۳۴ جائزے)
+            </p>
+          </div>
+        </div>
+        <div class="pro-card__stats">
+          <div class="pro-stat"><span class="pro-stat__val">۲۳۴</span><span class="pro-stat__label">خدمات</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۸ سال</span><span class="pro-stat__label">تجربہ</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۹۸٪</span><span class="pro-stat__label">اطمینان</span></div>
+        </div>
+        <div class="pro-card__tags">
+          <span class="pro-tag">اے سی سروس</span>
+          <span class="pro-tag">گیس ری فلنگ</span>
+          <span class="pro-tag">انسٹالیشن</span>
+        </div>
+      </div>
+
+      <div class="pro-card reveal reveal-delay-1">
+        <div class="pro-card__header">
+          <div class="pro-avatar pro-avatar--2">👷</div>
+          <div>
+            <p class="pro-specialty">الیکٹریکل انجینئر</p>
+            <p class="pro-name">ارشد علی الیکٹریشن</p>
+            <p class="pro-rating">
+              <span class="stars-amber">★★★★★</span> ۴.۸ (۱۸۷ جائزے)
+            </p>
+          </div>
+        </div>
+        <div class="pro-card__stats">
+          <div class="pro-stat"><span class="pro-stat__val">۱۸۷</span><span class="pro-stat__label">خدمات</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۱۲ سال</span><span class="pro-stat__label">تجربہ</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۹۷٪</span><span class="pro-stat__label">اطمینان</span></div>
+        </div>
+        <div class="pro-card__tags">
+          <span class="pro-tag">وائرنگ</span>
+          <span class="pro-tag">سوئچ بورڈ</span>
+          <span class="pro-tag">جنریٹر</span>
+        </div>
+      </div>
+
+      <div class="pro-card reveal reveal-delay-2">
+        <div class="pro-card__header">
+          <div class="pro-avatar pro-avatar--3">🧑‍🔧</div>
+          <div>
+            <p class="pro-specialty">پلمبنگ ماہر</p>
+            <p class="pro-name">حاجی فضل الرحمن</p>
+            <p class="pro-rating">
+              <span class="stars-amber">★★★★★</span> ۴.۷ (۳۱۲ جائزے)
+            </p>
+          </div>
+        </div>
+        <div class="pro-card__stats">
+          <div class="pro-stat"><span class="pro-stat__val">۳۱۲</span><span class="pro-stat__label">خدمات</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۱۵ سال</span><span class="pro-stat__label">تجربہ</span></div>
+          <div class="pro-stat"><span class="pro-stat__val">۹۶٪</span><span class="pro-stat__label">اطمینان</span></div>
+        </div>
+        <div class="pro-card__tags">
+          <span class="pro-tag">پائپ لائن</span>
+          <span class="pro-tag">گیزر</span>
+          <span class="pro-tag">ٹوائلٹ مرمت</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     PRICING TABLE
+======================================================== -->
+<section class="pricing" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__tag reveal">
+        <span class="tag tag--teal">💰 قیمتیں</span>
+      </div>
+      <h2 class="section-header__title reveal reveal-delay-1">شفاف اور واضح قیمتیں</h2>
+      <p class="section-header__sub reveal reveal-delay-2">
+        کوئی چھپی ہوئی فیس نہیں — کام شروع ہونے سے پہلے قیمت جانیں
+      </p>
+    </div>
+
+    <div class="pricing__table reveal reveal-delay-1">
+
+      <div class="pricing__row pricing__header">
+        <span>خدمت</span>
+        <span>ابتدائی قیمت</span>
+        <span>دورانیہ</span>
+        <span>وارنٹی</span>
+        <span></span>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">❄️</div>
+          <span>اے سی سروس / گیس</span>
+        </div>
+        <span class="pricing__rate">Rs. ۱,۵۰۰</span>
+        <span class="pricing__duration">۱ گھنٹہ</span>
+        <span class="pricing__warranty">۳۰ دن گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">🔧</div>
+          <span>پلمبنگ مرمت</span>
+        </div>
+        <span class="pricing__rate">Rs. ۸۰۰</span>
+        <span class="pricing__duration">۴۵ منٹ</span>
+        <span class="pricing__warranty">۱۵ دن گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">⚡</div>
+          <span>الیکٹریکل کام</span>
+        </div>
+        <span class="pricing__rate">Rs. ۱,۰۰۰</span>
+        <span class="pricing__duration">۱ گھنٹہ</span>
+        <span class="pricing__warranty">۳۰ دن گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">🪚</div>
+          <span>کارپنٹری کام</span>
+        </div>
+        <span class="pricing__rate">Rs. ۱,۲۰۰</span>
+        <span class="pricing__duration">۱-۳ گھنٹے</span>
+        <span class="pricing__warranty">۱۵ دن گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">🎨</div>
+          <span>پینٹنگ (کمرہ)</span>
+        </div>
+        <span class="pricing__rate">Rs. ۵,۰۰۰</span>
+        <span class="pricing__duration">۱ دن</span>
+        <span class="pricing__warranty">۶ ماہ گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+      <div class="pricing__row">
+        <div class="pricing__service-name">
+          <div class="pricing__service-icon">🧹</div>
+          <span>گہری صفائی</span>
+        </div>
+        <span class="pricing__rate">Rs. ۲,۵۰۰</span>
+        <span class="pricing__duration">۳-۴ گھنٹے</span>
+        <span class="pricing__warranty">اطمینان گارنٹی</span>
+        <a href="#booking" class="btn btn--sky" style="font-size:0.8rem;padding:0.4em 0.9em">بک کریں</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     TESTIMONIALS
+======================================================== -->
+<section class="testimonials" id="testimonials">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-header__tag reveal">
+        <span class="tag tag--sky">💬 گاہکوں کی آراء</span>
+      </div>
+      <h2 class="section-header__title reveal reveal-delay-1">ہمارے گاہک کیا کہتے ہیں</h2>
+      <p class="section-header__sub reveal reveal-delay-2">
+        ۸,۵۰۰ سے زیادہ مطمئن گھرانوں میں سے کچھ کی آراء
+      </p>
+    </div>
+
+    <div class="testimonials__grid">
+
+      <div class="testimonial-card reveal">
+        <p class="testimonial-card__quote">
+          گرمیوں میں اے سی اچانک بند ہو گیا۔ اپنا کاریگر کو کال کیا، ایک گھنٹے میں کاریگر آ گیا اور دو گھنٹے میں اے سی بالکل ٹھیک ہو گیا۔ قیمت بھی مناسب اور کام بھی بہترین۔
+        </p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">👩</div>
+          <div>
+            <p class="author-name">ثمینہ خان</p>
+            <p class="author-meta">ڈیفنس، کراچی</p>
+          </div>
+        </div>
+        <span class="testimonial-card__badge">✓ Rs. ۳,۰۰۰ کی بچت ہوئی</span>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-card__quote">
+          پانی کا رساؤ بند نہیں ہو رہا تھا۔ رات کو ۱۱ بجے بک کیا اور صبح ۸ بجے کاریگر آ گیا۔ پائپ لائن مکمل ٹھیک کر دی۔ بہت خوش ہوں اس سروس سے — بالکل قابل اعتماد ہے۔
+        </p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">👨</div>
+          <div>
+            <p class="author-name">خواجہ ندیم احمد</p>
+            <p class="author-meta">گلبرگ، لاہور</p>
+          </div>
+        </div>
+        <span class="testimonial-card__badge">✓ ۲۴ گھنٹے میں مسئلہ حل</span>
+      </div>
+
+      <div class="testimonial-card reveal reveal-delay-2">
+        <p class="testimonial-card__quote">
+          پورے گھر کی پینٹنگ کروائی۔ ٹیم بہت پروفیشنل تھی، وقت پر آئی، اچھے رنگ استعمال کیے اور صفائی بھی خود کی۔ قیمت مارکیٹ سے کم اور کام بہترین۔ ضرور دوبارہ کریں گے۔
+        </p>
+        <div class="testimonial-card__author">
+          <div class="author-avatar">👩‍💼</div>
+          <div>
+            <p class="author-name">سیدہ عائشہ رضوی</p>
+            <p class="author-meta">ایف سیون، اسلام آباد</p>
+          </div>
+        </div>
+        <span class="testimonial-card__badge">✓ Rs. ۱۵,۰۰۰ کی بچت ہوئی</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     CTA / BOOKING FORM
+======================================================== -->
+<section class="cta" id="booking">
+  <div class="container">
+    <div class="cta__inner">
+      <div class="reveal" style="margin-bottom:1.25rem">
+        <span class="tag tag--sky">📱 ابھی بک کریں</span>
+      </div>
+      <h2 class="cta__title reveal reveal-delay-1">
+        گھر کی خدمت<br>
+        <span style="color:var(--sky)">ابھی بک کریں</span>
+      </h2>
+      <p class="cta__sub reveal reveal-delay-2">
+        آج بکنگ کریں اور ۳۰ منٹ میں تصدیق شدہ کاریگر پائیں
+      </p>
+
+      <div class="booking-form reveal reveal-delay-3">
+        <form id="booking-form">
+          <div class="form-grid">
+            <div class="form-group">
+              <label class="form-label" for="b-name">آپ کا نام</label>
+              <input class="form-input" type="text" id="b-name" placeholder="مثال: احمد علی" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-phone">موبائل نمبر</label>
+              <input class="form-input" type="tel" id="b-phone" placeholder="03XX-XXXXXXX" dir="ltr" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-service">خدمت منتخب کریں</label>
+              <select class="form-input" id="b-service" required>
+                <option value="">-- خدمت چنیں --</option>
+                <option value="ac">ایئر کنڈیشنر</option>
+                <option value="plumb">پلمبنگ</option>
+                <option value="elec">الیکٹریکل</option>
+                <option value="carp">کارپنٹری</option>
+                <option value="paint">پینٹنگ</option>
+                <option value="clean">صفائی</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="b-city">شہر</label>
+              <select class="form-input" id="b-city" required>
+                <option value="">-- شہر چنیں --</option>
+                <option value="karachi">کراچی</option>
+                <option value="lahore">لاہور</option>
+                <option value="islamabad">اسلام آباد</option>
+                <option value="faisalabad">فیصل آباد</option>
+                <option value="rawalpindi">راولپنڈی</option>
+                <option value="multan">ملتان</option>
+              </select>
+            </div>
+            <div class="form-group form-group--full">
+              <label class="form-label" for="b-address">گھر کا پتہ</label>
+              <input class="form-input" type="text" id="b-address" placeholder="مکان نمبر، گلی، محلہ" required>
+            </div>
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn--sky" style="width:100%;justify-content:center;padding:0.85em">
+            بکنگ کنفرم کریں ←
+          </button>
+        </form>
+
+        <div class="trust-badges">
+          <span class="trust-badge"><span class="trust-badge__icon">🔒</span> محفوظ ادائیگی</span>
+          <span class="trust-badge"><span class="trust-badge__icon">✓</span> تصدیق شدہ کاریگر</span>
+          <span class="trust-badge"><span class="trust-badge__icon">⭐</span> اطمینان گارنٹی</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================
+     FOOTER
+======================================================== -->
+<footer>
+  <div class="container">
+    <div class="footer__grid">
+
+      <div>
+        <div class="navbar__logo">
+          <div class="navbar__logo-icon">🔧</div>
+          <span class="navbar__logo-text">اپنا <span>کاریگر</span></span>
+        </div>
+        <p class="footer__brand-desc">
+          پاکستان کا سب سے قابل اعتماد گھریلو خدمات پلیٹ فارم۔ ہر مسئلے کا فوری اور معقول حل۔
+        </p>
+        <div class="footer__social">
+          <a href="#" class="social-btn" aria-label="Facebook">📘</a>
+          <a href="#" class="social-btn" aria-label="Instagram">📷</a>
+          <a href="#" class="social-btn" aria-label="Twitter">🐦</a>
+          <a href="#" class="social-btn" aria-label="YouTube">▶️</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">خدمات</h4>
+        <ul class="footer__links">
+          <li><a href="#">ایئر کنڈیشنر</a></li>
+          <li><a href="#">پلمبنگ</a></li>
+          <li><a href="#">الیکٹریکل</a></li>
+          <li><a href="#">کارپنٹری</a></li>
+          <li><a href="#">پینٹنگ</a></li>
+          <li><a href="#">صفائی</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">شہر</h4>
+        <ul class="footer__links">
+          <li><a href="#">کراچی</a></li>
+          <li><a href="#">لاہور</a></li>
+          <li><a href="#">اسلام آباد</a></li>
+          <li><a href="#">فیصل آباد</a></li>
+          <li><a href="#">راولپنڈی</a></li>
+          <li><a href="#">ملتان</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="footer__col-title">کمپنی</h4>
+        <ul class="footer__links">
+          <li><a href="#">ہمارے بارے میں</a></li>
+          <li><a href="#">کاریگر بنیں</a></li>
+          <li><a href="#">کیریئر</a></li>
+          <li><a href="#">رابطہ کریں</a></li>
+          <li><a href="#">رازداری کی پالیسی</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bottom">
+      <span>© ۲۰۲۴ اپنا کاریگر۔ تمام حقوق محفوظ ہیں۔</span>
+      <span>کراچی · لاہور · اسلام آباد · فیصل آباد</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ========================================================
+     SCRIPTS
+======================================================== -->
+<script>
+  // ===========================
+  // SCROLL REVEAL
+  // ===========================
+  const revealObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+  // ===========================
+  // COUNTER ANIMATION (Urdu numerals)
+  // ===========================
+  const urduNums = { '0':'۰','1':'۱','2':'۲','3':'۳','4':'۴','5':'۵','6':'۶','7':'۷','8':'۸','9':'۹',',':'،' };
+
+  function toUrdu(n) {
+    return String(n).replace(/[0-9,]/g, ch => urduNums[ch] ?? ch);
+  }
+
+  function animateCount(el, target, ms = 1800) {
+    const t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - t0) / ms, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = toUrdu(Math.round(eased * target).toLocaleString());
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  const countObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateCount(entry.target, parseInt(entry.target.dataset.count, 10));
+        countObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  document.querySelectorAll('[data-count]').forEach(el => countObs.observe(el));
+
+  // ===========================
+  // SERVICE CHIP INTERACTION
+  // ===========================
+  const chips = document.querySelectorAll('.service-chip');
+  const techNameEl   = document.getElementById('card-tech-name');
+  const priceLabelEl = document.getElementById('card-price-label');
+  const priceValueEl = document.getElementById('card-price-value');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      priceLabelEl.textContent = chip.dataset.label;
+      priceValueEl.textContent = chip.dataset.price;
+      techNameEl.textContent   = chip.dataset.tech;
+    });
+  });
+
+  // ===========================
+  // SLOT INTERACTION
+  // ===========================
+  const availableSlots = document.querySelectorAll('.slot:not(.unavailable)');
+  availableSlots.forEach(slot => {
+    slot.addEventListener('click', () => {
+      availableSlots.forEach(s => s.classList.remove('active'));
+      slot.classList.add('active');
+    });
+  });
+
+  // ===========================
+  // FORM SUBMIT
+  // ===========================
+  document.getElementById('booking-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = '✓ بکنگ موصول ہو گئی! ہم جلد آپ سے رابطہ کریں گے';
+    btn.style.background = 'var(--green)';
+    btn.style.boxShadow  = '0 4px 20px oklch(72% 0.19 145 / 0.35)';
+    btn.disabled = true;
+  });
+</script>
+
+</body>
+</html>

@@ -43,20 +43,20 @@
       --green-dim:  oklch(55% 0.15 145);
 
       /* Backgrounds */
-      --bg:         oklch(8%  0.015 220);
-      --surface:    oklch(12% 0.02  220);
-      --surface-2:  oklch(16% 0.025 220);
-      --surface-3:  oklch(20% 0.028 220);
+      --bg:         oklch(9%  0.018 220);
+      --surface:    oklch(15% 0.026 220);
+      --surface-2:  oklch(20% 0.032 220);
+      --surface-3:  oklch(25% 0.036 220);
 
       /* Borders */
-      --border:        oklch(22% 0.03  220);
-      --border-subtle: oklch(17% 0.025 220);
-      --border-bright: oklch(30% 0.04  220);
+      --border:        oklch(32% 0.045 220);
+      --border-subtle: oklch(26% 0.038 220);
+      --border-bright: oklch(42% 0.055 220);
 
       /* Text */
-      --text:       oklch(94% 0.01  220);
-      --text-dim:   oklch(72% 0.02  220);
-      --text-muted: oklch(52% 0.015 220);
+      --text:       oklch(96% 0.01  220);
+      --text-dim:   oklch(76% 0.022 220);
+      --text-muted: oklch(58% 0.018 220);
 
       /* Layout */
       --section-gap: clamp(4rem, 10vw, 8rem);
@@ -343,8 +343,8 @@
     .hero__booking-card {
       position: relative;
       z-index: 2;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--surface-2);
+      border: 1px solid var(--border-bright);
       border-radius: 20px;
       padding: 1.75rem;
       box-shadow: 0 24px 60px oklch(0% 0 0 / 0.4);
@@ -392,8 +392,8 @@
       gap: 0.3rem;
       padding: 0.7rem 0.4rem;
       border-radius: 12px;
-      border: 1px solid var(--border);
-      background: var(--surface-2);
+      border: 1px solid var(--border-bright);
+      background: var(--surface-3);
       font-size: 0.72rem;
       color: var(--text-dim);
       cursor: pointer;
@@ -435,7 +435,7 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0.85rem;
-      background: var(--surface-2);
+      background: var(--surface-3);
       border-radius: 12px;
       margin-bottom: 1.25rem;
     }
@@ -535,7 +535,7 @@
 
     .service-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 1.75rem 1.5rem;
       position: relative;
@@ -559,19 +559,19 @@
     }
     .service-card:hover::before { opacity: 1; }
 
-    .service-card--ac    { --card-accent: var(--sky);    --card-glow: oklch(72% 0.19 220 / 0.09); }
-    .service-card--plumb { --card-accent: var(--teal);   --card-glow: oklch(70% 0.19 185 / 0.09); }
-    .service-card--elec  { --card-accent: var(--amber);  --card-glow: oklch(78% 0.22  75 / 0.09); }
-    .service-card--carp  { --card-accent: var(--coral);  --card-glow: oklch(68% 0.22  28 / 0.09); }
-    .service-card--paint { --card-accent: var(--violet); --card-glow: oklch(68% 0.22 285 / 0.09); }
-    .service-card--clean { --card-accent: var(--green);  --card-glow: oklch(72% 0.19 145 / 0.09); }
+    .service-card--ac    { --card-accent: var(--sky);    --card-glow: oklch(72% 0.19 220 / 0.12); --icon-bg: oklch(72% 0.19 220 / 0.18); --icon-border: oklch(72% 0.19 220 / 0.35); }
+    .service-card--plumb { --card-accent: var(--teal);   --card-glow: oklch(70% 0.19 185 / 0.12); --icon-bg: oklch(70% 0.19 185 / 0.18); --icon-border: oklch(70% 0.19 185 / 0.35); }
+    .service-card--elec  { --card-accent: var(--amber);  --card-glow: oklch(78% 0.22  75 / 0.12); --icon-bg: oklch(78% 0.22  75 / 0.18); --icon-border: oklch(78% 0.22  75 / 0.35); }
+    .service-card--carp  { --card-accent: var(--coral);  --card-glow: oklch(68% 0.22  28 / 0.12); --icon-bg: oklch(68% 0.22  28 / 0.18); --icon-border: oklch(68% 0.22  28 / 0.35); }
+    .service-card--paint { --card-accent: var(--violet); --card-glow: oklch(68% 0.22 285 / 0.12); --icon-bg: oklch(68% 0.22 285 / 0.18); --icon-border: oklch(68% 0.22 285 / 0.35); }
+    .service-card--clean { --card-accent: var(--green);  --card-glow: oklch(72% 0.19 145 / 0.12); --icon-bg: oklch(72% 0.19 145 / 0.18); --icon-border: oklch(72% 0.19 145 / 0.35); }
 
     .service-card__icon {
       width: 52px;
       height: 52px;
       border-radius: 14px;
-      background: oklch(from var(--card-accent) l c h / 0.12);
-      border: 1px solid oklch(from var(--card-accent) l c h / 0.22);
+      background: var(--icon-bg);
+      border: 1px solid var(--icon-border);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -645,7 +645,7 @@
 
     .pro-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 1.75rem;
       transition: transform 0.3s var(--ease-out), border-color 0.3s;
@@ -769,7 +769,7 @@
 
     .testimonial-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border);
       border-radius: 18px;
       padding: 1.75rem;
       transition: transform 0.3s var(--ease-out);
